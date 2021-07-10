@@ -5,13 +5,12 @@ import { WobblyThreejs } from "./WobblyThreejs";
 
 export const SplashScreen: React.FC<{ zIndex: number }> = ({ zIndex }) => {
   const splashContainer = useRef(null);
-  const wobblyParent = useRef(null);
 
   useEffect(() => {
     if (splashContainer.current) {
       const container = splashContainer.current as HTMLElement;
       container.addEventListener("animationend", () => {
-        container.style.display = "none";
+        container.remove();
       });
       setTimeout(() => {
         container.classList.add("fade-out");
@@ -35,10 +34,21 @@ export const SplashScreen: React.FC<{ zIndex: number }> = ({ zIndex }) => {
         id="splash-text-container"
         textAlign="center"
         pos="relative"
-        padding="7rem"
+        padding={["3.5rem", null, "7rem"]}
       >
         <SplashText />
-        <WobblyThreejs />
+        <Box
+          class="wobbly-container"
+          w="100%"
+          h="100%"
+          position="absolute"
+          top="50%"
+          left="50%"
+          transform="translate(-50%, -50%)"
+          zIndex="1"
+        >
+          <WobblyThreejs />
+        </Box>
       </Box>
     </Grid>
   );

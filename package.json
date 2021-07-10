@@ -6,6 +6,7 @@
   "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
     "@chakra-ui/gatsby-plugin": "^1.0.2",
+    "@chakra-ui/icons": "^1.0.14",
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
@@ -13,8 +14,8 @@
     "@types/three": "^0.130.0",
     "framer-motion": "^3.10.6",
     "gatsby": "^2.32.13",
-    "gatsby-image": "^2.11.0",
     "gatsby-plugin-glslify": "^1.0.1",
+    "gatsby-plugin-image": "^1.9.0",
     "gatsby-plugin-layout": "^2.9.0",
     "gatsby-plugin-manifest": "^2.12.1",
     "gatsby-plugin-offline": "^3.10.2",

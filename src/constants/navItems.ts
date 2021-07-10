@@ -4,10 +4,6 @@ type NavItems = {
 };
 export const navItems: Array<NavItems> = [
   {
-    label: "Home",
-    href: "/",
-  },
-  {
     label: "My Projects",
     href: "/projects",
   },

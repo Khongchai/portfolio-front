@@ -1,11 +1,12 @@
 import { extendTheme } from "@chakra-ui/react";
 import "@fontsource/open-sans";
-import "./css/animation.css";
+import "../css/animation.css";
+import "../fonts/stylesheet.css";
 
 const theme = {
   fonts: {
-    body: "Open Sans",
-    heading: "Open Sans",
+    body: "Proxima Nova th",
+    heading: "Proxima Nova th",
   },
   colors: {
     mainBlack: "black",

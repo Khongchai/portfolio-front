@@ -8,10 +8,22 @@ import vertexShader from "./vertex.glsl";
 import fragmentShader from "./fragment.glsl";
 
 //Wobbly is the size of the container of the splash text.
-export const WobblyThreejs: React.FC = () => {
+export const WobblyThreejs: React.FC<{
+  //For when there exists more than 1 canvas at a time.
+  canvasId?: string;
+  parentId?: string;
+}> = ({ parentId, canvasId }) => {
   useEffect(() => {
-    const canvas = document.querySelector("canvas.webgl") as HTMLCanvasElement;
-    const parentElem = canvas.parentElement;
+    const canvas = (canvasId
+      ? document.getElementById(canvasId)
+      : document.querySelector("canvas.webgl")) as HTMLCanvasElement;
+    const parentElem = parentId
+      ? document.getElementById(parentId)
+      : canvas.parentElement;
+
+    if (!parentElem || !canvas) {
+      throw new Error("canvas or parentElement does not exist");
+    }
 
     // Scene
     const scene = new THREE.Scene();
@@ -125,17 +137,10 @@ export const WobblyThreejs: React.FC = () => {
   }, []);
 
   return (
-    <Box
-      class="wobbly-container"
-      w="100%"
-      h="100%"
-      position="absolute"
-      top="50%"
-      left="50%"
-      transform="translate(-50%, -50%)"
-      zIndex="1"
-    >
-      <canvas style={{ opacity: "0.5" }} className="webgl"></canvas>
-    </Box>
+    <canvas
+      style={{ opacity: "0.5" }}
+      className="webgl"
+      id={canvasId ? canvasId : null}
+    ></canvas>
   );
 };

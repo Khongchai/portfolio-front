@@ -1,5 +1,11 @@
 redeploy backend on docker, and set up graphql type gen on front so that you can ask 
 for the schema and use the hooks.
 
-Make wobbly move and stretch to in front of KHONGCHAI.G
+Come up with math function to make wobbly behave more like flame immitate flame (remember that sin thing? YOu can make flame with that!)
+
+Get the wobbly to be in both splash and navbar.
+
+
+Desktop: "none" null null "block"
+Mobile: "block", null null "none"
 
