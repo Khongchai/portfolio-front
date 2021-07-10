@@ -19,6 +19,7 @@
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
+    "@fontsource/open-sans": "^4.5.0",
     "framer-motion": "^4.1.17",
     "gatsby": "^3.9.0",
     "gatsby-plugin-image": "^1.9.0",
@@ -28,6 +29,7 @@
     "gatsby-transformer-sharp": "^3.9.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0"
+    "react-helmet": "^6.1.0",
+    "three": "^0.130.1"
   }
 }

@@ -3,6 +3,9 @@ module.exports = {
     siteUrl: "https://www.yourdomain.tld",
     title: "Khong Portfolio",
   },
+  flags: {
+    FAST_DEV: false,
+  },
   plugins: [
     "gatsby-plugin-image",
     "gatsby-plugin-react-helmet",
