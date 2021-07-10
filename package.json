@@ -1,35 +1,56 @@
 {
   "name": "khong-portfolio",
-  "version": "1.0.0",
   "private": true,
-  "description": "Khong Portfolio",
-  "author": "khongchai",
-  "keywords": [
-    "gatsby"
-  ],
-  "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
-  },
+  "description": "Khong's portfolio's frontend",
+  "version": "0.1.0",
+  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
   "dependencies": {
-    "@chakra-ui/gatsby-plugin": "^2.0.1",
+    "@chakra-ui/gatsby-plugin": "^1.0.2",
     "@chakra-ui/react": "^1.6.5",
     "@emotion/react": "^11.4.0",
     "@emotion/styled": "^11.3.0",
     "@fontsource/open-sans": "^4.5.0",
-    "framer-motion": "^4.1.17",
-    "gatsby": "^3.9.0",
-    "gatsby-plugin-image": "^1.9.0",
-    "gatsby-plugin-react-helmet": "^4.9.0",
-    "gatsby-plugin-sharp": "^3.9.0",
-    "gatsby-source-filesystem": "^3.9.0",
-    "gatsby-transformer-sharp": "^3.9.0",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
+    "@types/three": "^0.130.0",
+    "framer-motion": "^3.10.6",
+    "gatsby": "^2.32.13",
+    "gatsby-image": "^2.11.0",
+    "gatsby-plugin-glslify": "^1.0.1",
+    "gatsby-plugin-layout": "^2.9.0",
+    "gatsby-plugin-manifest": "^2.12.1",
+    "gatsby-plugin-offline": "^3.10.2",
+    "gatsby-plugin-react-helmet": "^3.10.0",
+    "gatsby-plugin-sharp": "^2.14.4",
+    "gatsby-source-filesystem": "^2.11.1",
+    "gatsby-transformer-sharp": "^2.12.1",
+    "glslify": "^7.1.1",
+    "prop-types": "^15.7.2",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
     "react-helmet": "^6.1.0",
+    "react-icons": "^4.2.0",
     "three": "^0.130.1"
+  },
+  "devDependencies": {
+    "prettier": "2.2.1"
+  },
+  "keywords": [
+    "gatsby"
+  ],
+  "license": "0BSD",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  },
+  "bugs": {
+    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
