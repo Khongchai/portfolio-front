@@ -1,14 +1,32 @@
-import { Box, Stack, Flex, Heading } from "@chakra-ui/react";
-import * as React from "react";
+import { Box, Stack, Text, Flex, Heading } from "@chakra-ui/react";
+import React, { useState } from "react";
 import { SplashScreen } from "../components/splashScreen/index";
 import { GridContainer } from "../elements/GridContainer";
 import { StaticImage } from "gatsby-plugin-image";
 import { Line } from "../elements/Line";
+import { TechSection } from "../components/TechnologiesSection";
+import {
+  TechnologyEntity,
+  useGetTechnologiesAssignedToRoleQuery,
+} from "../../generated/graphql";
+import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";
+import useHoverComponent from "../utils/useHoverComponent";
 
 const IndexPage = () => {
+  const [
+    { fetching: fetchingTechnologies, data: technologiesData },
+  ] = useGetTechnologiesAssignedToRoleQuery();
+  const languages = technologiesData?.getTechnologiesAssignedToRole.lang;
+
+  const [hoveredComponentName, setHoverComponentName] = useState<
+    string | undefined
+  >(undefined);
+  useHoverComponent(hoveredComponentName);
+
   return (
     <>
       {/* <SplashScreen zIndex={999} /> */}
+
       <GridContainer width="100%" height="100%">
         <Stack
           gridColumn="content-begin / content-end"
@@ -49,10 +67,67 @@ const IndexPage = () => {
           <Flex justify="center" position="relative" width="100%" height="auto">
             <Line />
           </Flex>
+          <Text
+            width="100%"
+            textAlign="center"
+            fontFamily="proxima nova lt"
+            fontWeight="300"
+            fontSize="1.5rem"
+            letterSpacing="2px"
+            size="lg"
+          >
+            Technologies I have worked with
+          </Text>
+
+          <Box
+            css={{ "> *": { marginBottom: "3rem" } }}
+            textAlign="center"
+            id="tech"
+          >
+            {hoveredComponentName ? (
+              <TechNameCard hoveredComponentName={hoveredComponentName} />
+            ) : null}
+            <TechSection
+              title="Front"
+              technologies={
+                technologiesData?.getTechnologiesAssignedToRole
+                  .front as TechnologyEntity[]
+              }
+              fetching={fetchingTechnologies}
+              setHoverComponentName={setHoverComponentName}
+            />
+            <hr />
+
+            <TechSection
+              title="Back"
+              technologies={
+                technologiesData?.getTechnologiesAssignedToRole
+                  .back as TechnologyEntity[]
+              }
+              fetching={fetchingTechnologies}
+              setHoverComponentName={setHoverComponentName}
+            />
+            <hr />
+            <TechSection
+              title="Hosting"
+              technologies={
+                technologiesData?.getTechnologiesAssignedToRole
+                  .hosting as TechnologyEntity[]
+              }
+              fetching={fetchingTechnologies}
+              setHoverComponentName={setHoverComponentName}
+            />
+            <hr />
+            <TechSection
+              title="Languages"
+              technologies={languages as TechnologyEntity[] | undefined}
+              fetching={fetchingTechnologies}
+              setHoverComponentName={setHoverComponentName}
+            />
+          </Box>
         </Stack>
       </GridContainer>
     </>
   );
 };
-
 export default IndexPage;

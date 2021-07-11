@@ -8,11 +8,15 @@ void main()
         float fireStrength = mix(0.01, 0.1, vUv.y);
         float sineFlameVariation = sin(uTime * 0.8) * 5.0;
         float cosFlameVariation = cos(uTime * 0.78) * 5.0;
-        float windX = uMouse.x * 0.6;
-        float windY = uMouse.y * 0.8;
+        //Arbitrary value that looks nice
+        float fireX = 17.7;
+        float fireY = -22.4;
+        float windX = mix(0.7, 1.1, uMouse.x);
+        float windY = mix(0.7, 1.1, uMouse.y);
+
         vec2 wavedUv = vec2(
-            vUv.x + sin(vUv.y * (windX - sineFlameVariation)* fireShape ) * fireStrength,
-            vUv.y + cos(vUv.x * (windY - cosFlameVariation) * fireShape ) * fireStrength
+            vUv.x + sin(vUv.y * ((fireX * windX)- sineFlameVariation)* fireShape ) * fireStrength,
+            vUv.y + cos(vUv.x * ((fireY * windY) - cosFlameVariation) * fireShape ) * fireStrength
         );
         
          float reduceRadius = 0.25;

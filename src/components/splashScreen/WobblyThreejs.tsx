@@ -30,9 +30,9 @@ export const WobblyThreejs: React.FC<{
     const geometry = new THREE.PlaneGeometry(1, 1, 100, 100);
 
     //Mouse
-    const curMouse = { x: 0, y: 0 };
-    const diffMouse = { x: 0, y: 0 };
-    const prevMouse = { x: 0, y: 0 };
+    const curMouse = { x: 1.0, y: 1.0 };
+    const diffMouse = { x: 1.0, y: 1.0 };
+    const prevMouse = { x: 1.0, y: 1.0 };
 
     // Material
     const material = new THREE.ShaderMaterial({
@@ -68,8 +68,9 @@ export const WobblyThreejs: React.FC<{
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     });
     window.addEventListener("mousemove", (event) => {
-      curMouse.x = (event.clientX / window.innerWidth) * 30;
-      curMouse.y = -(event.clientY / window.innerHeight) * 30;
+      //No need for normalized mouse
+      curMouse.x = event.clientX / window.innerWidth;
+      curMouse.y = event.clientY / window.innerHeight;
     });
 
     /**
