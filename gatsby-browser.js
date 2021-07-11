@@ -1,7 +1,10 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/browser-apis/
- */
+import { createClient, Provider } from "urql";
+import React from "react";
 
-// You can delete this file if you're not using it
+const client = createClient({
+  url: "http://localhost:4000/graphql",
+});
+
+export const wrapRootElement = ({ element }) => {
+  return <Provider value={client}>{element}</Provider>;
+};

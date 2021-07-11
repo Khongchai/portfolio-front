@@ -1,0 +1,22 @@
+query Technologies {
+  technologies {
+    id
+    title
+    frontEndIn {
+      title
+      id
+    }
+    backEndIn {
+      title
+      id
+    }
+    languageOf {
+      title
+      id
+    }
+    hosting {
+      title
+      id
+    }
+  }
+}

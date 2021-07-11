@@ -1,0 +1,29 @@
+fragment ProjectFields on ProjectEntity {
+  id
+  title
+  frontEndTechnologies {
+    title
+    id
+  }
+  backEndTechnologies {
+    title
+    id
+  }
+  languages {
+    title
+    id
+  }
+  hostingServices {
+    title
+    id
+  }
+  isHighlight
+  endDate
+  startDate
+  description
+  githubLink
+  websiteLink
+  imgLink
+  tinyImgLink
+  shortDescription
+}

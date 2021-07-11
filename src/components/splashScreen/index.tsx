@@ -38,7 +38,8 @@ export const SplashScreen: React.FC<{ zIndex: number }> = ({ zIndex }) => {
       >
         <SplashText />
         <Box
-          class="wobbly-container"
+          className="wobbly-container"
+          id="splashscreen-wobbly-container"
           w="100%"
           h="100%"
           position="absolute"
@@ -47,7 +48,7 @@ export const SplashScreen: React.FC<{ zIndex: number }> = ({ zIndex }) => {
           transform="translate(-50%, -50%)"
           zIndex="1"
         >
-          <WobblyThreejs />
+          <WobblyThreejs canvasId="splash-screen-wobbly" />
         </Box>
       </Box>
     </Grid>

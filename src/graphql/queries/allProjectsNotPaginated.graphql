@@ -1,0 +1,5 @@
+query AllProjectsNotPaginated {
+  allProjectsNotPaginated {
+    ...ProjectFields
+  }
+}

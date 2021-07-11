@@ -1,0 +1,25 @@
+query Projects(
+  $skip: Int!
+  $limit: Int!
+  $sortBy: String
+  $order: String
+  $search: String
+  $getAll: Boolean
+) {
+  projects(
+    input: {
+      skip: $skip
+      limit: $limit
+      sortBy: $sortBy
+      order: $order
+      search: $search
+      getAll: $getAll
+    }
+  ) {
+    projects {
+      ...ProjectFields
+    }
+    isFirstQuery
+    isLastQuery
+  }
+}

@@ -1,4 +1,3 @@
-import { Box } from "@chakra-ui/react";
 import React, { useEffect } from "react";
 import * as THREE from "three";
 import { EffectComposer } from "three/examples/jsm/postprocessing/EffectComposer.js";
@@ -10,13 +9,12 @@ import fragmentShader from "./fragment.glsl";
 //Wobbly is the size of the container of the splash text.
 export const WobblyThreejs: React.FC<{
   //For when there exists more than 1 canvas at a time.
-  canvasId?: string;
+  canvasId: string;
   parentId?: string;
 }> = ({ parentId, canvasId }) => {
   useEffect(() => {
-    const canvas = (canvasId
-      ? document.getElementById(canvasId)
-      : document.querySelector("canvas.webgl")) as HTMLCanvasElement;
+    const canvas = document.getElementById(canvasId) as HTMLCanvasElement;
+
     const parentElem = parentId
       ? document.getElementById(parentId)
       : canvas.parentElement;
@@ -137,10 +135,6 @@ export const WobblyThreejs: React.FC<{
   }, []);
 
   return (
-    <canvas
-      style={{ opacity: "0.5" }}
-      className="webgl"
-      id={canvasId ? canvasId : null}
-    ></canvas>
+    <canvas style={{ opacity: "0.5" }} className="webgl" id={canvasId}></canvas>
   );
 };

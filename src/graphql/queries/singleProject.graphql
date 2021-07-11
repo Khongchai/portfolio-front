@@ -1,0 +1,10 @@
+query GetSingleProjectByTitle($title: String!) {
+  getSingleProjectByTitle(title: $title) {
+    proj {
+      ...ProjectFields
+    }
+    errors {
+      message
+    }
+  }
+}

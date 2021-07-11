@@ -1,10 +1,7 @@
 redeploy backend on docker, and set up graphql type gen on front so that you can ask 
 for the schema and use the hooks.
 
-Come up with math function to make wobbly behave more like flame immitate flame (remember that sin thing? YOu can make flame with that!)
-
-Get the wobbly to be in both splash and navbar.
-
+Make sure the fire looks like fire at all times..!
 
 Desktop: "none" null null "block"
 Mobile: "block", null null "none"

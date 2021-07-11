@@ -8,7 +8,7 @@ import { Line } from "../elements/Line";
 const IndexPage = () => {
   return (
     <>
-      <SplashScreen zIndex={999} />
+      {/* <SplashScreen zIndex={999} /> */}
       <GridContainer width="100%" height="100%">
         <Stack
           gridColumn="content-begin / content-end"
@@ -32,8 +32,8 @@ const IndexPage = () => {
               position="absolute"
               zIndex="6"
             >
-              Hi there! I'm Khong, a web dev who's passionate about coding and
-              new innovations.
+              Hi there! I'm Khong, a web dev whose fiery passions are all about
+              coding and new innovations.
             </Heading>
             <Stack zIndex="5" marginLeft="auto">
               <StaticImage
@@ -49,8 +49,6 @@ const IndexPage = () => {
           <Flex justify="center" position="relative" width="100%" height="auto">
             <Line />
           </Flex>
-          {/* place holder, remove when footer is ready */}
-          <div></div>
         </Stack>
       </GridContainer>
     </>
