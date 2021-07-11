@@ -21,6 +21,8 @@ import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";
 import useHoverComponent from "../utils/useHoverComponent";
 import { AboutMeBanner } from "../components/AboutMeBanner";
 import { ResumeDownloadSection } from "../components/ResumeDownloadSection";
+import { ProjectHighlightsSection } from "../components/ProjectHighlightsSection";
+import { toggleFastFireSwitch } from "../components/splashScreen/WobblyThreejs";
 
 const IndexPage = () => {
   const [
@@ -79,6 +81,9 @@ const IndexPage = () => {
                   display="inline"
                   cursor="pointer"
                   textDecor="underline"
+                  onClick={() => {
+                    toggleFastFireSwitch();
+                  }}
                 >
                   fiery{" "}
                 </Box>
@@ -162,6 +167,7 @@ const IndexPage = () => {
           <Flex justify="center" position="relative" width="100%" height="auto">
             <Line dotPos="top" />
           </Flex>
+          <ProjectHighlightsSection />
         </Stack>
       </GridContainer>
       <Box css={{ "> *": { marginTop: "2rem" } }}>
