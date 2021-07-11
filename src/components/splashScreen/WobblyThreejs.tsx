@@ -42,6 +42,7 @@ export const WobblyThreejs: React.FC<{
       uniforms: {
         uTime: { value: 0 },
         uMouse: { value: { x: curMouse.x, y: curMouse.y } },
+        uIgnite: { value: 0 },
       },
     });
 

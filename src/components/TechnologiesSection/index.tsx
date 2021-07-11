@@ -12,7 +12,7 @@ export const TechSection: React.FC<{
   >;
 }> = ({ title, technologies, fetching, setHoverComponentName }) => {
   return (
-    <Grid className="tech-section" mt="6rem">
+    <Grid className="tech-section">
       <Heading
         size="lg"
         fontWeight="100"

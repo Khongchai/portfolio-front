@@ -1,4 +1,12 @@
-import { Box, Stack, Text, Flex, Heading, Grid } from "@chakra-ui/react";
+import {
+  Box,
+  Stack,
+  Text,
+  Flex,
+  Heading,
+  Grid,
+  Button,
+} from "@chakra-ui/react";
 import React, { useState } from "react";
 import { SplashScreen } from "../components/splashScreen/index";
 import { GridContainer } from "../elements/GridContainer";
@@ -48,7 +56,7 @@ const IndexPage = () => {
                 background="mainGradient"
                 backgroundClip="text"
                 css={{ "-webkit-text-fill-color": "transparent" }}
-                fontSize={["1.5rem", null, "2.5rem", null, "3.5rem"]}
+                fontSize={["1.75rem", null, "2.5rem", null, "3.5rem"]}
                 letterSpacing="6px"
                 zIndex="6"
                 display="inline"
@@ -58,15 +66,23 @@ const IndexPage = () => {
               </Heading>
               <Heading
                 background="mainGradient"
-                fontSize={["1rem", null, "2rem", null, "3rem"]}
+                fontSize={["1.25rem", null, "2rem", null, "3rem"]}
                 backgroundClip="text"
                 css={{ "-webkit-text-fill-color": "transparent" }}
                 size="2xl"
                 letterSpacing={["unset", null, "6px"]}
                 zIndex="6"
               >
-                I'm Khong, a web dev whose <br /> fiery passions are all about{" "}
-                <br /> coding and new innovations
+                I'm Khong, a web dev whose <br />{" "}
+                <Box
+                  className="pulsate"
+                  display="inline"
+                  cursor="pointer"
+                  textDecor="underline"
+                >
+                  fiery{" "}
+                </Box>
+                passions are all about <br /> coding and new innovations
               </Heading>
             </Box>
             <Stack
@@ -96,12 +112,12 @@ const IndexPage = () => {
             fontSize="1.5rem"
             letterSpacing="2px"
             size="lg"
+            p="1rem 0"
           >
             Technologies I have worked with
           </Text>
-
           <Box
-            css={{ "> *": { marginBottom: "2.2rem" } }}
+            css={{ "> *": { marginBottom: "6rem" } }}
             textAlign="center"
             id="tech"
           >

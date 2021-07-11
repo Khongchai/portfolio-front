@@ -1,6 +1,7 @@
 uniform float uTime;
 uniform vec2 uMouse;
 varying vec2 vUv;
+uniform float uIgnite;
 
 void main()
 {
@@ -15,8 +16,8 @@ void main()
         float windY = mix(0.7, 1.1, uMouse.y);
 
         vec2 wavedUv = vec2(
-            vUv.x + sin(vUv.y * ((fireX * windX)- sineFlameVariation)* fireShape ) * fireStrength + ((uMouse.x * 0.1) - 0.02),
-            vUv.y + cos((vUv.x * ((fireY * windY) - cosFlameVariation) * fireShape )) * fireStrength
+            vUv.x + sin(vUv.y * ((fireX * windX)- sineFlameVariation)* fireShape   ) * fireStrength + ((uMouse.x * 0.1) - 0.02),
+            vUv.y + cos((vUv.x * ((fireY * windY) - cosFlameVariation) * fireShape)) * fireStrength
         );
         
          float reduceRadius = 0.25;

@@ -3,6 +3,7 @@ import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 import { GridContainer } from "../elements/GridContainer";
 import { ArrowRightIcon } from "@chakra-ui/icons";
+import { Link } from "gatsby";
 
 export const AboutMeBanner: React.FC = ({}) => {
   const layout = "fullWidth";
@@ -21,10 +22,11 @@ export const AboutMeBanner: React.FC = ({}) => {
           zIndex="10"
           pointerEvents="none"
         >
-          <Text>WEBSITE</Text>
           <Heading size="3xl">ABOUT ME</Heading>
-          <Box>
-            <ArrowRightIcon w={6} h={6} />
+          <Box pointerEvents="auto">
+            <Link to="/about">
+              <ArrowRightIcon w={6} h={6} />
+            </Link>
           </Box>
         </Flex>
       </GridContainer>
