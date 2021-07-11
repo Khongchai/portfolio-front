@@ -16,6 +16,7 @@ export const TechSection: React.FC<{
       <Heading size="lg" color="mainOrange" as="h2" mb="1.75rem">
         {title}
       </Heading>
+
       <Grid
         id="tech-container"
         padding="1rem"

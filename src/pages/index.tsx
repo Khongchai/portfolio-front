@@ -11,6 +11,7 @@ import {
 } from "../../generated/graphql";
 import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";
 import useHoverComponent from "../utils/useHoverComponent";
+import { AboutMeBanner } from "../components/AboutMeBanner";
 
 const IndexPage = () => {
   const [
@@ -65,7 +66,7 @@ const IndexPage = () => {
             </Stack>
           </Flex>
           <Flex justify="center" position="relative" width="100%" height="auto">
-            <Line />
+            <Line dotPos="bottom" />
           </Flex>
           <Text
             width="100%"
@@ -125,6 +126,10 @@ const IndexPage = () => {
               setHoverComponentName={setHoverComponentName}
             />
           </Box>
+          <Flex justify="center" position="relative" width="100%" height="auto">
+            <Line dotPos="top" />
+          </Flex>
+          <AboutMeBanner />
         </Stack>
       </GridContainer>
     </>

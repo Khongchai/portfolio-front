@@ -11,7 +11,7 @@ void main()
         //Arbitrary value that looks nice
         float fireX = 17.7;
         float fireY = -22.4;
-        float windX = mix(0.7, 1.1, uMouse.x);
+        float windX = mix(0.7, 0.8, uMouse.x);
         float windY = mix(0.7, 1.1, uMouse.y);
 
         vec2 wavedUv = vec2(
