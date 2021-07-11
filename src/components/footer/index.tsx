@@ -13,7 +13,7 @@ type ContactItem = {
 export const Footer: React.FC<indexProps> = ({}) => {
   const contactItems: Array<ContactItem> = [
     {
-      label: "world1955@hotmail.com",
+      label: "World1955@hotmail.com",
       href: `mailto:world1955@hotmail.com`,
     },
     {
@@ -39,18 +39,19 @@ export const Footer: React.FC<indexProps> = ({}) => {
         gridArea="1/1"
         width="100%"
         src="../../images/footer-background.png"
-        padding="5rem 0 10rem 0"
+        padding={["5rem 2rem 10rem 2rem", null, null, "5rem 0 10rem 0"]}
         css={{ " > *": { marginRight: "1.5rem" } }}
         maxWidth="1800px"
         margin="0 auto"
         position="relative"
+        flexDir={["column", null, null, "row"]}
       >
-        <Box flex="0.2">
-          <Heading w="fit-content" ml="auto" size="lg">
+        <Box flex="0.2" mb="1rem">
+          <Heading w="fit-content" ml={["unset", null, null, "auto"]} size="lg">
             CONTACT
           </Heading>
         </Box>
-        <Box flex="0.5">
+        <Box flex="0.5" mb="2rem">
           {contactItems.map((item) => {
             return (
               <Box mb="1rem">
@@ -60,6 +61,7 @@ export const Footer: React.FC<indexProps> = ({}) => {
                   fontFamily="proxima nova lt"
                   href={item.href}
                   size="sm"
+                  target="_blank"
                   fontWeight="300"
                 >
                   {item.label}
@@ -78,6 +80,7 @@ export const Footer: React.FC<indexProps> = ({}) => {
                   href={item.href}
                   fontFamily="proxima nova lt"
                   size="sm"
+                  target="_blank"
                   fontWeight="300"
                 >
                   {item.label}

@@ -11,6 +11,7 @@ const theme = {
   colors: {
     mainBlack: "black",
     mainWhite: "white",
+    secondaryBlack: "#101010",
     mainGradient: "linear-gradient(to right, #b891ff, #e45f6b, #f99f35)",
   },
   styles: {

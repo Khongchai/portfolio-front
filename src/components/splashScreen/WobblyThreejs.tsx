@@ -5,6 +5,7 @@ import { RenderPass } from "three/examples/jsm/postprocessing/RenderPass.js";
 import { AfterimagePass } from "three/examples/jsm/postprocessing/AfterimagePass";
 import vertexShader from "./vertex.glsl";
 import fragmentShader from "./fragment.glsl";
+import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 
 //Wobbly is the size of the container of the splash text.
 export const WobblyThreejs: React.FC<{
@@ -103,6 +104,23 @@ export const WobblyThreejs: React.FC<{
     composer.addPass(renderPass);
     const afterImagePass = new AfterimagePass(0.8);
     composer.addPass(afterImagePass);
+
+    const params = {
+      exposure: 1,
+      bloomStrength: 1.5,
+      bloomThreshold: 0,
+      bloomRadius: 0,
+    };
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(window.innerWidth, window.innerHeight),
+      1.5,
+      0.4,
+      0.85
+    );
+    bloomPass.threshold = params.bloomThreshold;
+    bloomPass.strength = 0;
+    bloomPass.radius = params.bloomRadius;
+    composer.addPass(bloomPass);
 
     /**
      * Animate

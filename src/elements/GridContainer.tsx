@@ -1,10 +1,11 @@
-import { Grid, Stack } from "@chakra-ui/react";
+import { Grid, ResponsiveValue, Stack } from "@chakra-ui/react";
 import React from "react";
 
 interface GridContainerProps {
   width: string;
   height: string;
   padding?: string;
+  position?: any;
 }
 
 export const GridContainer: React.FC<GridContainerProps> = ({
@@ -12,11 +13,13 @@ export const GridContainer: React.FC<GridContainerProps> = ({
   height,
   children,
   padding,
+  position,
 }) => {
   return (
     <Grid
       w={width}
       h={height}
+      position={position ? position : "relative"}
       padding={padding ? padding : 0}
       gridTemplateColumns={[
         `

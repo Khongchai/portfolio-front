@@ -1,4 +1,4 @@
-import { Box, Stack, Text, Flex, Heading } from "@chakra-ui/react";
+import { Box, Stack, Text, Flex, Heading, Grid } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { SplashScreen } from "../components/splashScreen/index";
 import { GridContainer } from "../elements/GridContainer";
@@ -12,6 +12,7 @@ import {
 import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";
 import useHoverComponent from "../utils/useHoverComponent";
 import { AboutMeBanner } from "../components/AboutMeBanner";
+import { ResumeDownloadSection } from "../components/ResumeDownloadSection";
 
 const IndexPage = () => {
   const [
@@ -27,7 +28,6 @@ const IndexPage = () => {
   return (
     <>
       {/* <SplashScreen zIndex={999} /> */}
-
       <GridContainer width="100%" height="100%">
         <Stack
           gridColumn="content-begin / content-end"
@@ -36,25 +36,45 @@ const IndexPage = () => {
           id="content"
           spacing="2rem"
         >
-          <Flex
+          <Grid
             position="relative"
             alignItems="center"
             maxWidth="1000px"
-            width={["100%", null, null, "80%"]}
+            width={["auto", null, null, "1000px"]}
+            margin="0 auto"
           >
-            <Heading
-              background="mainGradient"
-              backgroundClip="text"
-              css={{ "-webkit-text-fill-color": "transparent" }}
-              size="xl"
-              letterSpacing="2px"
-              position="absolute"
-              zIndex="6"
+            <Box ml="1rem" gridArea="1/1" zIndex="6" position="relative">
+              <Heading
+                background="mainGradient"
+                backgroundClip="text"
+                css={{ "-webkit-text-fill-color": "transparent" }}
+                fontSize={["1.5rem", null, "2.5rem", null, "3.5rem"]}
+                letterSpacing="6px"
+                zIndex="6"
+                display="inline"
+                mb="1rem"
+              >
+                Hi there!
+              </Heading>
+              <Heading
+                background="mainGradient"
+                fontSize={["1rem", null, "2rem", null, "3rem"]}
+                backgroundClip="text"
+                css={{ "-webkit-text-fill-color": "transparent" }}
+                size="2xl"
+                letterSpacing={["unset", null, "6px"]}
+                zIndex="6"
+              >
+                I'm Khong, a web dev whose <br /> fiery passions are all about{" "}
+                <br /> coding and new innovations
+              </Heading>
+            </Box>
+            <Stack
+              opacity={[0.8, null, null, 1]}
+              gridArea="1/1"
+              zIndex="5"
+              marginLeft="auto"
             >
-              Hi there! I'm Khong, a web dev whose fiery passions are all about
-              coding and new innovations.
-            </Heading>
-            <Stack zIndex="5" marginLeft="auto">
               <StaticImage
                 id="author-image"
                 src="../images/khong-banner.png"
@@ -64,7 +84,7 @@ const IndexPage = () => {
                 width={500}
               />
             </Stack>
-          </Flex>
+          </Grid>
           <Flex justify="center" position="relative" width="100%" height="auto">
             <Line dotPos="bottom" />
           </Flex>
@@ -81,7 +101,7 @@ const IndexPage = () => {
           </Text>
 
           <Box
-            css={{ "> *": { marginBottom: "3rem" } }}
+            css={{ "> *": { marginBottom: "2.2rem" } }}
             textAlign="center"
             id="tech"
           >
@@ -97,7 +117,6 @@ const IndexPage = () => {
               fetching={fetchingTechnologies}
               setHoverComponentName={setHoverComponentName}
             />
-            <hr />
 
             <TechSection
               title="Back"
@@ -108,7 +127,6 @@ const IndexPage = () => {
               fetching={fetchingTechnologies}
               setHoverComponentName={setHoverComponentName}
             />
-            <hr />
             <TechSection
               title="Hosting"
               technologies={
@@ -118,7 +136,6 @@ const IndexPage = () => {
               fetching={fetchingTechnologies}
               setHoverComponentName={setHoverComponentName}
             />
-            <hr />
             <TechSection
               title="Languages"
               technologies={languages as TechnologyEntity[] | undefined}
@@ -129,9 +146,12 @@ const IndexPage = () => {
           <Flex justify="center" position="relative" width="100%" height="auto">
             <Line dotPos="top" />
           </Flex>
-          <AboutMeBanner />
         </Stack>
       </GridContainer>
+      <Box css={{ "> *": { marginTop: "2rem" } }}>
+        <AboutMeBanner />
+        <ResumeDownloadSection />
+      </Box>
     </>
   );
 };
