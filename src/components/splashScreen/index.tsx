@@ -7,16 +7,18 @@ export const SplashScreen: React.FC<{ zIndex: number }> = ({ zIndex }) => {
   const splashContainer = useRef(null);
 
   useEffect(() => {
-    if (splashContainer.current) {
-      const container = splashContainer.current as HTMLElement;
-      container.addEventListener("animationend", () => {
-        container.remove();
-      });
-      setTimeout(() => {
-        container.classList.add("fade-out");
-      }, 4000);
-    }
+    showSplash();
   }, []);
+
+  function showSplash() {
+    const container = splashContainer.current as HTMLElement;
+    container.addEventListener("animationend", () => {
+      container.remove();
+    });
+    setTimeout(() => {
+      container.classList.add("fade-out");
+    }, 4000);
+  }
 
   return (
     <Grid

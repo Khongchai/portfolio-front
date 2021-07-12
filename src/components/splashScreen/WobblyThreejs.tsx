@@ -7,12 +7,6 @@ import vertexShader from "./vertex.glsl";
 import fragmentShader from "./fragment.glsl";
 import { UnrealBloomPass } from "three/examples/jsm/postprocessing/UnrealBloomPass";
 
-var fastFire = false;
-var bloomPassStrength = 0;
-export function toggleFastFireSwitch() {
-  fastFire = !fastFire;
-}
-
 //Wobbly is the size of the container of the splash text.
 export const WobblyThreejs: React.FC<{
   //For when there exists more than 1 canvas at a time.
@@ -116,6 +110,7 @@ export const WobblyThreejs: React.FC<{
       exposure: 1,
       bloomThreshold: 0,
       bloomRadius: 0,
+      bloomPassStrength: 1.5,
     };
     const bloomPass = new UnrealBloomPass(
       new THREE.Vector2(window.innerWidth, window.innerHeight),
@@ -124,7 +119,7 @@ export const WobblyThreejs: React.FC<{
       0.85
     );
     bloomPass.threshold = params.bloomThreshold;
-    bloomPass.strength = bloomPassStrength;
+    bloomPass.strength = params.bloomPassStrength;
     bloomPass.radius = params.bloomRadius;
     composer.addPass(bloomPass);
 
@@ -139,6 +134,11 @@ export const WobblyThreejs: React.FC<{
 
       material.uniforms.uTime.value = elapsedTime;
       material.uniforms.uMouse.value = { x: prevMouse.x, y: prevMouse.y };
+
+      //Oscilate between 0 and 1.5
+      //prettier-ignore
+      const f = Math.sin(5*elapsedTime)
+      bloomPass.strength = f - Math.floor(f) + 0.5;
 
       composer.render();
 

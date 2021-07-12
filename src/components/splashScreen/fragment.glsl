@@ -16,15 +16,15 @@ void main()
         float windY = mix(0.7, 1.1, uMouse.y);
 
         vec2 wavedUv = vec2(
-            vUv.x + sin(vUv.y * ((fireX * windX)- sineFlameVariation)* fireShape   ) * fireStrength + ((uMouse.x * 0.1) - 0.02),
+            vUv.x + sin(vUv.y * ((fireX * windX)- sineFlameVariation) * fireShape) * fireStrength + ((uMouse.x * 0.1) - 0.02),
             vUv.y + cos((vUv.x * ((fireY * windY) - cosFlameVariation) * fireShape)) * fireStrength
         );
         
          float reduceRadius = 0.25;
-        float strength = 1.0 - step(0.02, abs(distance(wavedUv, vec2(0.5)) - reduceRadius));
+        float strength = 1.0 - step(0.02, abs(distance(wavedUv, vec2(0.5)) - reduceRadius ));
 
         vec3 blackColor = vec3(0.0);
-        float r = mix(0.8, 0.976, vUv.x );
+        float r = mix(0.8, 1.0, vUv.x );
         float g = mix(0.49, 0.624, vUv.y);
         float b = mix(0.72, 0.3, vUv.y);
 

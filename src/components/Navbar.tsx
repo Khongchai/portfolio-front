@@ -23,7 +23,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
   return (
     <GridContainer width="100%" height="100%" padding="2rem 0">
       <Flex gridColumn="content-begin / content-end" align="center">
-        <Box id="navbar-wobbly-container" w="100px" h="100px">
+        <Box id="navbar-wobbly-container" w="100px" h="100px" cursor="pointer">
           <WobblyThreejs canvasId="navbar-wobbly" />
         </Box>
         <Text
@@ -48,7 +48,11 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
               to={item.href}
               fontFamily="Proxima Nova lt"
               background="black"
-              padding="1rem 2rem"
+              height="fit-content"
+              mr="3rem"
+              fontWeight="300"
+              p="0.75rem"
+              _hover={{ background: "unset" }}
               display={desktopLayout}
             >
               {item.label}

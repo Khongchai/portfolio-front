@@ -57,7 +57,7 @@ export const TechLogo: React.FC<{
           const nameNoSpace = name.replace(/[\s\.]+/g, "");
           let src = `/logos/${nameNoSpace}.png`;
           let img = (
-            <Box>
+            <Box key={nameOriginal}>
               <Img
                 onMouseOver={(e: any) => {
                   setHoverComponentName(e.target.id);
@@ -83,7 +83,6 @@ export const TechLogo: React.FC<{
                 m="1rem"
                 filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
                 padding={"1px"}
-                key={nameOriginal}
                 h={["27px", null, "29px", "32px", "40px"]}
                 src={src}
                 // Index is to prevent naming conflicts for the hovered names (sometimes the name would show up at another component instead of the one hovered because they have the same id)

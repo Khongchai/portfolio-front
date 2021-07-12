@@ -54,10 +54,9 @@ export const Footer: React.FC<indexProps> = ({}) => {
         <Box flex="0.5" mb="2rem">
           {contactItems.map((item) => {
             return (
-              <Box mb="1rem">
+              <Box mb="1rem" key={item.label}>
                 <Heading
                   as={Link}
-                  key={item.label}
                   fontFamily="proxima nova lt"
                   href={item.href}
                   size="sm"
@@ -73,7 +72,7 @@ export const Footer: React.FC<indexProps> = ({}) => {
         <Box flex="0.3">
           {navItems.map((item) => {
             return (
-              <Box mb="1rem">
+              <Box key={item.label} mb="1rem">
                 <Heading
                   as={Link}
                   key={item.label}

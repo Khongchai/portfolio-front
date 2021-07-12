@@ -6,6 +6,7 @@ interface GridContainerProps {
   height: string;
   padding?: string;
   position?: any;
+  maxWidth?: string;
 }
 
 export const GridContainer: React.FC<GridContainerProps> = ({
@@ -14,6 +15,7 @@ export const GridContainer: React.FC<GridContainerProps> = ({
   children,
   padding,
   position,
+  maxWidth,
 }) => {
   return (
     <Grid
@@ -21,6 +23,7 @@ export const GridContainer: React.FC<GridContainerProps> = ({
       h={height}
       position={position ? position : "relative"}
       padding={padding ? padding : 0}
+      maxWidth={maxWidth ? maxWidth : "unset"}
       gridTemplateColumns={[
         `
         0.5fr [content-begin] repeat(12, 0.6fr) [content-end] 0.5fr

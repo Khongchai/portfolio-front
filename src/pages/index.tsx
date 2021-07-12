@@ -1,28 +1,18 @@
-import {
-  Box,
-  Stack,
-  Text,
-  Flex,
-  Heading,
-  Grid,
-  Button,
-} from "@chakra-ui/react";
-import React, { useState } from "react";
-import { SplashScreen } from "../components/splashScreen/index";
-import { GridContainer } from "../elements/GridContainer";
+import { Box, Flex, Grid, Heading, Stack, Text } from "@chakra-ui/react";
 import { StaticImage } from "gatsby-plugin-image";
-import { Line } from "../elements/Line";
-import { TechSection } from "../components/TechnologiesSection";
+import React, { useState } from "react";
 import {
   TechnologyEntity,
   useGetTechnologiesAssignedToRoleQuery,
 } from "../../generated/graphql";
-import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";
-import useHoverComponent from "../utils/useHoverComponent";
 import { AboutMeBanner } from "../components/AboutMeBanner";
-import { ResumeDownloadSection } from "../components/ResumeDownloadSection";
 import { ProjectHighlightsSection } from "../components/ProjectHighlightsSection";
-import { toggleFastFireSwitch } from "../components/splashScreen/WobblyThreejs";
+import { ResumeDownloadSection } from "../components/ResumeDownloadSection";
+import { TechSection } from "../components/TechnologiesSection";
+import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";
+import { GridContainer } from "../elements/GridContainer";
+import { Line } from "../elements/Line";
+import useHoverComponent from "../utils/useHoverComponent";
 
 const IndexPage = () => {
   const [
@@ -34,17 +24,17 @@ const IndexPage = () => {
     string | undefined
   >(undefined);
   useHoverComponent(hoveredComponentName);
+  const mainSpacing = "2rem";
 
   return (
     <>
-      <SplashScreen zIndex={999} />
       <GridContainer width="100%" height="100%">
         <Stack
           gridColumn="content-begin / content-end"
           zIndex={1}
           position="relative"
           id="content"
-          spacing="2rem"
+          spacing={mainSpacing}
         >
           <Grid
             position="relative"
@@ -75,19 +65,8 @@ const IndexPage = () => {
                 letterSpacing={["unset", null, "6px"]}
                 zIndex="6"
               >
-                I'm Khong, a web dev whose <br />{" "}
-                <Box
-                  className="pulsate"
-                  display="inline"
-                  cursor="pointer"
-                  textDecor="underline"
-                  onClick={() => {
-                    toggleFastFireSwitch();
-                  }}
-                >
-                  fiery{" "}
-                </Box>
-                passions are all about <br /> coding and new innovations
+                I'm Khong, a web dev whose <br /> fiery passions are all about{" "}
+                <br /> coding and new innovations
               </Heading>
             </Box>
             <Stack
@@ -167,9 +146,11 @@ const IndexPage = () => {
           <Flex justify="center" position="relative" width="100%" height="auto">
             <Line dotPos="top" />
           </Flex>
-          <ProjectHighlightsSection />
         </Stack>
       </GridContainer>
+      <Box mb={`calc(${mainSpacing} + 4rem)`}>
+        <ProjectHighlightsSection />
+      </Box>
       <Box css={{ "> *": { marginTop: "2rem" } }}>
         <AboutMeBanner />
         <ResumeDownloadSection />
