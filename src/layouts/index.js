@@ -8,13 +8,14 @@ import { getCookieValue } from "../utils/cookie/getCookie";
 export default function Layout({ children }) {
   const [entryCookie, setEntryCookie] = useState(false);
   useEffect(() => {
-    setEntryCookie(getCookieValue("firstEntry"));
+    setEntryCookie(cookieValue);
+    const cookieValue = getCookieValue("firstEntry");
     setCookie("firstEntry", "true", 1);
-  }, []);
+  }, [entryCookie]);
 
   return (
     <>
-      {entryCookie ? null : <SplashScreen zIndex="999" />}
+      {entryCookie ? <SplashScreen zIndex="999" /> : null}
       <Navbar />
       {children}
       <Footer />
