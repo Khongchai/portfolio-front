@@ -1,4 +1,12 @@
-import { Box, Button, Heading, Stack, Text, Link } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  Stack,
+  Text,
+  Link,
+  Flex,
+} from "@chakra-ui/react";
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
 import { ProjectEntity } from "../../../generated/graphql";
@@ -11,14 +19,14 @@ interface HighlightCardProps {
 export const HighlightCard: React.FC<HighlightCardProps> = ({ project }) => {
   return (
     <Box display="grid">
-      <Box
+      <Flex
         height="100%"
-        flexDir="row"
+        flexDir={["column", null, null, "row"]}
         display="flex"
-        padding="5rem 3rem"
+        padding={["5rem 0", null, null, "5rem 3rem"]}
         gridArea="1/1"
       >
-        <Stack spacing="3rem" flex="1">
+        <Stack spacing="3rem" mb="1.5rem" flex="1">
           <Heading size="3xl" textTransform="capitalize">
             {project.title}
           </Heading>
@@ -26,6 +34,8 @@ export const HighlightCard: React.FC<HighlightCardProps> = ({ project }) => {
           <Button
             width="fit-content"
             margin="0 auto"
+            bg="transparent"
+            border="1px solid white"
             as={Link}
             to={project.websiteLink}
           >
@@ -33,7 +43,7 @@ export const HighlightCard: React.FC<HighlightCardProps> = ({ project }) => {
           </Button>
         </Stack>
         <Box flex="1">Website image</Box>
-      </Box>
+      </Flex>
       <Box></Box>
     </Box>
   );

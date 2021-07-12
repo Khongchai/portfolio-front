@@ -2,6 +2,7 @@ import { extendTheme } from "@chakra-ui/react";
 import "@fontsource/open-sans";
 import "../css/animation.css";
 import "../fonts/stylesheet.css";
+import "../css/styles.css";
 
 const theme = {
   fonts: {

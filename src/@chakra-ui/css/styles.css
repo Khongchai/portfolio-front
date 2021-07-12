@@ -1,0 +1,13 @@
+/* For stylings not possible with chakra, like media query for some Gatsby components */
+
+@media (max-width: 959px) {
+  .about-banner-right-img {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-banner-middle-img {
+    display: none;
+  }
+}

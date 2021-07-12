@@ -7,8 +7,7 @@ import { Link } from "gatsby";
 
 export const AboutMeBanner: React.FC = ({}) => {
   const layout = "fullWidth";
-  const height = 200;
-  const flex = 0.22;
+  const flex = 1;
   const objectPosition = "left";
 
   return (
@@ -30,7 +29,9 @@ export const AboutMeBanner: React.FC = ({}) => {
           </Box>
         </Flex>
       </GridContainer>
+
       <Flex
+        paddingLeft="30%"
         width="100%"
         height="100%"
         position="relative"
@@ -48,20 +49,19 @@ export const AboutMeBanner: React.FC = ({}) => {
       >
         <StaticImage
           layout={layout}
-          alt="khong's image"
+          alt="image of code 1"
           objectPosition={objectPosition}
           src="../images/code-1.png"
-          objectFit="cover"
-          height={height}
           style={{ flex: flex, opacity: 0.6 }}
+          className="about-banner-left-img"
         />
 
         <StaticImage
           layout={layout}
-          alt="image of code 1"
+          alt="khong's image"
           src="../images/khong-plays-viola.png"
-          height={height}
           style={{ flex: flex, opacity: 0.8 }}
+          className="about-banner-middle-img"
         />
 
         <StaticImage
@@ -69,9 +69,8 @@ export const AboutMeBanner: React.FC = ({}) => {
           alt="khong's image"
           objectPosition={objectPosition}
           src="../images/code-2.png"
-          objectFit="cover"
-          height={height}
           style={{ flex: flex, opacity: 0.6 }}
+          className="about-banner-right-img"
         />
       </Flex>
     </Box>
