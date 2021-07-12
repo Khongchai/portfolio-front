@@ -26,4 +26,7 @@ fragment ProjectFields on ProjectEntity {
   imgLink
   tinyImgLink
   shortDescription
+  heroImgLink
+  playStoreLink
+  appStoreLink
 }

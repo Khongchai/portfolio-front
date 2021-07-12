@@ -116,6 +116,9 @@ export type ProjectEntity = {
   startDate: Scalars['String'];
   endDate?: Maybe<Scalars['String']>;
   isHighlight?: Maybe<Scalars['Boolean']>;
+  heroImgLink?: Maybe<Scalars['String']>;
+  playStoreLink?: Maybe<Scalars['String']>;
+  appStoreLink?: Maybe<Scalars['String']>;
 };
 
 export type ProjResponse = {
@@ -171,7 +174,7 @@ export type TechnologyProperties = {
 
 export type ProjectFieldsFragment = (
   { __typename?: 'ProjectEntity' }
-  & Pick<ProjectEntity, 'id' | 'title' | 'isHighlight' | 'endDate' | 'startDate' | 'description' | 'githubLink' | 'websiteLink' | 'imgLink' | 'tinyImgLink' | 'shortDescription'>
+  & Pick<ProjectEntity, 'id' | 'title' | 'isHighlight' | 'endDate' | 'startDate' | 'description' | 'githubLink' | 'websiteLink' | 'imgLink' | 'tinyImgLink' | 'shortDescription' | 'heroImgLink' | 'playStoreLink' | 'appStoreLink'>
   & { frontEndTechnologies?: Maybe<Array<(
     { __typename?: 'TechnologyEntity' }
     & Pick<TechnologyEntity, 'title' | 'id'>
@@ -326,6 +329,9 @@ export const ProjectFieldsFragmentDoc = gql`
   imgLink
   tinyImgLink
   shortDescription
+  heroImgLink
+  playStoreLink
+  appStoreLink
 }
     `;
 export const AllProjectsNotPaginatedDocument = gql`

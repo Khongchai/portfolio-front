@@ -37,7 +37,7 @@ const IndexPage = () => {
 
   return (
     <>
-      {/* <SplashScreen zIndex={999} /> */}
+      <SplashScreen zIndex={999} />
       <GridContainer width="100%" height="100%">
         <Stack
           gridColumn="content-begin / content-end"

@@ -11,9 +11,7 @@ export const ProjectHighlightsSection: React.FC<ProjectHighlightsSectionProps> =
   const highlightedProjects = data?.getHighlightedProjects;
   return (
     <Stack spacing="1.5rem">
-      {fetching ? (
-        <Text>...Loading</Text>
-      ) : (
+      {!fetching && data ? (
         <>
           <Heading size="lg">MY PROJECTS</Heading>
           {highlightedProjects.map((project) => (
@@ -23,6 +21,8 @@ export const ProjectHighlightsSection: React.FC<ProjectHighlightsSectionProps> =
             See all projects
           </Text>
         </>
+      ) : (
+        <Text>...Loading</Text>
       )}
     </Stack>
   );
