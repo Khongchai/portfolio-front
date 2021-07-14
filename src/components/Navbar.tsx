@@ -39,6 +39,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
             p={["1rem 0.4rem", null, "1rem 0.7rem", "1rem 2rem"]}
             paddingLeft="0 !important"
             fontSize={["0.925rem", null, "1rem"]}
+            className="hover-gradient"
           >
             KHONGCHAI.G
           </Text>
@@ -56,9 +57,10 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
               height="fit-content"
               mr="3rem"
               fontWeight="300"
+              letterSpacing="1px"
               p="0.75rem"
-              _hover={{ background: "unset" }}
               display={desktopLayout}
+              className="hover-gradient"
             >
               {item.label}
             </Button>
@@ -79,10 +81,13 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
             zIndex="5"
             position="relative"
             css={{ "* + *": { marginTop: "0.75rem" } }}
+            bg="white"
+            color="black"
           >
             {navItems.map((item) => {
               return (
                 <MenuItem
+                  className="hover-gradient"
                   key={item.label}
                   as={Link}
                   to={item.href}

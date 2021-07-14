@@ -20,13 +20,17 @@ export const AboutMeBanner: React.FC = ({}) => {
           position="relative"
           zIndex="10"
           pointerEvents="none"
+          as={Link}
+          className="hover-gradient"
+          to="/about"
         >
           <Heading size="3xl">ABOUT ME</Heading>
-          <Box pointerEvents="auto">
-            <Link to="/about">
-              <ArrowRightIcon w={6} h={6} />
-            </Link>
-          </Box>
+          <ArrowRightIcon
+            _hover={{ transform: "scale(1.4)" }}
+            pointerEvents="auto"
+            w={10}
+            h={10}
+          />
         </Flex>
       </GridContainer>
 

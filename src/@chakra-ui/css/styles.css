@@ -1,4 +1,5 @@
 /* For stylings not possible with chakra, like media query for some Gatsby components */
+/* Or shared css class for different components*/
 
 @media (max-width: 959px) {
   .about-banner-right-img {
@@ -10,4 +11,16 @@
   .about-banner-middle-img {
     display: none;
   }
+}
+
+.hover-gradient:hover {
+  background: linear-gradient(to right, #b891ff, #e45f6b, #f99f35) !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+.gradient-text {
+  background: linear-gradient(to right, #b891ff, #e45f6b, #f99f35);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

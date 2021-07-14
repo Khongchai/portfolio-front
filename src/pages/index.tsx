@@ -45,9 +45,7 @@ const IndexPage = () => {
           >
             <Box ml="1rem" gridArea="1/1" zIndex="6" position="relative">
               <Heading
-                background="mainGradient"
-                backgroundClip="text"
-                css={{ "-webkit-text-fill-color": "transparent" }}
+                className="gradient-text"
                 fontSize={["1.75rem", null, "2.5rem", null, "3.5rem"]}
                 letterSpacing="6px"
                 zIndex="6"
@@ -57,10 +55,8 @@ const IndexPage = () => {
                 Hi there!
               </Heading>
               <Heading
-                background="mainGradient"
+                className="gradient-text"
                 fontSize={["1.25rem", null, "2rem", null, "3rem"]}
-                backgroundClip="text"
-                css={{ "-webkit-text-fill-color": "transparent" }}
                 size="2xl"
                 letterSpacing={["unset", null, "6px"]}
                 zIndex="6"

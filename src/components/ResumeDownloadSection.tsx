@@ -14,12 +14,14 @@ export const ResumeDownloadSection: React.FC<ResumeDownloadSectionProps> = ({}) 
         padding="1.75rem 1.25rem"
         fontFamily="proxima nova lt"
         fontWeight="300"
+        className="hover-gradient"
+        _hover={{ background: "unset" }}
       >
         <StaticImage
           alt="download-indicator"
           src="../images/download-indicator.png"
         />
-        DOWNLOAD
+        <Text>DOWNLOAD</Text>
       </Button>
     </Flex>
   );
