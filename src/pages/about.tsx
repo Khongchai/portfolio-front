@@ -86,7 +86,7 @@ const about: React.FC<aboutProps> = ({}) => {
           ) : null}
           <TechSection
             title="Tech"
-            techTitles={frameworks.map((framework) => framework.title)}
+            techTitles={frameworks?.map((framework) => framework.title)}
             fetching={fetchingTechnologies}
             setHoverComponentName={setHoverComponentName}
           />

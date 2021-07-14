@@ -57,7 +57,7 @@ export const TechLogo: React.FC<{
           const nameNoSpace = name.replace(/[\s\.]+/g, "");
           let src = `/logos/${nameNoSpace}.png`;
           let img = (
-            <Box key={nameOriginal}>
+            <Box key={nameOriginal + i}>
               <Img
                 onMouseOver={(e: any) => {
                   setHoverComponentName(e.target.id);
