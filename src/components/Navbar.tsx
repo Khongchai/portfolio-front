@@ -23,21 +23,26 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
   return (
     <GridContainer width="100%" height="100%" padding="2rem 0">
       <Flex gridColumn="content-begin / content-end" align="center">
-        <Box id="navbar-wobbly-container" w="100px" h="100px" cursor="pointer">
-          <WobblyThreejs canvasId="navbar-wobbly" />
-        </Box>
-        <Text
-          mr="auto"
-          fontFamily="proxima nova lt"
-          fontWeight="600"
-          p={["1rem 0.4rem", null, "1rem 0.7rem", "1rem 2rem"]}
-          paddingLeft="0 !important"
-          fontSize={["0.925rem", null, "1rem"]}
-          as={Link}
-          to="/"
-        >
-          KHONGCHAI.G
-        </Text>
+        <Flex justify="center" mr="auto" as={Link} to="/" align="center">
+          <Box
+            id="navbar-wobbly-container"
+            w="100px"
+            h="100px"
+            cursor="pointer"
+          >
+            <WobblyThreejs canvasId="navbar-wobbly" />
+          </Box>
+          <Text
+            mr="auto"
+            fontFamily="proxima nova lt"
+            fontWeight="600"
+            p={["1rem 0.4rem", null, "1rem 0.7rem", "1rem 2rem"]}
+            paddingLeft="0 !important"
+            fontSize={["0.925rem", null, "1rem"]}
+          >
+            KHONGCHAI.G
+          </Text>
+        </Flex>
         {navItems.map((item) => {
           return (
             <Button

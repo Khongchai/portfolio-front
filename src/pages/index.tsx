@@ -10,8 +10,9 @@ import { ProjectHighlightsSection } from "../components/ProjectHighlightsSection
 import { ResumeDownloadSection } from "../components/ResumeDownloadSection";
 import { TechSection } from "../components/TechnologiesSection";
 import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";
+import { small } from "../constants/stackSpacing";
 import { GridContainer } from "../elements/GridContainer";
-import { Line } from "../elements/Line";
+import { Line } from "../components/shared/Line";
 import useHoverComponent from "../utils/useHoverComponent";
 
 const IndexPage = () => {
@@ -24,7 +25,6 @@ const IndexPage = () => {
     string | undefined
   >(undefined);
   useHoverComponent(hoveredComponentName);
-  const mainSpacing = "2rem";
 
   return (
     <>
@@ -34,7 +34,7 @@ const IndexPage = () => {
           zIndex={1}
           position="relative"
           id="content"
-          spacing={mainSpacing}
+          spacing={small}
         >
           <Grid
             position="relative"
@@ -85,9 +85,7 @@ const IndexPage = () => {
               />
             </Stack>
           </Grid>
-          <Flex justify="center" position="relative" width="100%" height="auto">
-            <Line dotPos="bottom" />
-          </Flex>
+          <Line dotPos="bottom" />
           <Text
             width="100%"
             textAlign="center"
@@ -143,12 +141,10 @@ const IndexPage = () => {
               setHoverComponentName={setHoverComponentName}
             />
           </Box>
-          <Flex justify="center" position="relative" width="100%" height="auto">
-            <Line dotPos="top" />
-          </Flex>
+          <Line dotPos="top" />
         </Stack>
       </GridContainer>
-      <Box mb={`calc(${mainSpacing} + 4rem)`}>
+      <Box mb={`calc(${small} + 4rem)`}>
         <ProjectHighlightsSection />
       </Box>
       <Box css={{ "> *": { marginTop: "2rem" } }}>
