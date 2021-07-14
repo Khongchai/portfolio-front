@@ -1,5 +1,6 @@
 import { Box, Grid } from "@chakra-ui/react";
 import React, { useEffect, useRef } from "react";
+import { setCookie } from "../../utils/cookie/setCookie";
 import { SplashText } from "./SplashTexts";
 import { WobblyThreejs } from "./WobblyThreejs";
 
@@ -17,6 +18,7 @@ export const SplashScreen: React.FC<{ zIndex: number }> = ({ zIndex }) => {
     });
     setTimeout(() => {
       container.classList.add("fade-out");
+      setCookie("visitAlready", "true", 1);
     }, 4000);
   }
 

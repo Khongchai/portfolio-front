@@ -1,15 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { Navbar } from "../components/Navbar";
+import React from "react";
 import { Footer } from "../components/footer/index";
+import { Navbar } from "../components/Navbar";
 import { SplashScreen } from "../components/splashScreen/index";
-import { setCookie } from "../utils/cookie/setCookie";
 import { getCookieValue } from "../utils/cookie/getCookie";
 
 export default function Layout({ children }) {
-  useEffect(() => {
-    setCookie("visitAlready", "true", 1);
-  }, []);
-
   return (
     <>
       {typeof window !== "undefined" ? (

@@ -99,7 +99,13 @@ const about: React.FC<aboutProps> = ({}) => {
           />
           <TechSection
             title="Other Applications"
-            techTitles={["After Effects", "Figma", "Blender"]}
+            techTitles={[
+              "After Effects",
+              "Figma",
+              "Blender",
+              "Audition",
+              "FL Studio",
+            ]}
             fetching={fetchingTechnologies}
             setHoverComponentName={setHoverComponentName}
           />
