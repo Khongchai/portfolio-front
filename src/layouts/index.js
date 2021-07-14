@@ -12,7 +12,11 @@ export default function Layout({ children }) {
 
   return (
     <>
-      {getCookieValue("visitAlready") ? null : <SplashScreen zIndex="999" />}
+      {document ? (
+        getCookieValue("visitAlready") ? null : (
+          <SplashScreen zIndex="999" />
+        )
+      ) : null}
       <Navbar />
       {children}
       <Footer />

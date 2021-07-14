@@ -93,7 +93,6 @@ export abstract class ThreejsPrototype {
 
     this.scene.add(this.camera);
 
-    //Stuff you might overwrite (also not yet added to scene)
     this.material = new THREE.MeshStandardMaterial();
     this.geometry = new THREE.PlaneGeometry(1, 1);
     this.mesh = new THREE.Mesh(this.geometry, this.material);
