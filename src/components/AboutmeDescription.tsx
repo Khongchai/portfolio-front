@@ -35,12 +35,20 @@ export const AboutMeDescriptionSection: React.FC<AboutmeDescriptionProps> = ({})
       </Grid>
       <Box flex="0.6">
         <StyledText>
-          <b>I'm a web dev,</b> of many interests! I love creating, learning,
-          and solving problems. My current learning focus is primarily on the
-          dev ops and software architecture side but on a day-to-day basis, I
-          work also on the front and backend of my personal projects building.
+          As an aspiring <b>web developer</b> who loves learning and solving
+          problems. Working as a team or in any collaborative project, I seek to
+          always inspire and motivate both my fellow collaborators and myself.
+          Ever since I stepped into the software engineering world, I have been
+          infatuated with the whole software development process. The challenges
+          it poses were exactly what I craved.
         </StyledText>
         <br />
+        <StyledText>
+          As uncongenial as some problems may be, I face them with full
+          confidence, lavishing in the process; knowing full well that in doing
+          so, I will not only have solved the problem but will also have picked
+          up one of the most useful skills for the 21st century.
+        </StyledText>
         <StyledText>
           My projects range from an interactive binaural music application for
           Android (Java) to an e-commerce website (in progress) where I sell my
@@ -51,6 +59,10 @@ export const AboutMeDescriptionSection: React.FC<AboutmeDescriptionProps> = ({})
           </u>
         </StyledText>
         <br />
+        <StyledText>
+          I work mostly on the frontend and backend, but my focus is primarily
+          on frontend and webGL animation.
+        </StyledText>
         <StyledText>
           Other non-software development related stuff I am learning are Linear
           Algebra, and animations (three.js + Blender).

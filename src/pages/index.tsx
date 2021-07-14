@@ -104,35 +104,32 @@ const IndexPage = () => {
             ) : null}
             <TechSection
               title="Front"
-              technologies={
-                technologiesData?.getTechnologiesAssignedToRole
-                  .front as TechnologyEntity[]
-              }
+              techTitles={technologiesData?.getTechnologiesAssignedToRole.front.map(
+                (front) => front.title
+              )}
               fetching={fetchingTechnologies}
               setHoverComponentName={setHoverComponentName}
             />
 
             <TechSection
               title="Back"
-              technologies={
-                technologiesData?.getTechnologiesAssignedToRole
-                  .back as TechnologyEntity[]
-              }
+              techTitles={technologiesData?.getTechnologiesAssignedToRole.back.map(
+                (back) => back.title
+              )}
               fetching={fetchingTechnologies}
               setHoverComponentName={setHoverComponentName}
             />
             <TechSection
               title="Hosting"
-              technologies={
-                technologiesData?.getTechnologiesAssignedToRole
-                  .hosting as TechnologyEntity[]
-              }
+              techTitles={technologiesData?.getTechnologiesAssignedToRole.hosting.map(
+                (hosting) => hosting.title
+              )}
               fetching={fetchingTechnologies}
               setHoverComponentName={setHoverComponentName}
             />
             <TechSection
               title="Languages"
-              technologies={languages as TechnologyEntity[] | undefined}
+              techTitles={languages.map((lang) => lang.title)}
               fetching={fetchingTechnologies}
               setHoverComponentName={setHoverComponentName}
             />

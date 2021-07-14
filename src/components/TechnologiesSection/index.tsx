@@ -5,12 +5,12 @@ import { TechLogo } from "./TechLogo";
 
 export const TechSection: React.FC<{
   title: string;
-  technologies?: TechnologyEntity[];
+  techTitles?: string[];
   fetching: boolean;
   setHoverComponentName: React.Dispatch<
     React.SetStateAction<string | undefined>
   >;
-}> = ({ title, technologies, fetching, setHoverComponentName }) => {
+}> = ({ title, techTitles, fetching, setHoverComponentName }) => {
   return (
     <Grid className="tech-section">
       <Heading
@@ -30,10 +30,10 @@ export const TechSection: React.FC<{
         borderRadius="1rem"
         placeItems="center"
       >
-        {!fetching && technologies ? (
+        {!fetching && techTitles.length > 0 ? (
           <TechLogo
             setHoverComponentName={setHoverComponentName}
-            tech={technologies as TechnologyEntity[]}
+            techTitles={techTitles}
             noBorder={true}
             noSpace={true}
           />

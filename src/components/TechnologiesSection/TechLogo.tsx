@@ -6,14 +6,14 @@ export const TechLogo: React.FC<{
   setHoverComponentName: React.Dispatch<
     React.SetStateAction<string | undefined>
   >;
-  tech: TechnologyEntity[] | null | undefined;
+  techTitles: string[];
   desc?: string;
   //This forces the component to rerun setTextsAsLogos
   forceUpdate?: boolean;
   noBorder?: boolean;
   noSpace?: boolean;
 }> = ({
-  tech,
+  techTitles,
   desc,
   setHoverComponentName,
   forceUpdate,
@@ -21,7 +21,7 @@ export const TechLogo: React.FC<{
   noSpace,
 }) => {
   //If no technologies provided, return nothing for this field
-  if (!tech || tech.length === 0) {
+  if (!techTitles || techTitles.length === 0) {
     return <></>;
   }
   const [textsAsLogos, setTextsAsLogos] = useState<string[]>([]);
@@ -51,8 +51,8 @@ export const TechLogo: React.FC<{
         w="100%"
         align="center"
       >
-        {tech?.map((tech, i) => {
-          const nameOriginal = tech.title;
+        {techTitles?.map((title, i) => {
+          const nameOriginal = title;
           const name = nameOriginal.toLowerCase();
           const nameNoSpace = name.replace(/[\s\.]+/g, "");
           let src = `/logos/${nameNoSpace}.png`;
