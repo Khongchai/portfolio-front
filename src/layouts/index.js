@@ -12,7 +12,7 @@ export default function Layout({ children }) {
 
   return (
     <>
-      {document ? (
+      {window ? (
         getCookieValue("visitAlready") ? null : (
           <SplashScreen zIndex="999" />
         )
