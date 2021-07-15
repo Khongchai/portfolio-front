@@ -1,13 +1,22 @@
-import { Button, Flex, Text } from "@chakra-ui/react";
+import { Button, Flex, Link, Text } from "@chakra-ui/react";
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 
-interface ResumeDownloadSectionProps {}
+interface ResumeDownloadSectionProps {
+  donotCenter?: boolean;
+}
 
-export const ResumeDownloadSection: React.FC<ResumeDownloadSectionProps> = ({}) => {
+export const ResumeDownloadSection: React.FC<ResumeDownloadSectionProps> = ({
+  donotCenter,
+}) => {
   return (
-    <Flex align="center" w="100%" justify="center" p="5rem 0">
-      <Text mr="2rem">RESUME</Text>
+    <Flex
+      align="center"
+      w="100%"
+      justify={["center", null, null, donotCenter ? null : "center"]}
+      p="5rem 0"
+    >
+      <Text mr="2rem">RESUME PDF</Text>
       <Button
         bg="black"
         border="1px solid white"
@@ -16,6 +25,9 @@ export const ResumeDownloadSection: React.FC<ResumeDownloadSectionProps> = ({}) 
         fontWeight="300"
         className="hover-gradient"
         _hover={{ background: "unset" }}
+        as={Link}
+        target="_blank"
+        href="downloadables/khong-portfolio.pdf"
       >
         <StaticImage
           alt="download-indicator"

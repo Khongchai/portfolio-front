@@ -72,7 +72,7 @@ const IndexPage = () => {
               marginLeft="auto"
             >
               <StaticImage
-                id="author-image"
+                id="khong-image"
                 src="../images/khong-banner.png"
                 alt="Author's image"
                 layout="constrained"
@@ -94,14 +94,10 @@ const IndexPage = () => {
           >
             Technologies I have worked with
           </Text>
-          <Box
-            css={{ "> *": { marginBottom: "6rem" } }}
-            textAlign="center"
-            id="tech"
-          >
-            {hoveredComponentName ? (
-              <TechNameCard hoveredComponentName={hoveredComponentName} />
-            ) : null}
+          {hoveredComponentName ? (
+            <TechNameCard hoveredComponentName={hoveredComponentName} />
+          ) : null}
+          <Stack spacing="6rem" textAlign="center" id="tech">
             <TechSection
               title="Front"
               techTitles={technologiesData?.getTechnologiesAssignedToRole.front.map(
@@ -133,7 +129,7 @@ const IndexPage = () => {
               fetching={fetchingTechnologies}
               setHoverComponentName={setHoverComponentName}
             />
-          </Box>
+          </Stack>
           <Line dotPos="top" />
         </Stack>
       </GridContainer>

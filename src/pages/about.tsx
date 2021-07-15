@@ -4,14 +4,11 @@ import { GridContainer } from "../elements/GridContainer";
 import { medium } from "../constants/stackSpacing";
 import { Line } from "../components/shared/Line";
 import { AboutMeDescriptionSection } from "../components/AboutmeDescription";
-import {
-  TechnologyEntity,
-  useGetTechnologiesAssignedToRoleQuery,
-} from "../../generated/graphql";
+import { useGetTechnologiesAssignedToRoleQuery } from "../../generated/graphql";
 import useHoverComponent from "../utils/useHoverComponent";
 import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";
 import { TechSection } from "../components/TechnologiesSection";
-import { ResumeSection } from "../components/ResumeSection";
+import ResumeSection from "../components/ResumeSection";
 
 interface aboutProps {}
 
@@ -46,19 +43,7 @@ const about: React.FC<aboutProps> = ({}) => {
           >
             A developer and a life-long student
           </Heading>
-          <Heading
-            textAlign="center"
-            css={{
-              WebkitTextFillColor: "black",
-              WebkitTextStrokeWidth: "0.8px",
-              WebkitTextStrokeColor: "white",
-            }}
-            fontFamily="proxima nova lt"
-            fontWeight="600"
-            color="black"
-            letterSpacing="5px"
-            fontSize="3rem"
-          >
+          <Heading textAlign="center" className="white-stroked-text-header">
             Let's learn more about me
           </Heading>
         </Box>

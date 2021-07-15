@@ -16,8 +16,11 @@ export default function useHoverComponent(
       const logoWidth = parseInt(
         window.getComputedStyle(logo).getPropertyValue("width")
       );
+      const extraBottomMargin = 15;
       infoCard.style.left = `${logoLeft + logoWidth / 2}px`;
-      infoCard.style.top = `${logoTop - logoHeight - 30}px`;
+      infoCard.style.top = `${
+        logoTop - (logoHeight * 2 + extraBottomMargin)
+      }px`;
     }
   }, [hoverComponentName]);
 }
