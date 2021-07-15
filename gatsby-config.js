@@ -1,8 +1,12 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Starter Chakra-UI`,
-    description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-    author: `@creotip`,
+    title: `Khongchai.g`,
+    description: `A webdev with fiery passion to learn and innovate.`,
+    url: `https://www.khong.xyz`,
+    images: "/khong-seo-image.png",
+    author: `Khongchai Greesuradej`,
+    facebookUsername: "Khongchai Greesuradej",
+    youtubeUsername: "KhongtheFork",
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

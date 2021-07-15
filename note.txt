@@ -6,11 +6,8 @@ For this, you will need to refactor wobbly into a class. Make a copy with all th
 
 Some type of indicator for the user to click on the word fiery.
 
-Desktop: "none" null null "block"
-Mobile: "block", null null "none"
+Make hoveredComponent shared globally (in layout/index.js)
 
-Manage backend data and deploy backend 
 
-Make images in aboutme banner disappear with using css in a separate file.
 
-Add github link to project cards: everything you need is here: F:\Portfolio\portfolio-old-\front\src\components\timelineComponents\TimelineOverview\index.tsx
+
