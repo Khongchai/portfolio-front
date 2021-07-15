@@ -8,7 +8,7 @@ export const SplashScreen: React.FC<{ zIndex: number }> = ({ zIndex }) => {
   const splashContainer = useRef(null);
 
   useEffect(() => {
-    // removeSplashScreen();
+    removeSplashScreen();
   }, []);
 
   function removeSplashScreen() {
