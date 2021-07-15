@@ -13,7 +13,7 @@ export const navItems: Array<NavItems> = [
   },
   {
     label: "Resume",
-    href: "/resume",
+    href: "/about#resume",
   },
   {
     label: "Contact",

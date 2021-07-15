@@ -31,7 +31,12 @@ export const AboutMeDescriptionSection: React.FC<AboutmeDescriptionProps> = ({})
     >
       <Grid flex="0.4" m={["0 0 4rem 0", null, null, "0 4rem 0 0"]}>
         <Grid placeItems="center" gridArea="1/1" position="relative" zIndex="5">
-          <Box width="60%" height="50%" id="threejs-geometries-container">
+          <Box
+            width="60%"
+            // For some reason, using just 50% sometimes does not give proper height
+            height="calc(100% - 50%)"
+            id="threejs-geometries-container"
+          >
             <canvas id="threejs-geometries" width="100%" height="100%" />
           </Box>
         </Grid>

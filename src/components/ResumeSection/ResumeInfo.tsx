@@ -64,7 +64,7 @@ export const ResumeInfo: React.FC = () => {
   ];
 
   return (
-    <Box>
+    <Box id="resume-section">
       <Heading size="lg" mb="1.25rem">
         KHONGCHAI GREESURADEJ
       </Heading>
