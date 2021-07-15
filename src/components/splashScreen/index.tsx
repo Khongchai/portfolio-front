@@ -23,7 +23,8 @@ export const SplashScreen: React.FC<{ zIndex: number }> = ({ zIndex }) => {
   }
 
   return (
-    <Grid
+    <Box
+      display="grid"
       ref={splashContainer}
       placeItems="center"
       zIndex={zIndex}
@@ -55,6 +56,6 @@ export const SplashScreen: React.FC<{ zIndex: number }> = ({ zIndex }) => {
           <WobblyThreejs canvasId="splash-screen-wobbly" />
         </Box>
       </Box>
-    </Grid>
+    </Box>
   );
 };

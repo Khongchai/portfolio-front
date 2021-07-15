@@ -65,7 +65,8 @@ export const WobblyThreejs: React.FC<{
       camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
 
-      // Update renderer
+      // Update renderer and composer
+      composer.setSize(sizes.width, sizes.height);
       renderer.setSize(sizes.width, sizes.height);
       renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     });
