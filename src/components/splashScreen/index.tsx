@@ -8,10 +8,10 @@ export const SplashScreen: React.FC<{ zIndex: number }> = ({ zIndex }) => {
   const splashContainer = useRef(null);
 
   useEffect(() => {
-    showSplash();
+    // removeSplashScreen();
   }, []);
 
-  function showSplash() {
+  function removeSplashScreen() {
     const container = splashContainer.current as HTMLElement;
     container.addEventListener("animationend", () => {
       container.remove();

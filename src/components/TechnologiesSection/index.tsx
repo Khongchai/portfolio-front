@@ -30,7 +30,7 @@ export const TechSection: React.FC<{
         borderRadius="1rem"
         placeItems="center"
       >
-        {!fetching && techTitles.length > 0 ? (
+        {!fetching && techTitles && techTitles.length > 0 ? (
           <TechLogo
             setHoverComponentName={setHoverComponentName}
             techTitles={techTitles}
