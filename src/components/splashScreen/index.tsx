@@ -1,4 +1,4 @@
-import { Box, Grid } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
 import React, { useEffect, useRef } from "react";
 import { setCookie } from "../../utils/cookie/setCookie";
 import { SplashText } from "./SplashTexts";

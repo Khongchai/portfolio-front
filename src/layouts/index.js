@@ -7,11 +7,7 @@ import { getCookieValue } from "../utils/cookie/getCookie";
 export default function Layout({ children }) {
   return (
     <>
-      {typeof window !== "undefined" ? (
-        getCookieValue("visitAlready") ? null : (
-          <SplashScreen zIndex="999" />
-        )
-      ) : null}
+      <SplashScreen zIndex="999" />
       <Navbar />
       {children}
       <Footer />
