@@ -8,6 +8,8 @@ Some type of indicator for the user to click on the word fiery.
 
 Make hoveredComponent shared globally (in layout/index.js)
 
+https://www.gatsbyjs.com/docs/add-seo-component/ << manage default props 
+
 
 
 

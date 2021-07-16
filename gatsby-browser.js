@@ -1,4 +1,5 @@
 import { createClient, Provider } from "urql";
+import { HelmetProvider } from "react-helmet-async";
 import React from "react";
 
 const client = createClient({
@@ -9,5 +10,9 @@ const client = createClient({
 });
 
 export const wrapRootElement = ({ element }) => {
-  return <Provider value={client}>{element}</Provider>;
+  return (
+    <Provider value={client}>
+      <HelmetProvider>{element}</HelmetProvider>
+    </Provider>
+  );
 };

@@ -1,9 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Khongchai.g`,
-    description: `A webdev with fiery passion to learn and innovate.`,
+    title: `Khongchai Greesuradej Web Developer`,
+    description: `A fullstack webdev with fiery passion to learn and innovate.`,
     url: `https://www.khong.xyz`,
-    images: "/khong-seo-image.png",
+    image: "/khong-seo-image.png",
     author: `Khongchai Greesuradej`,
     facebookUsername: "Khongchai Greesuradej",
     youtubeUsername: "KhongtheFork",
