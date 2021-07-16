@@ -18,7 +18,7 @@ export const WhiteStrokedHeader: React.FC<WhiteStrokedHeaderProps> = ({
         WebkitTextStrokeWidth: "0.8px",
       }}
       fontFamily="proxima nova lt"
-      fontSize="3rem"
+      fontSize={["2rem", null, null, "3rem"]}
       letterSpacing="5px"
       color="black"
       fontWeight={600}

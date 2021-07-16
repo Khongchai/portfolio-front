@@ -1,8 +1,7 @@
 import { Box, Flex } from "@chakra-ui/react";
 import { StaticImage } from "gatsby-plugin-image";
 import React from "react";
-import { ResumeDownloadSection } from "../ResumeDownloadSection";
-import { WhiteStrokedHeader } from "../WhiteStrokedHeader";
+import { WhiteStrokedHeader } from "../shared/WhiteStrokedHeader";
 import { ResumeInfo } from "./ResumeInfo";
 
 const ResumeSection: React.FC = ({}) => {

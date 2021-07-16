@@ -6,7 +6,7 @@ import {
   useGetTechnologiesAssignedToRoleQuery,
 } from "../../generated/graphql";
 import { AboutMeBanner } from "../components/AboutMeBanner";
-import { ProjectHighlightsSection } from "../components/ProjectHighlightsSection";
+import { ProjectHighlightsSection } from "../components/ProjectHighlightSection";
 import { ResumeDownloadSection } from "../components/ResumeDownloadSection";
 import { TechSection } from "../components/TechnologiesSection";
 import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";

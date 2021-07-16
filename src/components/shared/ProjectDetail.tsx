@@ -1,5 +1,4 @@
 import {
-  Box,
   Button,
   Heading,
   Stack,
@@ -12,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import React from "react";
 import { ProjectEntity } from "../../../generated/graphql";
-import { CloudinaryResponsiveImage } from "../shared/CloudinaryImageResponsiveContainer";
+import { CloudinaryResponsiveImage } from "./CloudinaryImageResponsiveContainer";
 
 interface HighlightCardProps {
   project: ProjectEntity;

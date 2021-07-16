@@ -33,6 +33,7 @@ export const Footer: React.FC<indexProps> = ({}) => {
         alt="footerImg"
         height={600}
         layout="constrained"
+        objectPosition="left center"
         style={{ gridArea: "1/1", opacity: 0.25 }}
       ></StaticImage>
       <Flex

@@ -8,8 +8,12 @@ Some type of indicator for the user to click on the word fiery.
 
 Make hoveredComponent shared globally (in layout/index.js)
 
-https://www.gatsbyjs.com/docs/add-seo-component/ << manage default props 
+Test pagination
 
+Manage the cloudinary request thing
 
+do the selection animation
+
+Fix chevron not showing on smaller screens and maybe make each item smaller (small like applications icon).
 
 
