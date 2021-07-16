@@ -52,7 +52,7 @@ export const CloudinaryResponsiveImage: React.FC<{
       ]}
       height={[
         `calc(${imageActualHeight} * 0.22)`,
-        `calc(${imageActualWidth} * 0.26)`,
+        `calc(${imageActualHeight} * 0.26)`,
         null,
         `calc(${imageActualHeight} * 0.3)`,
       ]}
