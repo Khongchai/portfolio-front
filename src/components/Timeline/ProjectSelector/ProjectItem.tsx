@@ -5,17 +5,24 @@ import { RunningBordersBT, RunningBordersLR } from "../../shared/RunningBorder";
 interface ProjectItemProps {
   imgLink?: string;
   title: string;
+  onClickFunction?: () => void;
 }
 
-export const ProjectItem: React.FC<ProjectItemProps> = ({ imgLink, title }) => {
+export const ProjectItem: React.FC<ProjectItemProps> = ({
+  imgLink,
+  title,
+  onClickFunction,
+}) => {
   const sideLength = "160px";
   return (
     <Flex
       _hover={{ cursor: "pointer" }}
-      padding="30px"
       align="center"
       flexDir="column"
       position="relative"
+      onClick={() => {
+        onClickFunction();
+      }}
     >
       <Grid
         minHeight={sideLength}

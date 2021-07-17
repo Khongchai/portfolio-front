@@ -1,10 +1,14 @@
 import { Box, Stack, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { useAllProjectsNotPaginatedQuery } from "../../../generated/graphql";
+import {
+  ProjectEntity,
+  useAllProjectsNotPaginatedQuery,
+} from "../../../generated/graphql";
 import { GridContainer } from "../../elements/GridContainer";
 import { WhiteStrokedHeader } from "../shared/WhiteStrokedHeader";
 import ProjectSelector from "./ProjectSelector";
 import { Paginator } from "../../utils/Paginator";
+import { usePagination } from "./hooks/usePagination";
 
 interface indexProps {}
 
@@ -14,6 +18,8 @@ const index: React.FC<indexProps> = ({}) => {
   const [
     { fetching, data: unpaginatedProjects },
   ] = useAllProjectsNotPaginatedQuery();
+
+  const [selectedProject, setSelectedProject] = useState<ProjectEntity>(null);
 
   const [paginatedProjects, setPaginatedProjects] = useState(null);
   const paginationLimit = 8;
@@ -60,6 +66,7 @@ const index: React.FC<indexProps> = ({}) => {
                 projects={paginatedProjects}
                 setPaginationDirection={setPagiantionDirection}
                 paginationPosition={paginationPosition}
+                setSelectedProject={setSelectedProject}
               />
             ) : null}
           </Box>
@@ -76,32 +83,3 @@ const index: React.FC<indexProps> = ({}) => {
 };
 
 export default index;
-
-function usePagination(
-  paginator: Paginator,
-  paginationDirection: {
-    direction: "forward" | "backward" | null;
-    forcer: any;
-  },
-  setPaginatedProjects: any,
-  setPaginationPosition: any
-) {
-  useEffect(() => {
-    if (paginator && paginationDirection) {
-      if (paginationDirection.direction === "forward") {
-        paginator.paginateForward();
-      } else if (paginationDirection.direction === "backward") {
-        paginator.paginateBackward();
-      } else {
-        console.log("pagination direction not set");
-      }
-      const paginationResult = paginator.getItemsAtCurrent();
-      setPaginatedProjects(paginationResult.data);
-      setPaginationPosition({
-        isFirst: paginationResult.isFirst,
-        isLast: paginationResult.isLast,
-      });
-    }
-  }, [paginationDirection]);
-  return null;
-}

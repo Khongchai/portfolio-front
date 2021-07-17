@@ -28,4 +28,6 @@ const _WhiteStrokedHeader: React.FC<WhiteStrokedHeaderProps> = ({
   );
 };
 
-export const WhiteStrokedHeader = React.memo(_WhiteStrokedHeader);
+export const WhiteStrokedHeader = React.memo(
+  _WhiteStrokedHeader
+) as React.FC<WhiteStrokedHeaderProps>;

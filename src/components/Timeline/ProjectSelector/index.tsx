@@ -1,8 +1,10 @@
-import { Flex, Grid, Heading, Img, Text } from "@chakra-ui/react";
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Flex, Grid } from "@chakra-ui/react";
+import React, { Dispatch, SetStateAction } from "react";
 import { ProjectEntity } from "../../../../generated/graphql";
+import { setSelectedProjectAndUpdateUrlParam } from "../../../utils/SetSelectedProjectAndUpdateUrlParam";
 import { Chevron } from "../Chevron";
 import { ProjectItem } from "./ProjectItem";
+import { useLocation } from "@reach/router";
 
 interface ProjectSelectorProps {
   projects: ProjectEntity[];
@@ -10,12 +12,14 @@ interface ProjectSelectorProps {
     SetStateAction<{ direction: "forward" | "backward" | null; forcer: any }>
   >;
   paginationPosition: { isFirst: boolean; isLast: boolean };
+  setSelectedProject: Dispatch<SetStateAction<ProjectEntity>>;
 }
 
 const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   projects,
   setPaginationDirection,
   paginationPosition,
+  setSelectedProject,
 }) => {
   const squareSide = "200px";
 
@@ -37,7 +41,7 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
           onClickFunction={() => {
             setPaginationDirection({
               direction: "backward",
-              forcer: new Date(),
+              forcer: Math.random(),
             });
           }}
           direction="left"
@@ -48,6 +52,9 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
             key={project.title}
             imgLink={project.tinyImgLink}
             title={project.title}
+            onClickFunction={() => {
+              setSelectedProjectAndUpdateUrlParam(setSelectedProject, project);
+            }}
           />
         ))}
         <Chevron
@@ -55,7 +62,7 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
           onClickFunction={() => {
             setPaginationDirection({
               direction: "forward",
-              forcer: new Date(),
+              forcer: Math.random(),
             });
           }}
           hide={paginationPosition.isLast ? true : false}
