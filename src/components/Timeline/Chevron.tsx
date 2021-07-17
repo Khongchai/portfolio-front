@@ -18,6 +18,7 @@ export const Chevron: React.FC<{
       display={hide ? "none" : "block"}
       transform={transform}
       position="absolute"
+      zIndex="9999"
       left={direction === "left" ? 0 : "100%"}
       transition=".12s"
       cursor="pointer"

@@ -23,11 +23,20 @@ export class Paginator {
   }
 
   paginateBackward() {
-    console.log(this.current);
     this.current = this.current - this.limit;
 
     const data = this.array.slice(this.current, this.current + this.limit);
     return this.checkZeroReturn(data);
+  }
+
+  getPagePosition() {
+    const length = this.array.length;
+    const totalPages = Math.ceil(length / this.limit);
+    const currentPage = Math.ceil((this.current + 1) / this.limit);
+    return {
+      page: currentPage === 0 ? 1 : currentPage,
+      of: totalPages,
+    };
   }
 
   getAllItems() {

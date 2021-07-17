@@ -5,7 +5,7 @@ interface WhiteStrokedHeaderProps {
   textAlign?: any;
 }
 
-export const WhiteStrokedHeader: React.FC<WhiteStrokedHeaderProps> = ({
+const _WhiteStrokedHeader: React.FC<WhiteStrokedHeaderProps> = ({
   textAlign,
   children,
 }) => {
@@ -27,3 +27,5 @@ export const WhiteStrokedHeader: React.FC<WhiteStrokedHeaderProps> = ({
     </Heading>
   );
 };
+
+export const WhiteStrokedHeader = React.memo(_WhiteStrokedHeader);

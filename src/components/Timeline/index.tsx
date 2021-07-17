@@ -1,9 +1,8 @@
-import { Box, Stack } from "@chakra-ui/react";
+import { Box, Stack, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { useAllProjectsNotPaginatedQuery } from "../../../generated/graphql";
 import { GridContainer } from "../../elements/GridContainer";
 import { WhiteStrokedHeader } from "../shared/WhiteStrokedHeader";
-import { StaticImage } from "gatsby-plugin-image";
 import ProjectSelector from "./ProjectSelector";
 import { Paginator } from "../../utils/Paginator";
 
@@ -41,23 +40,12 @@ const index: React.FC<indexProps> = ({}) => {
     }
   }, [fetching]);
 
-  useEffect(() => {
-    if (paginator && paginationDirection) {
-      if (paginationDirection.direction === "forward") {
-        paginator.paginateForward();
-      } else if (paginationDirection.direction === "backward") {
-        paginator.paginateBackward();
-      } else {
-        console.log("pagination direction not set");
-      }
-      const paginationResult = paginator.getItemsAtCurrent();
-      setPaginatedProjects(paginationResult.data);
-      setPaginationPosition({
-        isFirst: paginationResult.isFirst,
-        isLast: paginationResult.isLast,
-      });
-    }
-  }, [paginationDirection]);
+  usePagination(
+    paginator,
+    paginationDirection,
+    setPaginatedProjects,
+    setPaginationPosition
+  );
 
   return (
     <GridContainer width="100%" height="100%">
@@ -76,9 +64,44 @@ const index: React.FC<indexProps> = ({}) => {
             ) : null}
           </Box>
         </Stack>
+        {paginator ? (
+          <Text textAlign="center">
+            Page: {paginator.getPagePosition().page} /{" "}
+            {paginator.getPagePosition().of}
+          </Text>
+        ) : null}
       </Box>
     </GridContainer>
   );
 };
 
 export default index;
+
+function usePagination(
+  paginator: Paginator,
+  paginationDirection: {
+    direction: "forward" | "backward" | null;
+    forcer: any;
+  },
+  setPaginatedProjects: any,
+  setPaginationPosition: any
+) {
+  useEffect(() => {
+    if (paginator && paginationDirection) {
+      if (paginationDirection.direction === "forward") {
+        paginator.paginateForward();
+      } else if (paginationDirection.direction === "backward") {
+        paginator.paginateBackward();
+      } else {
+        console.log("pagination direction not set");
+      }
+      const paginationResult = paginator.getItemsAtCurrent();
+      setPaginatedProjects(paginationResult.data);
+      setPaginationPosition({
+        isFirst: paginationResult.isFirst,
+        isLast: paginationResult.isLast,
+      });
+    }
+  }, [paginationDirection]);
+  return null;
+}
