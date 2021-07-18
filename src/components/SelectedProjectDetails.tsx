@@ -10,7 +10,6 @@ interface SelectedProjectDetailsProps {
 export const SelectedProjectDetails: React.FC<SelectedProjectDetailsProps> = ({
   selectedProject,
 }) => {
-  console.log("selected project", selectedProject);
   return (
     <Box>
       <ProjectDetails

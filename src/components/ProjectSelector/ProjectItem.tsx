@@ -14,6 +14,7 @@ export const ProjectItem: React.FC<ProjectItemProps> = ({
   onClickFunction,
 }) => {
   const sideLength = "160px";
+
   return (
     <Flex
       _hover={{ cursor: "pointer" }}

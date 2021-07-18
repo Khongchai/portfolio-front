@@ -12,6 +12,7 @@ export function getCloudinaryResponsiveUrl(
   const container = document.getElementById(containerId);
 
   if (!container) {
+    console.log("container not found, returning original url");
     return cloudinaryUrl;
   }
 

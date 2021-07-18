@@ -3,20 +3,22 @@ import React, { useEffect, useState } from "react";
 import { getCloudinaryResponsiveUrl } from "../../utils/getCloudinaryResponsiveUI";
 
 export const CloudinaryResponsiveImage: React.FC<{
-  imgLink: string;
+  imgLink?: string;
   projectTitle: string;
   imageActualWidth: string;
-  imageActualHeight: string;
+  imageActualHeight?: string;
 }> = ({ imgLink, projectTitle, imageActualWidth, imageActualHeight }) => {
   const id = `${projectTitle}-image-container`;
-  const [responsiveImageUrl, setResponsiveImageUrl] = useState(
-    getCloudinaryResponsiveUrl(imgLink, id)
+  const [responsiveImageUrl, setResponsiveImageUrl] = useState<string | null>(
+    null
   );
   const [containerSize, setContainerSize] = useState(null);
 
   useEffect(() => {
     //set current wallpaper
-    setResponsiveImageUrl(getCloudinaryResponsiveUrl(imgLink, id));
+    setResponsiveImageUrl(
+      imgLink ? getCloudinaryResponsiveUrl(imgLink, id) : null
+    );
     const container = document.getElementById(id);
     //can use either height or width
     setContainerSize(container.offsetHeight);
