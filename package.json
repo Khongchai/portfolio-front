@@ -40,6 +40,8 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.6",
     "@types/react-helmet": "^6.1.2",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.0.1",
     "prettier": "2.2.1"
   },
   "keywords": [
@@ -62,5 +64,13 @@
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.+(js|jsx|tsx|css|graphql)": ["prettier --write"]
   }
 }
