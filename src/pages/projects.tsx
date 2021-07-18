@@ -66,7 +66,11 @@ const index: React.FC<indexProps> = ({}) => {
 
   return (
     <GridContainer width="100%" height="100%">
-      <Stack gridColumn="content-begin / content-end" spacing="3rem" m="3rem 0">
+      <Stack
+        gridColumn="content-begin / content-end"
+        spacing="3rem"
+        m="3rem 3rem"
+      >
         <WhiteStrokedHeader textAlign="center">MY PROJECTS</WhiteStrokedHeader>
         <Box id="project-items-container" position="relative">
           {!fetching && paginatedProjects ? (
@@ -84,10 +88,12 @@ const index: React.FC<indexProps> = ({}) => {
             {paginator.getPagePosition().of}
           </Text>
         ) : null}
-        {selectedProject && paginatedProjects?.length > 0 ? (
-          <SelectedProjectDetails selectedProject={selectedProject} />
-        ) : null}
       </Stack>
+      {selectedProject ? (
+        <Box gridColumn={["1/-1", null, null, "content-begin / content-end"]}>
+          <SelectedProjectDetails selectedProject={selectedProject} />
+        </Box>
+      ) : null}
     </GridContainer>
   );
 };

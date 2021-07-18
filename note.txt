@@ -12,4 +12,5 @@ Manage the cloudinary request thing
 
 Fix chevron not showing on smaller screens and maybe make each item smaller (small like applications icon).
 
+Make the height of the technology details fixed + add technologies used in this project button
 
