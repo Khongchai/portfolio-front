@@ -1,18 +1,15 @@
-import { Box, Flex, Grid, Heading, Stack, Text } from "@chakra-ui/react";
+import { Box, Grid, Heading, Stack, Text } from "@chakra-ui/react";
 import { StaticImage } from "gatsby-plugin-image";
 import React, { useState } from "react";
-import {
-  TechnologyEntity,
-  useGetTechnologiesAssignedToRoleQuery,
-} from "../../generated/graphql";
+import { useGetTechnologiesAssignedToRoleQuery } from "../../generated/graphql";
 import { AboutMeBanner } from "../components/AboutMeBanner";
 import { ProjectHighlightsSection } from "../components/ProjectHighlightSection";
 import { ResumeDownloadSection } from "../components/ResumeDownloadSection";
+import { Line } from "../components/shared/Line";
 import { TechSection } from "../components/TechnologiesSection";
 import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";
 import { small } from "../constants/stackSpacing";
 import { GridContainer } from "../elements/GridContainer";
-import { Line } from "../components/shared/Line";
 import useHoverComponent from "../utils/useHoverComponent";
 
 const IndexPage = () => {

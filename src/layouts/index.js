@@ -13,7 +13,7 @@ export default function Layout({ children }) {
   }, [visitAlready]);
   return (
     <>
-      {visitAlready ? null : <SplashScreen zIndex="999" />}
+      {visitAlready ? null : <SplashScreen zIndex="9999999" />}
       <SEO />
       <Navbar />
       {children}

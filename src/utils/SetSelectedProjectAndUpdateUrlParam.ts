@@ -8,4 +8,5 @@ export function setSelectedProjectAndUpdateUrlParam(
   const newParam = `${window.location.pathname}?selection=${project.title}`;
   window.history.pushState("", "", newParam);
   setSelectedProject(project);
+  localStorage.setItem("selectedProject", JSON.stringify(project));
 }

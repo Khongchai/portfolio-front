@@ -13,11 +13,11 @@ import React from "react";
 import { ProjectEntity } from "../../../generated/graphql";
 import { CloudinaryResponsiveImage } from "./CloudinaryImageResponsiveContainer";
 
-interface HighlightCardProps {
+interface ProjectDetails {
   project: ProjectEntity;
 }
 
-export const HighlightCard: React.FC<HighlightCardProps> = ({ project }) => {
+export const ProjectDetails: React.FC<ProjectDetails> = ({ project }) => {
   const containerId = `${project.title}-container`;
 
   return (

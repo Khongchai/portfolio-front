@@ -1,6 +1,6 @@
-import { Flex, Img, Text, Grid, Heading, Box } from "@chakra-ui/react";
+import { Flex, Grid, Heading, Text } from "@chakra-ui/react";
 import React from "react";
-import { RunningBordersBT, RunningBordersLR } from "../../shared/RunningBorder";
+import { RunningBordersBT, RunningBordersLR } from "../shared/RunningBorder";
 
 interface ProjectItemProps {
   imgLink?: string;

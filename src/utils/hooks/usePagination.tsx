@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Paginator } from "../../../utils/Paginator";
+import { Paginator } from "../Paginator";
 
 export function usePagination(
   paginator: Paginator,

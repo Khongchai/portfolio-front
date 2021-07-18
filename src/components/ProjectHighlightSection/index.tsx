@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import React from "react";
 import { useGetHighlightedProjectsQuery } from "../../../generated/graphql";
 import { GridContainer } from "../../elements/GridContainer";
-import { HighlightCard } from "../shared/ProjectDetail";
+import { ProjectDetails } from "../shared/ProjectDetails";
 
 interface ProjectHighlightsSectionProps {}
 
@@ -26,7 +26,7 @@ export const ProjectHighlightsSection: React.FC<ProjectHighlightsSectionProps> =
                 MY PROJECTS
               </Heading>
               {highlightedProjects.map((project) => {
-                return <HighlightCard key={project.title} project={project} />;
+                return <ProjectDetails key={project.title} project={project} />;
               })}
               <Text to="/projects" textAlign="center" as={Link}>
                 See all projects

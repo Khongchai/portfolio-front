@@ -1,10 +1,9 @@
 import { Flex, Grid } from "@chakra-ui/react";
 import React, { Dispatch, SetStateAction } from "react";
-import { ProjectEntity } from "../../../../generated/graphql";
-import { setSelectedProjectAndUpdateUrlParam } from "../../../utils/SetSelectedProjectAndUpdateUrlParam";
-import { Chevron } from "../Chevron";
+import { ProjectEntity } from "../../../generated/graphql";
+import { setSelectedProjectAndUpdateUrlParam } from "../../utils/SetSelectedProjectAndUpdateUrlParam";
+import { Chevron } from "./Chevron";
 import { ProjectItem } from "./ProjectItem";
-import { useLocation } from "@reach/router";
 
 interface ProjectSelectorProps {
   projects: ProjectEntity[];
@@ -12,7 +11,7 @@ interface ProjectSelectorProps {
     SetStateAction<{ direction: "forward" | "backward" | null; forcer: any }>
   >;
   paginationPosition: { isFirst: boolean; isLast: boolean };
-  setSelectedProject: Dispatch<SetStateAction<ProjectEntity>>;
+  setSelectedProject: Dispatch<SetStateAction<ProjectEntity | null>>;
 }
 
 const ProjectSelector: React.FC<ProjectSelectorProps> = ({
