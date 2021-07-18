@@ -8,11 +8,7 @@ Some type of indicator for the user to click on the word fiery.
 
 Make hoveredComponent shared globally (in layout/index.js)
 
-Test pagination
-
 Manage the cloudinary request thing
-
-do the selection animation
 
 Fix chevron not showing on smaller screens and maybe make each item smaller (small like applications icon).
 

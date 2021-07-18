@@ -59,7 +59,10 @@ const index: React.FC<indexProps> = ({}) => {
     setPaginationPosition
   );
 
-  useSetDefaultSelection(setSelectedProject, paginatedProjects);
+  useSetDefaultSelection(
+    setSelectedProject,
+    unpaginatedProjects?.allProjectsNotPaginated
+  );
 
   return (
     <GridContainer width="100%" height="100%">

@@ -1,7 +1,7 @@
 import { Flex, Grid } from "@chakra-ui/react";
 import React, { Dispatch, SetStateAction } from "react";
 import { ProjectEntity } from "../../../generated/graphql";
-import { setSelectedProjectAndUpdateUrlParam } from "../../utils/SetSelectedProjectAndUpdateUrlParam";
+import { setSelectedProjectAndUpdateUrlParamAndLocalStorage } from "../../utils/SetSelectedProjectAndUpdateUrlParam";
 import { Chevron } from "./Chevron";
 import { ProjectItem } from "./ProjectItem";
 
@@ -52,7 +52,10 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
             imgLink={project.tinyImgLink}
             title={project.title}
             onClickFunction={() => {
-              setSelectedProjectAndUpdateUrlParam(setSelectedProject, project);
+              setSelectedProjectAndUpdateUrlParamAndLocalStorage(
+                setSelectedProject,
+                project
+              );
             }}
           />
         ))}
