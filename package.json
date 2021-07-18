@@ -40,6 +40,7 @@
   "devDependencies": {
     "@graphql-codegen/cli": "^1.21.6",
     "@types/react-helmet": "^6.1.2",
+    "cypress": "^7.7.0",
     "husky": "^7.0.1",
     "lint-staged": "^11.0.1",
     "prettier": "2.2.1"
@@ -56,6 +57,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "cy:open": "cypress open",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "repository": {
@@ -71,6 +73,8 @@
     }
   },
   "lint-staged": {
-    "*.+(js|jsx|tsx|css|graphql)": ["prettier --write"]
+    "*.+(js|jsx|tsx|css|graphql)": [
+      "prettier --write"
+    ]
   }
 }
