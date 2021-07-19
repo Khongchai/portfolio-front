@@ -32,22 +32,24 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
       <Flex
         flexDir={["column", null, null, null, "row"]}
         display="flex"
-        padding={["5rem 0rem", null, null, "5rem 3rem"]}
         bg={`url('${project.heroImgLink}')`}
         backgroundPosition="bottom"
         bgRepeat="no-repeat"
+        backdropFilter="brightness(0.5)"
         backgroundSize="cover"
         transition=".3s"
+        pb={["2rem", null, null, 0]}
         filter={noGrayScale ? null : "grayscale(1)"}
         opacity={noGrayScale ? null : 1}
         id={containerId}
         _hover={{ filter: "grayscale(0)", opacity: 1 }}
       >
         <Stack
-          background="rgba(0,0,0, 0.3)"
-          padding="1.25rem 1.5rem"
+          padding={["4rem 1rem 2rem 1rem", null, null, "5rem 3rem"]}
+          _hover={{ background: "rgba(0,0,0,0.4)" }}
+          transition=".3s"
           spacing="3rem"
-          mb="1.5rem"
+          mb={["1rem", null, null, 0]}
           flex="1"
         >
           <Heading size="3xl" textTransform="capitalize">
@@ -57,8 +59,7 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
             fontFamily="proxima nova rg"
             textShadow="black 0px 2px 10px"
             fontWeight="normal"
-            height="200px"
-            maxHeight="200px"
+            maxHeight={["250px", null, null, "200px"]}
             minHeight="200px"
             overflowY="auto"
           >
@@ -98,24 +99,25 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
                 TECHNOLOGIES USED
               </Button>
             </Flex>
-            {project.playStoreLink ? (
-              <Link target="_blank" href={project.playStoreLink}>
+            <Flex height="40px" align="center">
+              {project.playStoreLink ? (
+                <Link mr="1.25rem" target="_blank" href={project.playStoreLink}>
+                  <Img
+                    src="/logos/googleplay.png"
+                    alt="google play logo"
+                    h="40px"
+                  />
+                </Link>
+              ) : null}
+              <Link href={project.githubLink} target="_blank">
                 <Img
-                  src="/logos/googleplay.png"
-                  alt="google play logo"
-                  h="50px"
+                  src="/logos/github.png"
+                  filter="invert(1)"
+                  alt="github logo"
+                  h="30px"
                 />
               </Link>
-            ) : null}
-            <Link href={project.githubLink} target="_blank">
-              <Img
-                src="/logos/github.png"
-                filter="invert(1)"
-                w="30px"
-                alt="github logo"
-                h="30px"
-              />
-            </Link>
+            </Flex>
           </Stack>
         </Stack>
         <Grid placeItems="center" ml={[0, null, null, "1rem"]} flex="1">

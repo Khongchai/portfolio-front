@@ -1,4 +1,4 @@
-import { Box, Stack, Text } from "@chakra-ui/react";
+import { Box, Grid, Stack, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import {
   ProjectEntity,
@@ -11,6 +11,7 @@ import { Paginator } from "../utils/Paginator";
 import { usePagination } from "../utils/hooks/usePagination";
 import { SelectedProjectDetails } from "../components/SelectedProjectDetails";
 import useSetDefaultSelection from "../utils/hooks/useSetDefaultSelection";
+import { Timeline } from "../components/Timeline";
 
 interface indexProps {}
 
@@ -65,36 +66,49 @@ const index: React.FC<indexProps> = ({}) => {
   );
 
   return (
-    <GridContainer width="100%" height="100%">
-      <Stack
-        gridColumn={["1/-1", null, null, "content-begin / content-end"]}
-        spacing="3rem"
-        m={["3rem 0", null, null, "3rem 3rem"]}
-      >
-        <WhiteStrokedHeader textAlign="center">MY PROJECTS</WhiteStrokedHeader>
-        <Box id="project-items-container" position="relative">
-          {!fetching && paginatedProjects ? (
-            <ProjectSelector
-              projects={paginatedProjects}
-              setPaginationDirection={setPagiantionDirection}
-              paginationPosition={paginationPosition}
-              setSelectedProject={setSelectedProject}
-            />
+    <>
+      <GridContainer width="100%" height="100%">
+        <Stack
+          gridColumn={["1/-1", null, null, "content-begin / content-end"]}
+          spacing="3rem"
+          m={["3rem 0", null, null, "3rem 3rem"]}
+        >
+          <WhiteStrokedHeader textAlign="center">
+            MY PROJECTS
+          </WhiteStrokedHeader>
+          <Box id="project-items-container" position="relative">
+            {!fetching && paginatedProjects ? (
+              <ProjectSelector
+                projects={paginatedProjects}
+                setPaginationDirection={setPagiantionDirection}
+                paginationPosition={paginationPosition}
+                setSelectedProject={setSelectedProject}
+              />
+            ) : null}
+          </Box>
+          {paginator ? (
+            <Text textAlign="center">
+              Page: {paginator.getPagePosition().page} /{" "}
+              {paginator.getPagePosition().of}
+            </Text>
           ) : null}
-        </Box>
-        {paginator ? (
-          <Text textAlign="center">
-            Page: {paginator.getPagePosition().page} /{" "}
-            {paginator.getPagePosition().of}
-          </Text>
+        </Stack>
+        {selectedProject ? (
+          <Box gridColumn={["1/-1", null, null, "content-begin / content-end"]}>
+            <SelectedProjectDetails selectedProject={selectedProject} />
+          </Box>
         ) : null}
-      </Stack>
-      {selectedProject ? (
-        <Box gridColumn={["1/-1", null, null, "content-begin / content-end"]}>
-          <SelectedProjectDetails selectedProject={selectedProject} />
-        </Box>
-      ) : null}
-    </GridContainer>
+      </GridContainer>
+      <Box mt="3rem" overflowX="hidden">
+        {unpaginatedProjects ? (
+          <Timeline
+            selectedProject={selectedProject}
+            data={unpaginatedProjects}
+            setSelectedProject={setSelectedProject}
+          />
+        ) : null}
+      </Box>
+    </>
   );
 };
 

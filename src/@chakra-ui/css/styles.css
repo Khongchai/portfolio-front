@@ -32,3 +32,13 @@
 .nice-looking-scroll::-webkit-scrollbar-thumb {
   background-color: #be91f85e;
 }
+
+.is-selected-proj {
+  z-index: 100;
+  background: linear-gradient(to right, #b891ff, #e45f6b, #f99f35) !important;
+}
+
+.is-hovered-proj {
+  z-index: 100;
+  background: linear-gradient(to right, #b891ff, #e45f6b, #f99f35) !important;
+}

@@ -60,7 +60,7 @@ function setProjectLoadedFromQueryParam(
       project.title.toUpperCase() === projectTitleFromUrl.toUpperCase()
   );
   if (projectFromUrl.length === 0) {
-    console.error(
+    console.log(
       "project specified in url not found, delegating to next fallback"
     );
     setProjectFromPreviouslySelected(
@@ -87,7 +87,7 @@ function setProjectFromPreviouslySelected(
       project.title.toUpperCase() === projectTitleFromLocalStorage.toUpperCase()
   );
   if (projectsFromPreviouslySelected.length === 0) {
-    console.error(
+    console.log(
       "project specified in localStorage not found in database, delegating to next fallback"
     );
     setSelectedProjectRandomly(setSelectedProject, allProjects);
