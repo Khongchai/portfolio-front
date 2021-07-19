@@ -2,7 +2,7 @@ import { Box, Flex, Img, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { TechnologyEntity } from "../../../generated/graphql";
 
-export const TechLogo: React.FC<{
+export const TechnLogos: React.FC<{
   setHoverComponentName: React.Dispatch<
     React.SetStateAction<string | undefined>
   >;
@@ -73,7 +73,9 @@ export const TechLogo: React.FC<{
                   if (e.target.src.slice(-3) !== `svg`) {
                     e.target.src = `/logos/${nameNoSpace}.svg`;
                   } else {
-                    setTextsAsLogos([...textsAsLogos, nameOriginal]);
+                    if (!textsAsLogos.includes(nameOriginal)) {
+                      setTextsAsLogos([...textsAsLogos, nameOriginal]);
+                    }
                     (e.target as HTMLImageElement).style.display = "none";
                   }
                 }}

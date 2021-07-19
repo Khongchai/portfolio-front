@@ -20,6 +20,9 @@ export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
     string | undefined
   >(undefined);
   useHoverComponent(hoveredComponentName);
+  const [forceUpdateTextsFallback, setForceUpdateTextsFallback] = useState(
+    false
+  );
 
   type TechnologiesAndRoles = { role: string; techs: TechnologyEntity[] };
   const thisComponent = useRef(null);
@@ -70,6 +73,7 @@ export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
       opacity="0"
       onClick={() => {
         toggleShowThis(false);
+        setForceUpdateTextsFallback(!forceUpdateTextsFallback);
       }}
     >
       {hoveredComponentName ? (
@@ -84,6 +88,7 @@ export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
           if (tech.techs.length > 0) {
             return (
               <TechSection
+                forceUpdateFallbackTexts={forceUpdateTextsFallback}
                 key={tech.role}
                 title={tech.role}
                 techTitles={tech.techs.map((front) => front?.title)}

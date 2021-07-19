@@ -1,7 +1,6 @@
 import { Grid, Heading } from "@chakra-ui/react";
 import React from "react";
-import { TechnologyEntity } from "../../../generated/graphql";
-import { TechLogo } from "./TechLogo";
+import { TechnLogos } from "./TechLogos";
 
 export const TechSection: React.FC<{
   title: string;
@@ -10,9 +9,16 @@ export const TechSection: React.FC<{
   setHoverComponentName: React.Dispatch<
     React.SetStateAction<string | undefined>
   >;
-}> = ({ title, techTitles, fetching, setHoverComponentName }) => {
+  forceUpdateFallbackTexts: boolean;
+}> = ({
+  title,
+  techTitles,
+  fetching,
+  setHoverComponentName,
+  forceUpdateFallbackTexts,
+}) => {
   return (
-    <Grid className="tech-section">
+    <Grid id="tech-section">
       <Heading
         size="lg"
         fontWeight="100"
@@ -31,7 +37,8 @@ export const TechSection: React.FC<{
         placeItems="center"
       >
         {!fetching && techTitles && techTitles.length > 0 ? (
-          <TechLogo
+          <TechnLogos
+            forceUpdate={forceUpdateFallbackTexts}
             setHoverComponentName={setHoverComponentName}
             techTitles={techTitles}
             noBorder={true}
