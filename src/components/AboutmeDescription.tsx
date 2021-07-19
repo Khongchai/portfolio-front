@@ -1,13 +1,11 @@
 import { Box, Flex, Grid, Text } from "@chakra-ui/react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { large } from "../constants/stackSpacing";
 import { ThreejsGeometries } from "../utils/Threejs/ThreejsGeometries";
 
-interface AboutmeDescriptionProps {}
-
-export const AboutMeDescriptionSection: React.FC<AboutmeDescriptionProps> = ({}) => {
+const _AboutMeDescriptionSection: React.FC = () => {
   useEffect(() => {
     const geometriesCanvas = document.getElementById(
       "threejs-geometries"
@@ -90,3 +88,5 @@ export const AboutMeDescriptionSection: React.FC<AboutmeDescriptionProps> = ({})
 const StyledText: React.FC = ({ children }) => {
   return <Text fontSize="lg">{children}</Text>;
 };
+
+export const AboutMeDescriptionSection = React.memo(_AboutMeDescriptionSection);

@@ -1,8 +1,7 @@
 import { Box, Flex, Img, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import { TechnologyEntity } from "../../../generated/graphql";
 
-export const TechnLogos: React.FC<{
+type TechLogosProps = {
   setHoverComponentName: React.Dispatch<
     React.SetStateAction<string | undefined>
   >;
@@ -12,7 +11,8 @@ export const TechnLogos: React.FC<{
   forceUpdate?: boolean;
   noBorder?: boolean;
   noSpace?: boolean;
-}> = ({
+};
+export const TechLogos: React.FC<TechLogosProps> = ({
   techTitles,
   desc,
   setHoverComponentName,

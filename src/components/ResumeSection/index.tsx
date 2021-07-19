@@ -31,4 +31,4 @@ const ResumeSection: React.FC = ({}) => {
   );
 };
 
-export default ResumeSection;
+export default React.memo(ResumeSection) as React.FC;

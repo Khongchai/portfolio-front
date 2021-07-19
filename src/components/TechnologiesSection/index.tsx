@@ -1,8 +1,8 @@
 import { Grid, Heading } from "@chakra-ui/react";
 import React from "react";
-import { TechnLogos } from "./TechLogos";
+import { TechLogos } from "./TechLogos";
 
-export const TechSection: React.FC<{
+type TechSectionProps = {
   title: string;
   techTitles?: string[];
   fetching: boolean;
@@ -10,7 +10,9 @@ export const TechSection: React.FC<{
     React.SetStateAction<string | undefined>
   >;
   forceUpdateFallbackTexts: boolean;
-}> = ({
+};
+
+export const _TechSection: React.FC<TechSectionProps> = ({
   title,
   techTitles,
   fetching,
@@ -37,7 +39,7 @@ export const TechSection: React.FC<{
         placeItems="center"
       >
         {!fetching && techTitles && techTitles.length > 0 ? (
-          <TechnLogos
+          <TechLogos
             forceUpdate={forceUpdateFallbackTexts}
             setHoverComponentName={setHoverComponentName}
             techTitles={techTitles}
@@ -54,3 +56,7 @@ export const TechSection: React.FC<{
     </Grid>
   );
 };
+
+export const TechSection = React.memo(
+  _TechSection
+) as React.FC<TechSectionProps>;

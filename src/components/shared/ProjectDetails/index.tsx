@@ -45,6 +45,8 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
           flexDir={["column", null, null, null, "row"]}
           pb={["2rem", null, null, 0]}
           transition="background .3s"
+          width="100%"
+          height="100%"
           background="rgba(0,0,0,0.3)"
           _hover={{ background: "rgba(0,0,0,0.5)" }}
         >
