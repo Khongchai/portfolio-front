@@ -18,6 +18,10 @@ export class Inertia {
     this.cur = currentPos;
   }
 
+  getCur() {
+    return this.cur;
+  }
+
   getDifference() {
     this.delta = this.cur - this.prev;
     return this.delta;

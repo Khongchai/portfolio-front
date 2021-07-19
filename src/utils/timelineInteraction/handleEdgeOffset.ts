@@ -4,7 +4,7 @@ import getThrottledOffset from "./getThrottledOffset";
 export default function handleEdgeOffset(
   offsetX?: number,
   checkOnlyOffset?: boolean
-): number | void {
+): number | undefined {
   const windowWidth = document.documentElement.clientWidth;
   const timeline = document.getElementById("timeline");
   const timelineRight = timeline?.getBoundingClientRect().right;
@@ -21,8 +21,10 @@ export default function handleEdgeOffset(
     if (timeline) {
       if (offRight) {
         resetRightPosition(timeline);
+        return 1;
       } else if (offLeft) {
         resetLeftPosition(timeline);
+        return 1;
       }
     }
   }

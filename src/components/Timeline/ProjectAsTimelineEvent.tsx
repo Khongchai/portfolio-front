@@ -113,6 +113,7 @@ const ProjectAsTimelineEvent: React.FC<{
         zIndex="2"
         transform={`translateX(${extraDayOffsetInPixels})`}
         gridColumn={`${gridColumnBeginPosition} / span ${gridColumnLength}`}
+        transition="width .1s"
         gridRow={gridRow}
         placeItems={"center"}
         borderRadius="0 8px 8px 0"

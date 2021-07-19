@@ -83,15 +83,15 @@ function up(e: MouseEvent | TouchEvent) {
   inertia.setdydx(newTranslateXVal);
   currTranslateXVal = newTranslateXVal;
   dragSwitch = false;
-  if (block) {
-    //this causes backward movement TODO
-    // block.style.transition = "transform .5s";
-    // handleEdgeOffset(undefined, true);
-  }
 
   clearInterval(intervalFunction);
   //set once immediately after release
-  slowDownUntil0(hasDragged);
+  if (block) {
+    const offsetValue: number | undefined = handleEdgeOffset(undefined, true);
+    if (!offsetValue) {
+      slowDownUntil0(hasDragged);
+    }
+  }
 }
 
 function checkCurrentTranslateX() {
@@ -114,8 +114,11 @@ function moveBlock(xOffset: number, triggerDebug?: boolean) {
 }
 
 //turn this into a class later TODO
-let initialBeforeThrottle: number | undefined = undefined;
-let timeStart: number = Date.now();
+var initialBeforeThrottle: number | undefined = undefined;
+var timeStart: number = Date.now();
+
+//If exceed this val, stop animation.
+var stopAnimationAfterThisPercentage: number | undefined = undefined;
 
 /**
  * Formula = initialVelocity/decelerationFactor(time)^2 + 1
@@ -129,32 +132,29 @@ function slowDownUntil0(hasDragged: boolean) {
   }
 
   const initialVelocity = initialBeforeThrottle;
-  const deceleration = {
-    /**
-     * Lower value = longer decay duration
-     */
-    decay: 0.0305,
-    instantReduction: 1.2,
-  };
+  const decay = 0.03;
   const timeDifference = Date.now() - timeStart;
-  const preventZeroDivision = 1;
-  let result =
-    initialVelocity /
-    (deceleration.decay * timeDifference ** deceleration.instantReduction +
-      preventZeroDivision);
 
-  //TODO, if result is 20% of initialVAlue, just stop
+  //prettier-ignore
+  const result = initialVelocity * Math.cos(Math.atan(timeDifference * decay));
 
-  let resultRounded = Math.round(result * 10) / 10;
+  // TODO change <<result>> to the difference
+  // if (!stopAnimationAfterThisPercentage) {
+  //   stopAnimationAfterThisPercentage = 0.1;
+  // } else {
+  //   const throttledValueInPercentage = Math.abs(initialVelocity / result);
+  //   if (throttledValueInPercentage < stopAnimationAfterThisPercentage) {
+  //     return;
+  //   }
+  // }
+
+  const resultRounded = Math.round(result * 10) / 10;
   firstResult = firstResult ? firstResult : resultRounded;
 
-  let deceleratedTranslate = newTranslateXVal - resultRounded + firstResult;
-
+  const deceleratedTranslate = newTranslateXVal - resultRounded + firstResult;
   moveBlock(deceleratedTranslate, undefined);
 
-  animationFrame = requestAnimationFrame(() => {
-    slowDownUntil0(hasDragged);
-  });
+  animationFrame = requestAnimationFrame(() => slowDownUntil0(hasDragged));
 }
 
 function getCurrentXFromMouseOrTouch(
