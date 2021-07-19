@@ -10,4 +10,16 @@ export class ThreejsGeometries extends ThreejsPrototype {
       window.addEventListener("scroll", this.windowEventListenerFunctions[0]);
     }
   }
+  removeEventListeners() {
+    {
+      window.removeEventListener(
+        "resize",
+        this.windowEventListenerFunctions[0]
+      );
+      window.removeEventListener(
+        "scroll",
+        this.windowEventListenerFunctions[0]
+      );
+    }
+  }
 }

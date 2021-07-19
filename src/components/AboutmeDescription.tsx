@@ -7,6 +7,7 @@ import { ThreejsGeometries } from "../utils/Threejs/ThreejsGeometries";
 
 const _AboutMeDescriptionSection: React.FC = () => {
   useEffect(() => {
+    let threejsGeometries: ThreejsGeometries | undefined;
     const geometriesCanvas = document.getElementById(
       "threejs-geometries"
     ) as HTMLCanvasElement | null;
@@ -14,13 +15,19 @@ const _AboutMeDescriptionSection: React.FC = () => {
       "threejs-geometries-container"
     ) as HTMLCanvasElement | null;
     if (geometriesCanvas && geometriesCanvasContainer) {
-      const threejsGeometries = new ThreejsGeometries(
+      threejsGeometries = new ThreejsGeometries(
         geometriesCanvas,
         geometriesCanvasContainer
       );
       threejsGeometries.action();
     }
+    return () => {
+      if (threejsGeometries) {
+        threejsGeometries.removeEventListeners();
+      }
+    };
   }, []);
+
   return (
     <Flex
       margin={`${large} 0 !important`}

@@ -36,7 +36,6 @@ export const CloudinaryResponsiveImage: React.FC<{
             setResponsiveImageUrl(getCloudinaryResponsiveUrl(imgLink, id));
           }
         }
-
         removeEventListener("resize", handleResize);
       }, 100);
     }
