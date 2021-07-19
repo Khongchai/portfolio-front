@@ -7,7 +7,7 @@ export class Paginator {
     this.limit = limit;
     this.array = array;
     this.skip = skip ? skip : 0;
-    this.current = 0 + skip;
+    this.current = 0 + this.skip;
   }
 
   getItemsAtCurrent() {

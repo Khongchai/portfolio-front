@@ -12,3 +12,5 @@ Make hoveredComponent shared globally (in layout/index.js)
 Fix chevron not showing on smaller screens and maybe make each item smaller (small like applications icon).
 
 Look at gatsby testing first, then do the show technologies button.
+
+continue with testing: https://youtu.be/BzRAYt7BHRw?t=1978

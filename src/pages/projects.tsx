@@ -67,9 +67,9 @@ const index: React.FC<indexProps> = ({}) => {
   return (
     <GridContainer width="100%" height="100%">
       <Stack
-        gridColumn="content-begin / content-end"
+        gridColumn={["1/-1", null, null, "content-begin / content-end"]}
         spacing="3rem"
-        m="3rem 3rem"
+        m={["3rem 0", null, null, "3rem 3rem"]}
       >
         <WhiteStrokedHeader textAlign="center">MY PROJECTS</WhiteStrokedHeader>
         <Box id="project-items-container" position="relative">

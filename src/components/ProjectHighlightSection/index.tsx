@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 import React from "react";
 import { useGetHighlightedProjectsQuery } from "../../../generated/graphql";
 import { GridContainer } from "../../elements/GridContainer";
-import { ProjectDetails } from "../shared/ProjectDetails";
+import ProjectDetails from "../shared/ProjectDetails";
 
 interface ProjectHighlightsSectionProps {}
 

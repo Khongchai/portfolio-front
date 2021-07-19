@@ -12,7 +12,7 @@ export const BulletPoints: React.FC<{
       </Heading>
       {points.map((point) => {
         return (
-          <UnorderedList>
+          <UnorderedList key={point}>
             <ListItem>{point}</ListItem>;
           </UnorderedList>
         );

@@ -32,6 +32,7 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
         position="relative"
         margin="0 auto"
         placeItems="center"
+        pb={["1rem", null, null, 0]}
         display={["flex", null, null, "grid"]}
         gridTemplateRows={squareSide + " " + squareSide}
         gridTemplateColumns={`repeat(4, ${squareSide})`}
