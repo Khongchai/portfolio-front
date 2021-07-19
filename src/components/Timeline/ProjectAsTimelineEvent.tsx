@@ -88,13 +88,11 @@ const ProjectAsTimelineEvent: React.FC<{
         width="1px"
         transform={`translateX(${extraDayOffsetInPixels})`}
         bgColor="#828282"
-        transition={`background-color ${transitionTime}, width ${transitionTime}`}
         className="project-event-time-indicator"
         id={`${projIdAsString}-time-indicator`}
       />
       <Flex
         id={projIdAsString}
-        transition={`background-color ${transitionTime}, width ${transitionTime}`}
         className="project-event"
         bg="#2C2B2B"
         onMouseOver={() => {
