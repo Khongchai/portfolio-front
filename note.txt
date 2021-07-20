@@ -1,12 +1,11 @@
-redeploy backend on docker, and set up graphql type gen on front so that you can ask 
-for the schema and use the hooks.
-
-
-Make hoveredComponent shared globally (in layout/index.js)
-
-
-Fix chevron not showing on smaller screens and maybe make each item smaller (small like applications icon).
-
 
 search functionality + show which project is being selected.
+
+Remove the interactability from threejs wobbly.
+Timeline sometimes still stutters
+Timeline smaller on smaller screens, use nasa as reference.
+
+graphql search
+
+
 
