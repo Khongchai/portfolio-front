@@ -88,10 +88,11 @@ const ProjectAsTimelineEvent: React.FC<{
         bgColor="#828282"
         className="project-event-time-indicator"
         id={`${projIdAsString}-time-indicator`}
+        data-cy="project-as-timeline-event"
       />
       <Flex
         id={projIdAsString}
-        className="project-event"
+        className="project-events"
         bg="#2C2B2B"
         onMouseOver={() => {
           setProjectAndIndicatorFocusColor(projIdAsString);

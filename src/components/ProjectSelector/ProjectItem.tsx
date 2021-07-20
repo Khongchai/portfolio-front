@@ -17,13 +17,16 @@ export const ProjectItem: React.FC<ProjectItemProps> = ({
 
   return (
     <Flex
+      className="project-items"
       _hover={{ cursor: "pointer" }}
       align="center"
+      id={`project-item-${title}`}
       flexDir="column"
       position="relative"
       onClick={() => {
         onClickFunction();
       }}
+      data-cy="project-item"
     >
       <Grid
         minHeight={sideLength}

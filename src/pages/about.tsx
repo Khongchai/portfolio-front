@@ -1,5 +1,5 @@
 import { Box, Heading, Stack, Text } from "@chakra-ui/react";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { GridContainer } from "../elements/GridContainer";
 import { medium } from "../constants/stackSpacing";
 import { Line } from "../components/shared/Line";
@@ -17,13 +17,17 @@ const about: React.FC<aboutProps> = ({}) => {
     { fetching: fetchingTechnologies, data: technologiesData },
   ] = useGetTechnologiesAssignedToRoleQuery();
   const languages = technologiesData?.getTechnologiesAssignedToRole.lang;
-  const frameworks = technologiesData
+  const frameworksNotDestructured = technologiesData
     ? [
         ...technologiesData.getTechnologiesAssignedToRole.back,
         ...technologiesData.getTechnologiesAssignedToRole.hosting,
         ...technologiesData.getTechnologiesAssignedToRole.front,
       ]
     : null;
+  const frameworks = useMemo(
+    () => frameworksNotDestructured?.map((framework) => framework.title),
+    [technologiesData]
+  );
 
   const [hoveredComponentName, setHoverComponentName] = useState<
     string | undefined
@@ -71,7 +75,7 @@ const about: React.FC<aboutProps> = ({}) => {
           ) : null}
           <TechSection
             title="Tech"
-            techTitles={frameworks?.map((framework) => framework.title)}
+            techTitles={frameworks}
             fetching={fetchingTechnologies}
             setHoverComponentName={setHoverComponentName}
           />

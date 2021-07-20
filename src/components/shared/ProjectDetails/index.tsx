@@ -100,6 +100,7 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
                   onClick={() => {
                     setToggleShowTechnolgoies(true);
                   }}
+                  data-cy="show-technologies-button"
                 >
                   TECHNOLOGIES USED
                 </Button>

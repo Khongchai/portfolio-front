@@ -48,6 +48,7 @@ export const TechLogos: React.FC<TechLogosProps> = ({
         justifyContent="space-evenly"
         flexWrap="wrap"
         className="logo-container"
+        data-cy="logo-container"
         w="100%"
         align="center"
       >
@@ -90,6 +91,7 @@ export const TechLogos: React.FC<TechLogosProps> = ({
                 // Index is to prevent naming conflicts for the hovered names (sometimes the name would show up at another component instead of the one hovered because they have the same id)
                 id={`${nameOriginal}#${i}`}
                 transition=".2s"
+                data-cy="tech-logo"
               />
             </Box>
           );

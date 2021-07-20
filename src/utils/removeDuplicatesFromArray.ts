@@ -1,10 +1,13 @@
-export default function removeDuplicatesFromArray<T>(array: T[]): T[] {
-  let arrayFiltered: T[] = [];
-  const arrayLength = array.length;
-  for (let i = 0; i < arrayLength; i++) {
-    if (!arrayFiltered.includes(array[i])) {
-      arrayFiltered.push(array[i]);
+export default function removeDuplicatesFromArray(array: any[]): any[] {
+  const filteredArray = [];
+  const hashCheck = [];
+
+  for (let i = 0, length = array.length; i < length; i++) {
+    const indexedItem = hashCheck[array[i]];
+    if (!indexedItem) {
+      hashCheck[array[i]] = true;
+      filteredArray.push(array[i]);
     }
   }
-  return arrayFiltered;
+  return filteredArray;
 }

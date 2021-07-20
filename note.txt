@@ -10,4 +10,3 @@ Fix chevron not showing on smaller screens and maybe make each item smaller (sma
 
 search functionality + show which project is being selected.
 
-continue with testing: https://youtu.be/BzRAYt7BHRw?t=1978
