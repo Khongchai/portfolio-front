@@ -9,6 +9,7 @@ import useHoverComponent from "../utils/useHoverComponent";
 import { TechNameCard } from "../components/TechnologiesSection/TechNameCard";
 import { TechSection } from "../components/TechnologiesSection";
 import ResumeSection from "../components/ResumeSection";
+import removeDuplicatesFromArray from "../utils/removeDuplicatesFromArray";
 
 interface aboutProps {}
 
@@ -24,10 +25,15 @@ const about: React.FC<aboutProps> = ({}) => {
         ...technologiesData.getTechnologiesAssignedToRole.front,
       ]
     : null;
-  const frameworks = useMemo(
-    () => frameworksNotDestructured?.map((framework) => framework.title),
-    [technologiesData]
-  );
+  const frameworks = useMemo(() => {
+    let frameworks = frameworksNotDestructured?.map(
+      (framework) => framework.title
+    );
+    if (frameworks) {
+      frameworks = removeDuplicatesFromArray(frameworks);
+      return frameworks;
+    }
+  }, [technologiesData]);
 
   const [hoveredComponentName, setHoverComponentName] = useState<
     string | undefined

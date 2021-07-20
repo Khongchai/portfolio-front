@@ -1,8 +1,9 @@
-import { Box, Grid, Stack, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, Input, Select, Stack, Text } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import {
   ProjectEntity,
   useAllProjectsNotPaginatedQuery,
+  useProjectsQuery,
 } from "../../generated/graphql";
 import { GridContainer } from "../elements/GridContainer";
 import { WhiteStrokedHeader } from "../components/shared/WhiteStrokedHeader";
@@ -12,6 +13,7 @@ import { usePagination } from "../utils/hooks/usePagination";
 import { SelectedProjectDetails } from "../components/SelectedProjectDetails";
 import useSetDefaultSelection from "../utils/hooks/useSetDefaultSelection";
 import Timeline from "../components/Timeline";
+import { SearchComponent } from "../components/SearchComponent";
 
 interface indexProps {}
 
@@ -21,6 +23,9 @@ const index: React.FC<indexProps> = ({}) => {
   const [
     { fetching, data: unpaginatedProjects },
   ] = useAllProjectsNotPaginatedQuery();
+  const [{ fetching: paginatedFetching, data: projects }] = useProjectsQuery(
+    {}
+  );
 
   const [selectedProject, setSelectedProject] = useState<ProjectEntity | null>(
     null
@@ -76,6 +81,7 @@ const index: React.FC<indexProps> = ({}) => {
           <WhiteStrokedHeader textAlign="center">
             MY PROJECTS
           </WhiteStrokedHeader>
+          <SearchComponent />
           <Box id="project-items-container" position="relative">
             {!fetching && paginatedProjects ? (
               <ProjectSelector

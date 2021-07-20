@@ -4,7 +4,7 @@ import React from "react";
 export const Line: React.FC<{ dotPos: "top" | "bottom" }> = ({ dotPos }) => {
   return (
     <Flex justify="center" position="relative" width="100%" height="auto">
-      <Box h="290px" w="1px" bg="white" />
+      <Box h="200px" w="1px" bg="white" />
       <Box
         bg="white"
         w="10px"
