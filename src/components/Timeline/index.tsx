@@ -22,7 +22,7 @@ interface TimelineProps {
 /**
  * Inspired by: https://voyager.jpl.nasa.gov/mission/timeline/#event-a-once-in-a-lifetime-alignment
  */
-export const Timeline: React.FC<TimelineProps> = ({
+const Timeline: React.FC<TimelineProps> = ({
   data,
   setSelectedProject,
   selectedProject,
@@ -172,3 +172,5 @@ export const Timeline: React.FC<TimelineProps> = ({
     </Grid>
   );
 };
+
+export default Timeline;

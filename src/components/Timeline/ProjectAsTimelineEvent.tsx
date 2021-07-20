@@ -32,8 +32,6 @@ const ProjectAsTimelineEvent: React.FC<{
   setLastEventRendered,
   isLastProj,
 }) => {
-  const transitionTime = ".2s";
-
   useEffect(() => {
     if (isLastProj) {
       setLastEventRendered(true);

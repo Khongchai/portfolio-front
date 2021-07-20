@@ -11,7 +11,7 @@ import { Paginator } from "../utils/Paginator";
 import { usePagination } from "../utils/hooks/usePagination";
 import { SelectedProjectDetails } from "../components/SelectedProjectDetails";
 import useSetDefaultSelection from "../utils/hooks/useSetDefaultSelection";
-import { Timeline } from "../components/Timeline";
+import Timeline from "../components/Timeline";
 
 interface indexProps {}
 
