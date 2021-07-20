@@ -50,6 +50,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
               key={item.label}
               textDecor="none !important"
               as={Link}
+              role="button"
               borderRadius="none"
               to={item.href}
               fontFamily="Proxima Nova lt"
