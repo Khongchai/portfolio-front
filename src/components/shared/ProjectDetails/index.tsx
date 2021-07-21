@@ -76,7 +76,7 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
               align="center"
               spacing="1.5rem"
             >
-              <Flex>
+              <Flex flexDir={["column", null, "row"]}>
                 <Button
                   width="fit-content"
                   margin="0 auto"
@@ -87,6 +87,7 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
                   target="_blank"
                   href={project.websiteLink}
                   mr="1rem"
+                  mb={["0.75rem", null, "0"]}
                 >
                   VIEW WEBSITE
                 </Button>
@@ -130,7 +131,12 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
               </Flex>
             </Stack>
           </Stack>
-          <Grid placeItems="center" ml={[0, null, null, "1rem"]} flex="1">
+          <Grid
+            placeItems="center"
+            overflow="hidden"
+            ml={[0, null, null, "1rem"]}
+            flex="1"
+          >
             {project.imgLink ? (
               <CloudinaryResponsiveImage
                 imgLink={project.imgLink}

@@ -8,31 +8,28 @@ import {
 import { GridContainer } from "../elements/GridContainer";
 import { WhiteStrokedHeader } from "../components/shared/WhiteStrokedHeader";
 import ProjectSelector from "../components/ProjectSelector";
-import { Paginator } from "../utils/Paginator";
 import { SelectedProjectDetails } from "../components/SelectedProjectDetails";
 import useSetDefaultSelection from "../utils/hooks/useSetDefaultSelection";
 import Timeline from "../components/Timeline";
 import { SearchComponent } from "../components/SearchComponent";
 import { ProjectsSearchParam } from "../sharedTypes/ProjectsSearchParam";
+import { setAsSelected as setProjectItconAsSelected } from "../utils/setAsSelected";
 
-interface indexProps {}
-
-var paginator: Paginator | undefined;
-
-const index: React.FC<indexProps> = ({}) => {
-  const [{ data: unpaginatedProjects }] = useAllProjectsNotPaginatedQuery();
+const index: React.FC = () => {
+  const [
+    { fetching, data: unpaginatedProjects },
+  ] = useAllProjectsNotPaginatedQuery();
 
   const [selectedProject, setSelectedProject] = useState<ProjectEntity | null>(
     null
   );
-
-  ///////////////////////////////////////////////////////////////////
 
   const [searchParams, setSearchParams] = useState<ProjectsSearchParam>({
     search: undefined,
     sortBy: "Date",
     order: "ASC",
   });
+
   const [queryVariables, setQueryVariables] = useState({
     skip: 0,
     limit: 8,
@@ -52,6 +49,12 @@ const index: React.FC<indexProps> = ({}) => {
       });
     }
   }, [searchParams]);
+
+  useEffect(() => {
+    if (selectedProject) {
+      setProjectItconAsSelected(selectedProject.title);
+    }
+  }, [selectedProject]);
 
   function paginateForward() {
     setQueryVariables({
@@ -98,11 +101,6 @@ const index: React.FC<indexProps> = ({}) => {
               />
             ) : null}
           </Box>
-          {paginator ? (
-            <Text textAlign="center">
-              Page: TODO, use the skip variable to calculate page position
-            </Text>
-          ) : null}
         </Stack>
         {selectedProject ? (
           <Box gridColumn={["1/-1", null, null, "content-begin / content-end"]}>
@@ -110,7 +108,7 @@ const index: React.FC<indexProps> = ({}) => {
           </Box>
         ) : null}
       </GridContainer>
-      <Box mt="3rem" overflowX="hidden">
+      <Box mt="3rem" display={["none", null, null, "block"]} overflowX="hidden">
         {unpaginatedProjects ? (
           <Timeline
             selectedProject={selectedProject}

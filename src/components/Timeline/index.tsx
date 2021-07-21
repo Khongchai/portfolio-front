@@ -60,15 +60,10 @@ const Timeline: React.FC<TimelineProps> = ({
   const gridTemplateColumns = `repeat(${
     years.length * twelveMonths
   }, ${oneMonthLengthInPixels})`;
+
   const yearElemToSetInitialScrollToRef = useRef<null | HTMLElement>(null);
 
   useEffect(() => {
-    //Dear my future self
-    //Why not just use GSAP, you may ask?
-    //Gsap was not working properly and I couldn't figure out why
-    //So I wrote the move function myself.
-    //Turns out, it was the god damn css transition...
-    //This took you 1 whole fucking day.
     manageBlockMove("timeline", "monitor");
     return () => {
       manageBlockMove("timeline", "de-monitor");
@@ -120,7 +115,7 @@ const Timeline: React.FC<TimelineProps> = ({
           id="events-container"
           gridRow="timeline-top / timeline-bottom"
           flexDir="row"
-          rowGap="1.3em"
+          rowGap={["0.3em", null, "0.7rem", null, "1.3rem"]}
           gridTemplateColumns={gridTemplateColumns}
           //number of row is arbitrary (as long as there is enough)
           gridTemplateRows="[events-container-top] 1fr 1fr 1fr 1fr [events-container-bottom]"

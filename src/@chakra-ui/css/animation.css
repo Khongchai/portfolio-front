@@ -94,6 +94,11 @@
   height: 100%;
 }
 
+.filter-selected {
+  transition: border 0.3s;
+  border: 1.5px solid #b891ff;
+}
+
 .running-borders-lr::before {
   top: 0;
   left: 0;
