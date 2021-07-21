@@ -9,61 +9,63 @@ import { GridContainer } from "../elements/GridContainer";
 import { WhiteStrokedHeader } from "../components/shared/WhiteStrokedHeader";
 import ProjectSelector from "../components/ProjectSelector";
 import { Paginator } from "../utils/Paginator";
-import { usePagination } from "../utils/hooks/usePagination";
 import { SelectedProjectDetails } from "../components/SelectedProjectDetails";
 import useSetDefaultSelection from "../utils/hooks/useSetDefaultSelection";
 import Timeline from "../components/Timeline";
 import { SearchComponent } from "../components/SearchComponent";
+import { ProjectsSearchParam } from "../sharedTypes/ProjectsSearchParam";
 
 interface indexProps {}
 
 var paginator: Paginator | undefined;
 
 const index: React.FC<indexProps> = ({}) => {
-  const [
-    { fetching, data: unpaginatedProjects },
-  ] = useAllProjectsNotPaginatedQuery();
-  const [{ fetching: paginatedFetching, data: projects }] = useProjectsQuery(
-    {}
-  );
+  const [{ data: unpaginatedProjects }] = useAllProjectsNotPaginatedQuery();
 
   const [selectedProject, setSelectedProject] = useState<ProjectEntity | null>(
     null
   );
 
-  const [paginatedProjects, setPaginatedProjects] = useState<
-    ProjectEntity[] | null
-  >(null);
-  const paginationLimit = 8;
-  //forcer can be anything that would force the useEffect to run
-  const [paginationDirection, setPagiantionDirection] = useState<{
-    direction: "forward" | "backward" | null;
-    forcer: any;
-  }>(null);
-  const [paginationPosition, setPaginationPosition] = useState<{
-    isFirst: boolean;
-    isLast: boolean;
-  }>({ isFirst: true, isLast: false });
+  ///////////////////////////////////////////////////////////////////
+
+  const [searchParams, setSearchParams] = useState<ProjectsSearchParam>({
+    search: undefined,
+    sortBy: "Date",
+    order: "ASC",
+  });
+  const [queryVariables, setQueryVariables] = useState({
+    skip: 0,
+    limit: 8,
+    //initial value is the searchParams' initial value
+    ...searchParams,
+  });
+  const [{ data: paginatedProjects }] = useProjectsQuery({
+    variables: { ...queryVariables },
+  });
 
   useEffect(() => {
-    if (unpaginatedProjects) {
-      paginator = new Paginator(
-        unpaginatedProjects?.allProjectsNotPaginated,
-        paginationLimit,
-        0
-      );
-      const data = paginator.getItemsAtCurrent();
-      setPaginatedProjects(data.data);
-      setPaginationPosition({ isFirst: data.isFirst, isLast: data.isLast });
+    {
+      setQueryVariables({
+        skip: queryVariables.skip,
+        limit: queryVariables.limit,
+        ...searchParams,
+      });
     }
-  }, [fetching]);
+  }, [searchParams]);
 
-  usePagination(
-    paginator,
-    paginationDirection,
-    setPaginatedProjects,
-    setPaginationPosition
-  );
+  function paginateForward() {
+    setQueryVariables({
+      ...queryVariables,
+      skip: queryVariables.skip + queryVariables.limit,
+    });
+  }
+
+  function paginateBackward() {
+    setQueryVariables({
+      ...queryVariables,
+      skip: queryVariables.skip - queryVariables.limit,
+    });
+  }
 
   useSetDefaultSelection(
     setSelectedProject,
@@ -81,21 +83,24 @@ const index: React.FC<indexProps> = ({}) => {
           <WhiteStrokedHeader textAlign="center">
             MY PROJECTS
           </WhiteStrokedHeader>
-          <SearchComponent />
+          <SearchComponent searchParams={{ searchParams, setSearchParams }} />
           <Box id="project-items-container" position="relative">
-            {!fetching && paginatedProjects ? (
+            {paginatedProjects ? (
               <ProjectSelector
-                projects={paginatedProjects}
-                setPaginationDirection={setPagiantionDirection}
-                paginationPosition={paginationPosition}
+                paginateBackward={paginateBackward}
+                paginateForward={paginateForward}
+                projects={paginatedProjects.projects.projects}
+                positions={{
+                  isFirst: paginatedProjects.projects.isFirstQuery,
+                  isLast: paginatedProjects.projects.isLastQuery,
+                }}
                 setSelectedProject={setSelectedProject}
               />
             ) : null}
           </Box>
           {paginator ? (
             <Text textAlign="center">
-              Page: {paginator.getPagePosition().page} /{" "}
-              {paginator.getPagePosition().of}
+              Page: TODO, use the skip variable to calculate page position
             </Text>
           ) : null}
         </Stack>

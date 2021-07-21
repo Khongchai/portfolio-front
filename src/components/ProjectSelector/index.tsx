@@ -1,24 +1,25 @@
 import { Flex, Grid } from "@chakra-ui/react";
 import React, { Dispatch, SetStateAction } from "react";
 import { ProjectEntity } from "../../../generated/graphql";
+import { ProjectsSearchParam } from "../../sharedTypes/ProjectsSearchParam";
 import { setSelectedProjectAndUpdateUrlParamAndLocalStorage } from "../../utils/SetSelectedProjectAndUpdateUrlParam";
 import { Chevron } from "./Chevron";
 import { ProjectItem } from "./ProjectItem";
 
 interface ProjectSelectorProps {
   projects: ProjectEntity[];
-  setPaginationDirection: Dispatch<
-    SetStateAction<{ direction: "forward" | "backward" | null; forcer: any }>
-  >;
-  paginationPosition: { isFirst: boolean; isLast: boolean };
   setSelectedProject: Dispatch<SetStateAction<ProjectEntity | null>>;
+  paginateForward: () => void;
+  paginateBackward: () => void;
+  positions: { isFirst: boolean; isLast: boolean };
 }
 
 const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   projects,
-  setPaginationDirection,
-  paginationPosition,
   setSelectedProject,
+  paginateForward,
+  paginateBackward,
+  positions,
 }) => {
   const squareSide = "200px";
 
@@ -39,13 +40,10 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
       >
         <Chevron
           onClickFunction={() => {
-            setPaginationDirection({
-              direction: "backward",
-              forcer: Math.random(),
-            });
+            paginateBackward();
           }}
           direction="left"
-          hide={paginationPosition.isFirst ? true : false}
+          hide={positions.isFirst}
         />
         {projects.map((project) => (
           <ProjectItem
@@ -63,12 +61,9 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
         <Chevron
           direction="right"
           onClickFunction={() => {
-            setPaginationDirection({
-              direction: "forward",
-              forcer: Math.random(),
-            });
+            paginateForward();
           }}
-          hide={paginationPosition.isLast ? true : false}
+          hide={positions.isLast}
         />
       </Grid>
     </Flex>
