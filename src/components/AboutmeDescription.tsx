@@ -42,7 +42,12 @@ const _AboutMeDescriptionSection: React.FC = () => {
             height="calc(100% - 50%)"
             id="threejs-geometries-container"
           >
-            <canvas id="threejs-geometries" width="100%" height="100%" />
+            <canvas
+              style={{ pointerEvents: "none" }}
+              id="threejs-geometries"
+              width="100%"
+              height="100%"
+            />
           </Box>
         </Grid>
         <StaticImage
