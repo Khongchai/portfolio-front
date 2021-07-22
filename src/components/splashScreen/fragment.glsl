@@ -20,7 +20,7 @@ void main()
             vUv.y + cos((vUv.x * ((fireY * windY) - cosFlameVariation) * fireShape)) * fireStrength
         );
         
-         float reduceRadius = 0.25;
+        float reduceRadius = 0.25;
         float strength = 1.0 - step(0.02, abs(distance(wavedUv, vec2(0.5)) - reduceRadius ));
 
         vec3 blackColor = vec3(0.0);

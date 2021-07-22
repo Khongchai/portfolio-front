@@ -1,4 +1,4 @@
-import { Flex, Grid } from "@chakra-ui/react";
+import { Flex, Grid, Text } from "@chakra-ui/react";
 import React, { Dispatch, SetStateAction } from "react";
 import { ProjectEntity } from "../../../generated/graphql";
 import { ProjectsSearchParam } from "../../sharedTypes/ProjectsSearchParam";
@@ -12,6 +12,7 @@ interface ProjectSelectorProps {
   paginateForward: () => void;
   paginateBackward: () => void;
   positions: { isFirst: boolean; isLast: boolean };
+  noProjectsFromSearch: boolean;
 }
 
 const ProjectSelector: React.FC<ProjectSelectorProps> = ({
@@ -20,6 +21,7 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   paginateForward,
   paginateBackward,
   positions,
+  noProjectsFromSearch,
 }) => {
   const squareSide = "200px";
 
@@ -38,33 +40,41 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
         gridTemplateRows={squareSide + " " + squareSide}
         gridTemplateColumns={`repeat(4, ${squareSide})`}
       >
-        <Chevron
-          onClickFunction={() => {
-            paginateBackward();
-          }}
-          direction="left"
-          hide={positions.isFirst}
-        />
-        {projects.map((project) => (
-          <ProjectItem
-            key={project.title}
-            imgLink={project.tinyImgLink}
-            title={project.title}
-            onClickFunction={() => {
-              setSelectedProjectAndUpdateUrlParamAndLocalStorage(
-                setSelectedProject,
-                project
-              );
-            }}
-          />
-        ))}
-        <Chevron
-          direction="right"
-          onClickFunction={() => {
-            paginateForward();
-          }}
-          hide={positions.isLast}
-        />
+        {noProjectsFromSearch ? (
+          <Text textAlign="center" gridColumn="1/-1">
+            No projects found
+          </Text>
+        ) : (
+          <>
+            <Chevron
+              onClickFunction={() => {
+                paginateBackward();
+              }}
+              direction="left"
+              hide={positions.isFirst}
+            />
+            {projects.map((project) => (
+              <ProjectItem
+                key={project.title}
+                imgLink={project.tinyImgLink}
+                title={project.title}
+                onClickFunction={() => {
+                  setSelectedProjectAndUpdateUrlParamAndLocalStorage(
+                    setSelectedProject,
+                    project
+                  );
+                }}
+              />
+            ))}
+            <Chevron
+              direction="right"
+              onClickFunction={() => {
+                paginateForward();
+              }}
+              hide={positions.isLast}
+            />
+          </>
+        )}
       </Grid>
     </Flex>
   );

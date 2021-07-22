@@ -33,7 +33,7 @@ export const ProjectHighlightsSection: React.FC<ProjectHighlightsSectionProps> =
               </Text>
             </>
           ) : (
-            <Text>...Loading</Text>
+            <Text>Loading Projects Information...</Text>
           )}
         </Stack>
       </Flex>

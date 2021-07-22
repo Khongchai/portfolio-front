@@ -83,7 +83,7 @@ const ProjectAsTimelineEvent: React.FC<{
       <Box
         gridRow={`${gridRow} / events-container-bottom`}
         gridColumn={gridColumnBeginPosition}
-        width="1px"
+        width="2px"
         transform={`translateX(${extraDayOffsetInPixels})`}
         bgColor="#828282"
         className="project-event-time-indicator"

@@ -1,11 +1,6 @@
 
-search functionality + show which project is being selected.
-
-Remove the interactability from threejs wobbly.
 Timeline sometimes still stutters
-Timeline smaller on smaller screens, use nasa as reference.
-
-graphql search
 
 
 
+Look for TODO in projects page (show state when search result returns nothing)

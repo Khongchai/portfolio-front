@@ -88,7 +88,14 @@ const index: React.FC = () => {
           </WhiteStrokedHeader>
           <SearchComponent searchParams={{ searchParams, setSearchParams }} />
           <Box id="project-items-container" position="relative">
-            {paginatedProjects ? (
+            {!paginatedProjects || fetching ? (
+              <Flex justify="center">
+                <div className="lds-ripple">
+                  <div></div>
+                  <div></div>
+                </div>
+              </Flex>
+            ) : (
               <ProjectSelector
                 paginateBackward={paginateBackward}
                 paginateForward={paginateForward}
@@ -98,8 +105,13 @@ const index: React.FC = () => {
                   isLast: paginatedProjects.projects.isLastQuery,
                 }}
                 setSelectedProject={setSelectedProject}
+                noProjectsFromSearch={
+                  ((!fetching &&
+                    paginatedProjects.projects.projects.length === 0 &&
+                    queryVariables.search) as unknown) as boolean
+                }
               />
-            ) : null}
+            )}
           </Box>
         </Stack>
         {selectedProject ? (
