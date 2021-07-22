@@ -1,49 +1,24 @@
-<!-- AUTO-GENERATED-CONTENT:START (STARTER) -->
-<p align="center">
-  <a href="https://www.gatsbyjs.com">
-    <img alt="Gatsby" src="https://raw.githubusercontent.com/chakra-ui/chakra-ui/master/logo/logo-colored%402x.png" width="300" />
-  </a>
-</p>
 <h1 align="center">
- Gatsby starter Chakra UI
+ Welcome to my official portfolio!
 </h1>
 
-Simple and Basic starter to kickoff you project. 
+Visit: https://khong.xyz
 
-##   Demo
-https://gatsby-chakra-ui.netlify.app/
+## Main tech used to built the site
 
-##   Features
-- Chakra UI library
-- SEO component
-- Prettier
-- react-icons
+# Front
 
-## 🚀 Quick start
+- Gatsby
+- Threejs
+- Chakra UI
+- Graphql
+- Urql
+- (extra) => a collection of my own animations (manageBlockMove.ts, Inertia.ts, running-borders in animation.css, followCursorWithDelay in ThreejsGeometries.tsx)
 
-1.  **Create a Gatsby site.**
+# Back
 
-    Use the Gatsby CLI to create a new site, specifying the gatsby-starter-chakra-ui.
-
-    ```shell
-    gatsby new my-default-starter https://github.com/creotip/gatsby-starter-chakra-ui
-    ```
-
-1.  **Start developing.**
-
-    Navigate into your new site’s directory and start it up.
-
-    ```shell
-    cd my-default-starter/
-    gatsby develop
-    ```
-
-
-
-## 💫 Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/creotip/gatsby-starter-chakra-ui)
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/import/project?template=https://github.com/creotip/gatsby-starter-chakra-ui)
-
-<!-- AUTO-GENERATED-CONTENT:END -->
+- Node
+- Express
+- Graphql
+- Apollo
+- TypeGraphQL
