@@ -1,8 +1,7 @@
 
-Timeline sometimes still stutters
+
+Fix hovercomponent not showing names sometimes
+
+Fix margin bottom for projectDetails.
 
 
-
-Look for TODO in projects page (show state when search result returns nothing)
-
-Think about what to do for the 3d thing, one final touch! 

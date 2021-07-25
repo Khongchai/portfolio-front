@@ -95,6 +95,7 @@ export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
                 techTitles={tech.techs.map((front) => front?.title)}
                 fetching={false}
                 setHoverComponentName={setHoverComponentName}
+                uniqueIdentifier={"from-layover"}
               />
             );
           }

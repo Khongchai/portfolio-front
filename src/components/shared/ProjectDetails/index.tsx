@@ -143,13 +143,14 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
             overflow="hidden"
             ml={[0, null, null, "1rem"]}
             flex="1"
+            p="2.5rem"
           >
             {project.imgLink ? (
               <CloudinaryResponsiveImage
                 imgLink={project.imgLink}
                 projectTitle={project.title}
-                imageActualWidth={"1440px"}
-                imageActualHeight={"1080px"}
+                imageActualWidth={`${1440 * 0.9}px`}
+                imageActualHeight={`${1080 * 0.9}px`}
               />
             ) : (
               <Text

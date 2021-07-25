@@ -10,6 +10,7 @@ type TechSectionProps = {
     React.SetStateAction<string | undefined>
   >;
   forceUpdateFallbackTexts?: boolean;
+  uniqueIdentifier?: string;
 };
 
 export const _TechSection: React.FC<TechSectionProps> = ({
@@ -18,6 +19,7 @@ export const _TechSection: React.FC<TechSectionProps> = ({
   fetching,
   setHoverComponentName,
   forceUpdateFallbackTexts,
+  uniqueIdentifier,
 }) => {
   return (
     <Grid id="tech-section">
@@ -48,6 +50,7 @@ export const _TechSection: React.FC<TechSectionProps> = ({
             techTitles={techTitles}
             noBorder={true}
             noSpace={true}
+            uniqueIdentifier={uniqueIdentifier}
           />
         ) : (
           <div className="lds-ripple">

@@ -11,6 +11,7 @@ type TechLogosProps = {
   forceUpdate?: boolean;
   noBorder?: boolean;
   noSpace?: boolean;
+  uniqueIdentifier?: string;
 };
 export const TechLogos: React.FC<TechLogosProps> = ({
   techTitles,
@@ -19,11 +20,13 @@ export const TechLogos: React.FC<TechLogosProps> = ({
   forceUpdate,
   noBorder,
   noSpace,
+  uniqueIdentifier,
 }) => {
   //If no technologies provided, return nothing for this field
   if (!techTitles || techTitles.length === 0) {
     return <></>;
   }
+  uniqueIdentifier = uniqueIdentifier ? uniqueIdentifier : "";
   const [textsAsLogos, setTextsAsLogos] = useState<string[]>([]);
   const [update, setUpdate] = useState(true);
   useEffect(() => {
@@ -87,9 +90,10 @@ export const TechLogos: React.FC<TechLogosProps> = ({
                 filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
                 padding={"1px"}
                 h={["27px", null, "29px", "32px", "40px"]}
+                alt={nameOriginal + "logo"}
                 src={src}
                 // Index is to prevent naming conflicts for the hovered names (sometimes the name would show up at another component instead of the one hovered because they have the same id)
-                id={`${nameOriginal}#${i}`}
+                id={`${nameOriginal}#${i}${uniqueIdentifier}`}
                 transition=".2s"
                 data-cy="tech-logo"
               />
