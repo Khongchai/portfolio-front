@@ -20,18 +20,18 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
-  const [clickedElem, setClickedElem] = useState<HTMLElement | null>(null);
+  const [activeElem, setActiveElem] = useState<HTMLElement | null>(null);
   useEffect(() => {
-    if (clickedElem) {
-      clickedElem.classList.add("passive-gradient");
+    if (activeElem) {
+      activeElem.classList.add("passive-gradient");
     }
-  }, [clickedElem]);
+  }, [activeElem]);
 
-  function putGradientOnClickedComponent(elemToSet: HTMLElement) {
-    if (clickedElem) {
-      clickedElem.classList.remove("passive-gradient");
+  function putGradientOnClickedComponent(clickedElem: HTMLElement | null) {
+    if (activeElem) {
+      activeElem.classList.remove("passive-gradient");
     }
-    setClickedElem(elemToSet);
+    setActiveElem(clickedElem);
   }
 
   return (
@@ -54,6 +54,10 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
             paddingLeft="0 !important"
             fontSize={["0.925rem", null, "1rem"]}
             className="hover-gradient"
+            onClick={() =>
+              //clear selection
+              putGradientOnClickedComponent(null)
+            }
           >
             KHONGCHAI.G
           </Text>

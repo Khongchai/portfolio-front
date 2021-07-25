@@ -41,7 +41,7 @@ export const Footer: React.FC<indexProps> = ({}) => {
         gridArea="1/1"
         width="100%"
         src="../../images/footer-background.png"
-        padding={["5rem 2rem 10rem 2rem", null, null, "5rem 0 10rem 0"]}
+        padding={["5rem 1rem 10rem 1rem", null, null, "5rem 0 10rem 0"]}
         css={{ " > *": { marginRight: "1.5rem" } }}
         maxWidth="1800px"
         margin="0 auto"

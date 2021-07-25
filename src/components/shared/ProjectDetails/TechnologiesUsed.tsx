@@ -62,6 +62,7 @@ export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
       position="fixed"
       top="0"
       left="0"
+      m="0 !important"
       height="100vh"
       width="100vw"
       zIndex="99999"

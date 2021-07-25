@@ -51,7 +51,13 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
           _hover={{ background: "rgba(0,0,0,0.5)" }}
         >
           <Stack
-            padding={["4rem 1rem 2rem 1rem", null, null, "5rem 3rem"]}
+            padding={[
+              "4rem 1rem 2rem 1rem",
+              null,
+              null,
+              "5rem 3rem 2rem 3rem",
+              "5rem 3rem",
+            ]}
             transition=".3s"
             spacing="3rem"
             mb={["1rem", null, null, 0]}
@@ -80,13 +86,13 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
                 <Button
                   width="fit-content"
                   margin="0 auto"
+                  mr={["auto", null, "1rem"]}
                   bg="transparent"
                   border="1px solid white"
                   as={Link}
                   textDecor="none !important"
                   target="_blank"
                   href={project.websiteLink}
-                  mr="1rem"
                   mb={["0.75rem", null, "0"]}
                 >
                   VIEW WEBSITE
