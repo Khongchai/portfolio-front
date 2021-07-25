@@ -94,7 +94,6 @@ export const WobblyThreejs: React.FC<{
      */
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
-      antialias: true,
       alpha: true,
     });
     renderer.setSize(sizes.width, sizes.height);

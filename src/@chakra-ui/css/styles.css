@@ -42,3 +42,7 @@
   z-index: 100;
   background: linear-gradient(to right, #b891ff, #e45f6b, #f99f35) !important;
 }
+
+.global-content-maxWidth {
+  max-width: 2000px;
+}

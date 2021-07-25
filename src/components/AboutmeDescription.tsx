@@ -30,9 +30,10 @@ const _AboutMeDescriptionSection: React.FC = () => {
 
   return (
     <Flex
-      margin={`${large} 0 !important`}
+      m="0 auto !important"
       flexDir={["column", null, null, "row"]}
       align="center"
+      className="global-content-maxWidth"
     >
       <Grid flex="0.4" m={["0 0 4rem 0", null, null, "0 4rem 0 0"]}>
         <Grid placeItems="center" gridArea="1/1" position="relative" zIndex="5">

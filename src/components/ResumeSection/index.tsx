@@ -6,7 +6,7 @@ import { ResumeInfo } from "./ResumeInfo";
 
 const ResumeSection: React.FC = ({}) => {
   return (
-    <Box>
+    <Box className="global-content-maxWidth" m="0 auto !important">
       <Box mb="2rem">
         <WhiteStrokedHeader>Resume</WhiteStrokedHeader>
       </Box>

@@ -47,7 +47,7 @@ export const Footer: React.FC<indexProps> = ({}) => {
         position="relative"
         flexDir={["column", null, null, "row"]}
       >
-        <Box flex="0.2" mb="1rem">
+        <Box id="contact" flex="0.2" mb="1rem">
           <Heading w="fit-content" ml={["unset", null, null, "auto"]} size="lg">
             CONTACT
           </Heading>

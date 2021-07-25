@@ -2,7 +2,6 @@ import * as THREE from "three";
 import { ThreejsPrototype } from "./ThreejsPrototype";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import addModels from "./utils/addGeometriesModels";
-import { InteractiveLightsComponents } from "./utils/types/interactiveLightsComponents";
 
 export class ThreejsGeometries extends ThreejsPrototype {
   readonly colors = {
@@ -32,21 +31,14 @@ export class ThreejsGeometries extends ThreejsPrototype {
   };
   floor: THREE.Mesh;
   controls: OrbitControls;
-  interactiveLightsComponents: InteractiveLightsComponents;
-
   setTimeoutReset: any;
 
   constructor(canvas: HTMLCanvasElement, newContainer: HTMLElement) {
     super(canvas, newContainer);
-    this.scene.remove(this.light);
+    (this.mesh.material as any).dispose();
+    this.mesh.geometry.dispose();
     this.scene.remove(this.mesh);
-
-    this.interactiveLightsComponents = {
-      meshes: [],
-      lights: [],
-      lightsOrigin: [],
-      meshesOrigin: [],
-    };
+    this.scene.remove(this.light);
 
     this.mouse = {
       current: { x: 0, y: 0 },
@@ -61,6 +53,7 @@ export class ThreejsGeometries extends ThreejsPrototype {
     });
     this.renderer.setSize(this.sizes.width, this.sizes.height);
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.shadowMap.autoUpdate = false;
 
     this.scene.background = this.colors.background;
 
@@ -106,24 +99,11 @@ export class ThreejsGeometries extends ThreejsPrototype {
       this.pointLights.scene,
       this.ambientLight
     );
-    this.interactiveLightsComponents.lights.push(this.pointLights.twoBulbs[0]);
-    this.interactiveLightsComponents.lights.push(this.pointLights.twoBulbs[1]);
-    this.interactiveLightsComponents.lightsOrigin.push(
-      this.pointLights.twoBulbs[0].position
-    );
-    this.interactiveLightsComponents.lightsOrigin.push(
-      this.pointLights.twoBulbs[1].position
-    );
 
-    addModels(
-      this.geometriesMaterial,
-      this.lightBulbMaterial,
-      this.interactiveLightsComponents,
-      this.scene
-    );
+    addModels(this.geometriesMaterial, this.lightBulbMaterial, this.scene);
 
     this.floor = new THREE.Mesh(
-      new THREE.SphereGeometry(300, 20, 20),
+      new THREE.SphereBufferGeometry(300, 20, 20),
       new THREE.MeshStandardMaterial({
         color: new THREE.Color(this.colors.background),
         metalness: 0.2,
@@ -157,6 +137,29 @@ export class ThreejsGeometries extends ThreejsPrototype {
     this.controls.enablePan = false;
     this.controls.enableZoom = false;
     this.controls.enableRotate = false;
+
+    //remove the one added by ThreejsPrototype
+    window.removeEventListener("resize", this.windowEventListenerFunctions[0]);
+    this.windowEventListenerFunctions[0] = () => {
+      // Update sizes
+      if (!this.newContainer) {
+        this.sizes.width = window.innerWidth;
+        this.sizes.height = window.innerHeight;
+      } else {
+        this.sizes.width = this.newContainer.offsetWidth;
+        this.sizes.height = this.newContainer.offsetHeight;
+      }
+
+      // Update camera
+      this.camera.aspect = this.sizes.width / this.sizes.height;
+      this.camera.updateProjectionMatrix();
+
+      // Update renderer
+      this.renderer.setSize(this.sizes.width, this.sizes.height);
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    };
+
+    this.monitorResize();
   }
 
   extraEventListenersBeforeAnimLoop() {
@@ -187,6 +190,14 @@ export class ThreejsGeometries extends ThreejsPrototype {
         "scroll",
         this.windowEventListenerFunctions[0]
       );
+      window.removeEventListener(
+        "mousemove",
+        this.windowEventListenerFunctions[1]
+      );
+      window.removeEventListener(
+        "pointerdown",
+        this.windowEventListenerFunctions[2]
+      );
     }
   }
 
@@ -204,20 +215,21 @@ export class ThreejsGeometries extends ThreejsPrototype {
         this.controlsPosition.y + (this.mouse.prev.y + 5) / 5,
         this.controlsPosition.z
       );
-
       this.renderer.render(this.scene, this.camera);
+
       //Upate camera
       this.camera.updateProjectionMatrix();
 
       this.followCursorWithDelay(elapsedTime);
       // Call tick again on the next frame
+
       window.requestAnimationFrame(tick);
     };
 
     tick();
   }
 
-  followCursorWithDelay(elapsedTime: number) {
+  private followCursorWithDelay(elapsedTime: number) {
     //repeats until difference is 0.
     const speedDif = 0.03;
     const cameraDelay = () => {

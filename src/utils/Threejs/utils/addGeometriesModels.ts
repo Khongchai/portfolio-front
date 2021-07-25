@@ -1,11 +1,9 @@
 import { DRACOLoader } from "three/examples/jsm/loaders/DRACOLoader";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import { InteractiveLightsComponents } from "./types/interactiveLightsComponents";
 
 export default function addModels(
   geometriesMaterial: THREE.Material,
   lightBulbMaterial: THREE.Material,
-  InteractiveLightComponents: InteractiveLightsComponents,
   scene: THREE.Scene
 ) {
   const dracoLoader = new DRACOLoader();
