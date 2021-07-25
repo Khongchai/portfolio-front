@@ -19,6 +19,11 @@
   -webkit-text-fill-color: transparent !important;
 }
 
+.passive-gradient {
+  background: linear-gradient(to right, #b891ff, #e45f6b, #f99f35) !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
 .gradient-text {
   background: linear-gradient(to right, #b891ff, #e45f6b, #f99f35);
   background-clip: text;

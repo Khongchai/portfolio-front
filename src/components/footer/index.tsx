@@ -1,4 +1,5 @@
-import { Box, Flex, Grid, Heading, Link, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, Heading, Link } from "@chakra-ui/react";
+import { Link as GatsbyLink } from "gatsby";
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { navItems } from "../../constants/navItems";
@@ -72,12 +73,13 @@ export const Footer: React.FC<indexProps> = ({}) => {
         </Box>
         <Box flex="0.3">
           {navItems.map((item) => {
+            if (item.label.toLowerCase() === "contact") return;
             return (
               <Box key={item.label} mb="1rem">
                 <Heading
-                  as={Link}
+                  as={GatsbyLink}
                   key={item.label}
-                  href={item.href}
+                  to={item.href}
                   fontFamily="proxima nova lt"
                   size="sm"
                   target="_blank"

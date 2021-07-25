@@ -78,7 +78,11 @@ const IndexPage = () => {
               />
             </Stack>
           </Grid>
-          <Line dotPos="bottom" />
+          <Line
+            dotPos="bottom"
+            extraMarginTop="5rem"
+            extraMarginBottom="3rem"
+          />
           <Text
             width="100%"
             textAlign="center"
@@ -127,7 +131,7 @@ const IndexPage = () => {
               setHoverComponentName={setHoverComponentName}
             />
           </Stack>
-          <Line dotPos="top" />
+          <Line dotPos="top" extraMarginTop="5rem" extraMarginBottom="3rem" />
         </Stack>
       </GridContainer>
       <Box mb={`calc(${small} + 4rem)`}>

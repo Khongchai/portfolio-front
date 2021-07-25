@@ -10,7 +10,7 @@ import {
   MenuList,
 } from "@chakra-ui/react";
 import { Link } from "gatsby";
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { navItems } from "../constants/navItems";
 import { desktopLayout, mobileLayout } from "../constants/screenSizes";
 import { GridContainer } from "../elements/GridContainer";
@@ -20,6 +20,20 @@ import { HamburgerIcon } from "@chakra-ui/icons";
 interface NavbarProps {}
 
 export const Navbar: React.FC<NavbarProps> = ({}) => {
+  const [clickedElem, setClickedElem] = useState<HTMLElement | null>(null);
+  useEffect(() => {
+    if (clickedElem) {
+      clickedElem.classList.add("passive-gradient");
+    }
+  }, [clickedElem]);
+
+  function putGradientOnClickedComponent(elemToSet: HTMLElement) {
+    if (clickedElem) {
+      clickedElem.classList.remove("passive-gradient");
+    }
+    setClickedElem(elemToSet);
+  }
+
   return (
     <GridContainer width="100%" height="100%" padding="2rem 0">
       <Flex gridColumn="content-begin / content-end" align="center">
@@ -50,12 +64,16 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
               key={item.label}
               textDecor="none !important"
               as={Link}
+              onClick={(e) =>
+                putGradientOnClickedComponent(e.target as HTMLElement)
+              }
               role="button"
               borderRadius="none"
               to={item.href}
               fontFamily="Proxima Nova lt"
               background="black"
               height="fit-content"
+              _focus={{ boxShadow: "none !important" }}
               mr="3rem"
               fontWeight="300"
               letterSpacing="1px"
@@ -85,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({}) => {
             bg="white"
             color="black"
           >
-            {navItems.map((item) => {
+            {navItems.map((item, i) => {
               return (
                 <MenuItem
                   className="hover-gradient"
