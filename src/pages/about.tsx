@@ -57,20 +57,22 @@ const about: React.FC<aboutProps> = ({}) => {
             Let's learn more about me
           </Heading>
         </Box>
-        <Line dotPos="bottom" />
+        <Line extraMarginBottom="3.75rem" dotPos="bottom" />
         <AboutMeDescriptionSection />
-        <Text
-          width="100%"
-          textAlign="center"
-          fontFamily="proxima nova lt"
-          fontWeight="300"
-          fontSize="1.5rem"
-          letterSpacing="2px"
-          size="lg"
-          p="1rem 0"
-        >
-          Technologies I have worked with
-        </Text>
+        <Box>
+          <Text
+            width="100%"
+            textAlign="center"
+            fontFamily="proxima nova lt"
+            fontWeight="300"
+            fontSize="1.5rem"
+            letterSpacing="2px"
+            size="lg"
+            p="1rem 0"
+          >
+            Technologies I have worked with
+          </Text>
+        </Box>
         <Box
           css={{ "> *": { marginBottom: "6rem" } }}
           textAlign="center"

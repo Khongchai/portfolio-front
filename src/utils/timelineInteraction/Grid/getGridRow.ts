@@ -1,9 +1,15 @@
 import { GridRowPos } from "./gridRowPos";
 
+/**
+ * Edge case not supported yet:
+ *  1. When the last added project is the oldest, that project will get pushed to row 4.
+ */
 export function getGridRow(
   beginVal: number,
   endVal: number,
-  gridRowPos: GridRowPos
+  gridRowPos: GridRowPos,
+  //debug
+  title: string
 ): number {
   let row: number = 1;
   if (beginVal > gridRowPos.first) {

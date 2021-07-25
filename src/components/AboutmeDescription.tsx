@@ -34,6 +34,7 @@ const _AboutMeDescriptionSection: React.FC = () => {
       flexDir={["column", null, null, "row"]}
       align="center"
       className="global-content-maxWidth"
+      p="3rem 0"
     >
       <Grid flex="0.4" m={["0 0 4rem 0", null, null, "0 4rem 0 0"]}>
         <Grid placeItems="center" gridArea="1/1" position="relative" zIndex="5">
@@ -69,7 +70,7 @@ const _AboutMeDescriptionSection: React.FC = () => {
           frontend and backend, but my focus is primarily on frontend and webGL
           animation. My projects in the past range from an interactive binaural
           music application for Android (Java) to an e-commerce website (in
-          progress) where I sell my own music
+          progress) where I sell my own music.
         </StyledText>
         <br />
         <StyledText>
@@ -79,7 +80,7 @@ const _AboutMeDescriptionSection: React.FC = () => {
         <StyledText>
           My projects in the past range from an interactive binaural music
           application for Android (Java) to an e-commerce website (in progress)
-          where I sell my own music.
+          where I sell my own music. More info here:{" "}
           <u>
             <Link to="/projects">projects</Link> page.
           </u>

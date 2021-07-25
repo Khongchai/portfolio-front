@@ -65,7 +65,8 @@ const ProjectAsTimelineEvent: React.FC<{
       getGridRow(
         gridColumnBeginPosition,
         gridColumnBeginPosition + gridColumnLength,
-        gridRowPos
+        gridRowPos,
+        project.title
       ),
     []
   );
