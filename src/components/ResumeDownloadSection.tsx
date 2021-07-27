@@ -27,7 +27,7 @@ export const ResumeDownloadSection: React.FC<ResumeDownloadSectionProps> = ({
         _hover={{ background: "unset" }}
         as={Link}
         target="_blank"
-        href="downloadables/khong-resume.pdf"
+        href="downloadables/khongchai-resume.pdf"
       >
         <StaticImage
           alt="download-indicator"
