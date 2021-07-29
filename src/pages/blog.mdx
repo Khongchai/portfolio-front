@@ -149,13 +149,13 @@ const result = initialVelocity * (1 / Math.pow(x * decay, 2) + 1); // harder to 
 Of course, when it comes to animations, evaluating the speed of what we are replacing is inevitable and necessary, below is what I use to compare the
 running time of the two methods.
 
-<CodeSnippet code={`const someNumber = Math.random() * 100;`} language="js" />
-
 On average both functions are about the same in terms of speed. These two evaluations return similar results when run multiple times.
 
 <CodeSnippet
   //prettier-ignore
   code={`
+  const someNumber = Math.random() * 100;
+  \r
   function withaTan() 
   {
     console.time("function-time");
@@ -352,7 +352,7 @@ main void()
 }
 \r
 `}
-  language="opengl"
+  language="glsl"
 />
 
 # 29/07/2021
