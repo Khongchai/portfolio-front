@@ -5,6 +5,7 @@ type SingleImageProps = {
   src: string;
   alt: string;
   overrideWidth?: string;
+  className?: string;
 } & (
   | {
       noPadding: true;
@@ -21,6 +22,7 @@ export const SingleImage: React.FC<SingleImageProps> = ({
   bgColor,
   noPadding,
   alt,
+  className,
   overrideWidth,
 }) => {
   return (
@@ -37,6 +39,7 @@ export const SingleImage: React.FC<SingleImageProps> = ({
         borderRadius="6px"
       >
         <Image
+          className={className}
           src={src}
           title={alt}
           borderRadius={noPadding ? "6px" : "0"}

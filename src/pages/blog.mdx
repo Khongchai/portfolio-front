@@ -7,16 +7,22 @@ import { GridContainer } from "../elements/GridContainer.tsx";
 import { Box, Image, Flex } from "@chakra-ui/react";
 import { SingleImage } from "../components/blogsMarkdown/SingleImage";
 import { CodeSnippet } from "../components/CodeSnippet.tsx";
+import EnlargedImage from "../components/EnlargedImage.tsx";
 import MathExpression from "../components/MathJax.tsx";
+import Sidebar from "../components/Sidebar.tsx";
 
 export default ({ children }) => (
-  <Flex justify="center">
-    <GridContainer width="100%" height="100%" maxWidth="2000px">
-      <Box className="markdown" gridColumn="content-begin / content-end">
-        {children}
-      </Box>
-    </GridContainer>
-  </Flex>
+  <>
+    <Sidebar backgroundColor="white" mainElemsTag="h1" />
+    <EnlargedImage />
+    <Flex justify="center">
+      <GridContainer width="100%" height="100%" maxWidth="2000px">
+        <Box className="markdown" gridColumn="content-begin / content-end">
+          {children}
+        </Box>
+      </GridContainer>
+    </Flex>
+  </>
 );
 
 <h1 style={{ textAlign: "center" }}>Welcome to my blog!</h1>
@@ -46,6 +52,7 @@ In the diagram below, you can see the initial plan I had for this portfolio, how
   src="/markdownImages/architecture-diagram.png"
   alt="khong image"
   overrideWidth="100%"
+  className="enlargeable"
 />
 
 ## Other stuff I'm learning
@@ -71,6 +78,7 @@ that I can read and watch a lot of stuff while still understanding over 50% of t
       alt="German vocab"
       maxWidth="400px"
       width="100%"
+      className="enlargeable"
     />
   </Box>
   <Box p="2rem" bg="white" borderRadius="6px">
@@ -79,6 +87,7 @@ that I can read and watch a lot of stuff while still understanding over 50% of t
       alt="French vocab"
       maxWidth="220px"
       width="100%"
+      className="enlargeable"
     />
   </Box>
 </Box>
@@ -92,6 +101,7 @@ If I have some time left later today, I might learn Math, or I might continue re
   alt="single-cover"
   src="/markdownImages/serenade-on-a-dream.jpg"
   noPadding="true"
+  className="enlargeable"
 />
 
 # 22/07/2021
@@ -133,6 +143,7 @@ const result = initialVelocity * (1 / Math.pow(x * decay, 2) + 1); // harder to 
   alt="desmos-function"
   noPadding={true}
   overrideWidth="100%"
+  className="enlargeable"
 />
 
 Of course, when it comes to animations, evaluating the speed of what we are replacing is inevitable and necessary, below is what I use to compare the
@@ -175,6 +186,7 @@ Solving Google’s problems really took away a lot of my time so today I didn’
   src="/markdownImages/google-foobar.png"
   alt="google-foobar"
   noPadding={true}
+  className="enlargeable"
   overrideWidth="100%"
 />
 
@@ -209,12 +221,14 @@ So, picking up on where I left off yesterday, I just finished setting up my back
     src="/markdownImages/django-documentation.png"
     alt="django-documentation"
     overrideWidth="600px"
+    className="enlargeable"
     noPadding={true}
   />
   <SingleImage
     src="/markdownImages/python-documentation.png"
     alt="python-documentation"
     overrideWidth="600px"
+    className="enlargeable"
     noPadding={true}
   />
 </Box>
@@ -239,12 +253,6 @@ urlpatterns = [
 `}
   language="python"
 />
-
-# 26/07/2021
-
-## What I Worked On
-
-Today I didn’t really do much other than applying for jobs and studying animation + math.
 
 # 27/07/2021
 
@@ -307,6 +315,7 @@ Contrary to all the other Blender tutorials where you are only shown how to crea
   alt="blender-screenshot"
   noPadding={true}
   overrideWidth="700px"
+  className="enlargeable"
 />
 
 ## New Idea (again)!

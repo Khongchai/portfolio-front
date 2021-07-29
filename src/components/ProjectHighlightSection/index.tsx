@@ -1,4 +1,4 @@
-import { Box, Text, Stack, Heading, Flex } from "@chakra-ui/react";
+import { Flex, Heading, Stack, Text } from "@chakra-ui/react";
 import { Link } from "gatsby";
 import React from "react";
 import { useGetHighlightedProjectsQuery } from "../../../generated/graphql";
