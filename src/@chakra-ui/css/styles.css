@@ -51,3 +51,12 @@
 .global-content-maxWidth {
   max-width: 2000px;
 }
+::-moz-selection {
+  color: white;
+  background: #e45f6b;
+}
+
+::selection {
+  color: white;
+  background: #e45f6b;
+}
