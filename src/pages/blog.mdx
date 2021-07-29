@@ -364,3 +364,58 @@ I thought I was going to be doing eCommerce today! Anyway, I didn’t. Instead, 
 ## Code Reusability
 
 A little bit about the sidebar. In one of my past projects “Journeys”, I did create one from scratch, and it was awesome! However, the code was not dependent and on the inside, it was a mess. I was not able to just take the code out and use it in other projects. This side navbar here was created with reusability in mind. The API is now clean and reusable. I can just paste the code anywhere.
+
+## Methods
+
+Code modularity is arguably one of the most important code designs out there. We can see the examples everywhere, for example, in package managers like pip and npm. The ability to
+swap things in and out without affecting other parts of the system is vital to a functional and efficient system.
+
+To make my code more modular, I had to make sure that it is self-dependent. In my previous sidebar the inner wires
+was very messy, this code depends on a bunch of other codes in 5 different folders etc. Now, it's much more organize
+and I was able to put everything into 2 files, a react component file and a css file.
+
+Everything was much faster as well thanks to the new <a target="\_blank" style={{color: "#b891ff"}} href="https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API">intersection observer</a>. By implementing this, I took basically several lines
+of unnecessary and messy codes I botched together as an alternative and it was ver performant as well.
+
+The code below is the new code snippet:
+
+<CodeSnippet
+  code={`
+export default function monitorScroll(mainElems: HTMLCollectionOf<Element>) {
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.6,
+  };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const id = entry.target.innerHTML + "-sidebar-item";
+        const sidenavItem = document.getElementById(id);
+        sidenavItem.classList.add("sidebar-inview");
+      } else {
+        const id = entry.target.innerHTML + "-sidebar-item";
+        const sidenavItem = document.getElementById(id);
+        sidenavItem.classList.remove("sidebar-inview");
+      }
+    });
+  }, observerOptions);
+\r
+  for (let i = 0, length = mainElems.length; i < length; i++) {
+    if (mainElems[i]) {
+      observer.observe(mainElems[i]);
+    }
+  }
+}
+\r
+`}
+  language="js"
+/>
+
+Now compare that to what I had before, which is this <a target="\_blank" style={{color: "#b891ff"}} href="https://github.com/Khongchai/journeys/tree/main/src/components/SideContentBar" >entire folder</a>.
+
+## In Other News
+
+In other news...German and French is really hard... I am watching a bunch of videos from the Easy German and Easy French YouTube channels.
+The Easy channels are arguably one of the best channels for learning languages I must say. They go out on the street and ask people for real.
+The only downside with this method is that native speakers just speak so damn fast.
