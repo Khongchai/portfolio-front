@@ -2,6 +2,7 @@ import * as THREE from "three";
 import { ThreejsPrototype } from "./ThreejsPrototype";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
 import addModels from "./utils/addGeometriesModels";
+import { SMAAPass } from "three/examples/jsm/postprocessing/SMAAPass";
 
 export class ThreejsGeometries extends ThreejsPrototype {
   readonly colors = {
@@ -32,6 +33,7 @@ export class ThreejsGeometries extends ThreejsPrototype {
   floor: THREE.Mesh;
   controls: OrbitControls;
   setTimeoutReset: any;
+  renderTarget: THREE.WebGLRenderTarget | THREE.WebGLMultipleRenderTargets;
 
   constructor(canvas: HTMLCanvasElement, newContainer: HTMLElement) {
     super(canvas, newContainer);

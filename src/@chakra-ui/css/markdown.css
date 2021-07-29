@@ -1,0 +1,42 @@
+.markdown h1 {
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.markdown h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.markdown h3 {
+  font-size: 1.5rem;
+}
+
+.markdown p {
+  margin: 1rem 0rem 1rem 0rem;
+  font-size: 1.5rem;
+}
+
+@media only screen and (max-width: 768px) {
+  .markdown p {
+    font-size: 1rem !important;
+  }
+  .markdown h1 {
+    font-size: 1.75rem !important;
+  }
+  .markdown h2 {
+    font-size: 1.5rem !important;
+  }
+  .markdown h3 {
+    font-size: 1.1rem !important;
+  }
+  .markdown pre {
+    white-space: inherit !important;
+  }
+}
+
+.markdown pre {
+  padding: 1.25rem;
+  border-radius: 6px;
+  white-space: pre-wrap;
+}

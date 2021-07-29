@@ -1,0 +1,357 @@
+---
+frontmatterImage:
+  - ../../static/markdownImages/architecture-diagram.png
+---
+
+import { GridContainer } from "../elements/GridContainer.tsx";
+import { Box, Image, Flex } from "@chakra-ui/react";
+import { SingleImage } from "../components/blogsMarkdown/SingleImage";
+import { CodeSnippet } from "../components/CodeSnippet.tsx";
+import MathExpression from "../components/MathJax.tsx";
+
+export default ({ children }) => (
+  <Flex justify="center">
+    <GridContainer width="100%" height="100%" maxWidth="2000px">
+      <Box className="markdown" gridColumn="content-begin / content-end">
+        {children}
+      </Box>
+    </GridContainer>
+  </Flex>
+);
+
+<h1 style={{ textAlign: "center" }}>Welcome to my blog!</h1>
+<br />
+<h3 style={{ textAlign: "center" }}>
+  Here is where I document my daily learning journey, what I have achieved and
+  the goals I am building towards.
+</h3>
+
+<br />
+<hr />
+<br />
+
+# 21/07/2021
+
+## What I Worked On
+
+Today, I just implemented the search functionality for my portfolio website. People can now conveniently look up names of technologies or names of projects.
+
+I’m combining a lot of technologies into my portfolio website, on the front, I have the static site running Gatsby deployed on Vercel. As for the back, I have deployed the code to Heroku and attached my database and redis to it. I actually struggled a lot initially as this was essentially my 3rd full-stack project, and 2nd using Docker. A lot of my questions, however, were luckily answered by looking up the documentation of the respective technology. Literally, Heroku’s documentation provided very clear and easy-to-follow steps for how to set up your backend and database and have them become functional in less than an hour.
+
+## Problem(s)
+
+In the diagram below, you can see the initial plan I had for this portfolio, however, I soon found that redis was superfluous, as urql, like Apollo, automatically cached all fetched results. So redis was eventually remove from the architecture.
+
+<SingleImage
+  src="/markdownImages/architecture-diagram.png"
+  alt="khong image"
+  overrideWidth="100%"
+/>
+
+## Other stuff I'm learning
+
+In other news, I am currently doing French and German as well. French is way too difficult when it comes to pronunciation. German, I have been studying that for almost 2 years, so it’s becoming very natural to think of stuff in German.
+
+German and French are some of the most useful languages out there, the more languages you know, the more opportunities open up. I’m currently using
+Duolingo and Pimsleur for French, memorizing new words every day. And a for German, I’m just cruising randomly now. My German is strong enough
+that I can read and watch a lot of stuff while still understanding over 50% of the content.
+
+<Box
+  display="flex"
+  placeItems="center"
+  width="100%"
+  height="fit-content"
+  m="2rem 0 2rem 0"
+  flexDir={["column", null, null, "row"]}
+  justifyContent="space-evenly"
+>
+  <Box p="2rem" mb={["1rem", null, null, 0]} bg="white" borderRadius="6px">
+    <Image
+      src="/markdownImages/german-vocab-1.png"
+      alt="German vocab"
+      maxWidth="400px"
+      width="100%"
+    />
+  </Box>
+  <Box p="2rem" bg="white" borderRadius="6px">
+    <Image
+      src="/markdownImages/french-vocab-1.png"
+      alt="French vocab"
+      maxWidth="220px"
+      width="100%"
+    />
+  </Box>
+</Box>
+
+## My Side Project
+
+I am also working on my next single called “Serenade on a Dream”, will have to double-check. It’s a 2-piece fantasy string orchestra album. I did this first thing in the morning right after French and German.
+If I have some time left later today, I might learn Math, or I might continue reading The Expanse. We’ll see.
+
+<SingleImage
+  alt="single-cover"
+  src="/markdownImages/serenade-on-a-dream.jpg"
+  noPadding="true"
+/>
+
+# 22/07/2021
+
+## What I Worked On
+
+Today, I spent my time tidying some leftover bugs for this website. As soon as I am done with the primary business logic, I will move on to the animations on the About page, reviewing in the process how to import models using Three.js and Blender.
+
+At night I will learn about Data Structures and Algorithms a bit more, more specifically, I will be reviewing how to evaluate recursive functions. A lot of the stuff I’m learning are freely available on YouTube. You can watch Nick White solves some Data Structures problems or you can watch Abdul Bari (on YouTube as well) evaluates a few recursive functions. YouTube has really evolved into a true and legitimate learning platform. A lot of the stuff I know is actually thanks to YouTube. For example, Ben Awad, an American YouTuber, uploaded one 15-hour long video teaching full-stack development using a bunch of technologies I had never even heard of before. By the time I was finished, I had become someone else. From this free video floating in the field of millions of other similar videos, I embarked with it on a journey and it led me to a better version of myself.
+
+## New Resource for German
+
+So I just found a new amazing learning resource published by the Deutsche Welle. It's a web series, available for free on YouTube called _Nicos Weg_. It goes like a mini web series.
+There are 3 episodes available, each focuses respectively on A1, A2, and B1. It's one of the best resource out there, I guarantee you! The story is not cringey and the
+actings are amazing!
+
+# 23/07/2021
+
+## What I Worked On
+
+So I ended up working on the animation today. It was a good run. I practiced a lot of valuable skills, threejs, shaders, math, algorithms, etc. Like I had to think about the inertia when users move their mouse around and I want the camera to pan with a bit of a delay. I did that in the past many times, but it was quite nice to be revisiting this again.
+
+The inertial function is probably one of my proudest algorithms that I derived all by myself. There are easier ways for sure like just downloading GSAP, call the API, and then call it a day. But the algorithm was in fact my first application of calculus and was the moment I realized how practical math is when it comes to animation. This was the main reason I decided to take on animation seriously, actually; so that I can practice my math.
+
+## Discovery
+
+I also found out accidentally that even though the functions 1/x^2 + 1 and cos(arctan(x)) can both be used to control a polynomial reduction in speed,
+the right one is way easier to write in code and gives an instant smoothness to the animation.
+
+<CodeSnippet
+  code={`
+const result = initialVelocity * Math.cos(Math.atan(x * decay)); // very easy to write and read
+const result = initialVelocity * (1 / Math.pow(x * decay, 2) + 1); // harder to write and read, not clear what + 1 is for at first
+`}
+  language="js"
+/>
+<SingleImage
+  src="/markdownImages/desmos-function.png"
+  alt="desmos-function"
+  noPadding={true}
+  overrideWidth="100%"
+/>
+
+Of course, when it comes to animations, evaluating the speed of what we are replacing is inevitable and necessary, below is what I use to compare the
+running time of the two methods.
+
+<CodeSnippet code={`const someNumber = Math.random() * 100;`} language="js" />
+
+On average both functions are about the same in terms of speed. These two evaluations return similar results when run multiple times.
+
+<CodeSnippet
+  //prettier-ignore
+  code={`
+  function withaTan() 
+  {
+    console.time("function-time");
+    Math.cos(Math.atan(someNumber));
+    console.timeEnd("function-time");
+  }
+  function withoutaTan()
+  {
+    console.time("function-time");
+    1 / Math.pow(someNumber, 2) + 1;
+    console.timeEnd("function-time");
+  }
+`}
+  language="js"
+/>
+
+# 24/07/2021
+
+## What I Worked On
+
+Today, I actually planned on setting up the backend of my eCommerce with Django, but serendipitously (for me, not for the project), I got an invitation from google foobar to do their challenges so I ended up doing that for 6 hours straight. By the time I finished, it was already night time and I could only do like, maybe one more thing + writing this blog before bedtime so I studied Linear Algebra, more specifically trying to wrap my mind around the change of basis topic. 3Blue1Brown’s vid on this topic is really amazing!
+
+Also, I think the 2nd piece of my single is mostly ready, just added some Bulgarian choir and extended the ending a bit. The piece is now more than 6 minutes in length!
+
+Solving Google’s problems really took away a lot of my time so today I didn’t really have the chance to review most of the materials I studied in the morning. Aber das war es wert. Ich hab meine Datenstrukturen und Algorithmen geübt, und das hat viel Spaß gemacht.
+
+<SingleImage
+  src="/markdownImages/google-foobar.png"
+  alt="google-foobar"
+  noPadding={true}
+  overrideWidth="100%"
+/>
+
+# 25/07/2021
+
+## Waht I Worked On
+
+Today’s blog is a little different, I’m writing this in the morning so I’ll talk about the plan I have for the day instead.
+
+I think I will postpone further challenges from Google to tomorrow, as I think I should really deal with what I set out to do first with the eCommerce project. Plus, that is also something that people will actually use to buy some of my tracks. As of now, the only way is through emails and it’s not very convenient, as you can imagine.
+
+So I studied French and German already. I watched the Nicos Weg A2 on YouTube and I had to basically pause after every sentence. It was brutal, taking in so much information at the same time. But c’est maintenant ou jamais, oder?
+
+If I have some time left at night, after working out, I will probably do Linear Algebra a bit more, I really want to know was sind wirklich die Eigenwerten und Eigenvektoren.
+
+I will write about Linear Albegra in details tomrrow. Today, everything is still all over the place.
+
+**Later at night**
+
+So, picking up on where I left off yesterday, I just finished setting up my backend for my eCommerce project. It had been a while since the last time I touched Django-Graphene, so I had to consult the documentation quite a lot. But, as I said earlier, documentation is your friend. Everything the program or software is capable of doing is most likely in there somewhere. Nowadays, a lot of documentation sites are using Docusauraus, and the native search tool is just downright amazing. There is simply no excuse to not look at the documentation first before proceeding. Well, maybe except for Python. Their documentation sucks. It’s like people who worked on Python are too lazy to put a lot of work into making the documentation more readable. The best one in this regard, for me, would have to be Django.
+
+<Box
+  display="flex"
+  placeItems="center"
+  width="100%"
+  height="fit-content"
+  m="2rem 0 2rem 0"
+  flexDir={["column", null, null, "row"]}
+  justifyContent="space-evenly"
+>
+  <SingleImage
+    src="/markdownImages/django-documentation.png"
+    alt="django-documentation"
+    overrideWidth="600px"
+    noPadding={true}
+  />
+  <SingleImage
+    src="/markdownImages/python-documentation.png"
+    alt="python-documentation"
+    overrideWidth="600px"
+    noPadding={true}
+  />
+</Box>
+
+# 26/07/2021
+
+## What I Worked On
+
+So today I spent over ten hours in Graphene docs and VSCode, trying to layout the basic structure for my site. The thing is, it would have been way easier had I not had a problem with Django’s csrf mechanism blocking my frontend from accessing the data. I spent a lot of time trying to find out how to include the csrf cookies into my request headers, but all that came up was Django’s own method, which does not work with a server-side rendered framework like Next.js.
+
+## Discovery
+
+In the end, I realized that maybe it was my own misunderstanding of the technology that led me astray and cost me a lot of time, so I looked up the definition of CORS and CSRF and true enough, I got them mixed up. Cors was what I set up for my other side and CSRF, I basically did nothing while I was using Node, because I want using the authentication cookie anyway so csrf cookie became unnecessary. I basically just turned csrf off and called it a day.
+
+<CodeSnippet
+  code={`
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    #Change graphiql to false if you do not want to use the GraphiQL API browser
+    path('graphql', csrf_exempt(GraphQLView.as_view(graphiql=True, schema=schema)))
+]
+`}
+  language="python"
+/>
+
+# 26/07/2021
+
+## What I Worked On
+
+Today I didn’t really do much other than applying for jobs and studying animation + math.
+
+# 27/07/2021
+
+## What I Worked On
+
+I have decided to take the day off from coding and focused a bit more on Animation and Math, more specifically eigenvectors and eigenvalues.
+
+## Eigenvectors and Eigenvalues
+
+I will take this opportunity to write out an overview out what I have learned. A pretty good way of reviewing materials, if you ask me.
+
+Eigenvectors of a transformation are special vectors who do not get knocked off of their own span.
+In any linear transformation, any vector that does not get knocked off its original span before the transformation is applied is called Eigenvectors.
+
+The eigenvectors ended up being stretched instead by some numbers. The “stretch/squish factors” associated with each of the Eigenvectors are called eigenvalues.
+An eigenvalue tells us what happens to the associated eigenvector after a transformation. For example, an eigenvalue of -½ implies a flip and then a ½ squish. All while staying on its own line without getting rotated off of it.
+
+**Now, the most important question. Why do we need this?**
+
+Think about a 3d transformation -- for example, a rotation. An Eigenvector of any 3d rotation is essentially its axis of rotation.
+
+Watch the video and notice how before, during, and after the transformation, the pink arrow stays at the same spot on the surface of the top side of the cube: https://youtu.be/PFDu9oVAE-g (the eigenvalue here is also 1, because the rotation never stretches or squishes anything).
+
+## The Mathematic Definition
+
+So as we can see, an eigenvector will end up being stretch or squished instead of pushed of its original position. This is the same, from the perspective of that vector, as being multiplied by a scalar. This can be expressed mathematically as:
+
+<MathExpression mathExpression="(A - lambda)vec v = vec 0 " />
+
+Where Λ (eigenvalue) is just a scalar.
+To test whether a vector is an Eigenvector of a matrix or not, we can verify if the product of the said vector and matrix equals the product of that vector and some scalar. In the example below, we can see that the matrix-vector multiplication gives out the same result as the product of the vector-scalar multiplication, where the scalar equals -2.
+
+However, our equation is not yet complete. The left side is a matrix-vector multiplication whereas the right side is the scalar-vector multiplication.
+
+We will have to re-write either side somehow without changing the value of either side. One way we can do that is by multiplying the right side by an identity matrix. This would be like multiplying something by 1. The value does not change, but we have typecasted the number lambda into something more appropriate.
+
+<MathExpression mathExpression="(A - lambdaI)vec v = vec 0" />
+
+What we want now is a non-zero v (eigenvector) whose product between it and the left hand (A – lambdaI) equals 0.
+Well, if we can’t make v = 0 then the matrix on the left will have to be 0 instead. And the only way for that to be equals to 0 is only if the transformation associated with that matrix squishes space into a lower dimension:
+
+<MathExpression mathExpression="det(M) = 0" />
+
+# 28/07/2021
+
+## What I Worked on
+
+I still haven’t gotten back to my eCommerce project. I spent some more time today learning animation. The courses that I am following in this regard are Three.js-Journeys by Bruno Simon and the beginner Blender Tutorial course from CG fast track. You will have to pay for the former while the latter is completely free and is on YouTube.
+
+## Threejs
+
+The lesson today was about the post-processing effect. While I had already used this a few times before, this lesson was still a good refresher and also taught me a few fundamentals a couldn’t quite wrap my head around, for example, the renderTarget pipeline and the fact that ShaderMaterial can also be used for a post-processing past as well.
+
+## Blender
+
+Contrary to all the other Blender tutorials where you are only shown how to create donuts or something that involves simple primitives. This tutorial shows you how to create a sword! In basically involves every fundamental you will ever need for your first few weeks using this software. I followed this tutorial for a few weeks, but then something came up. Looking forward to going back sometime in the near future!
+
+<SingleImage
+  src="markdownImages/blender-screenshot.png"
+  alt="blender-screenshot"
+  noPadding={true}
+  overrideWidth="700px"
+/>
+
+## New Idea (again)!
+
+As I was fooling around with threejs earlier today, I realized that I could actually make a linear algebra calculator using threejs! The animations used on 3Blue1Brown YouTube channel are one of the best math animations out there and I’m sure it has helped millions (you can also tell by the number of views). Making my visual linear algebra calculator would not only be a nice practice project for me but would also be helpful for anybody trying to learn the topic as well!
+
+Here's where I am currently with the linear algebra calculator. I'm using fragment, but maybe I should be using vertex.
+
+<CodeSnippet
+  code={`
+main void()
+{
+  varying vec2 vUv;
+  \r
+  vec2 centeredUv = vec2(vUv - 0.5);
+  \r
+  //shear
+  //values below corresponds to matrix
+  centeredUv.x +=  centeredUv.y * 0.0;
+  centeredUv.y += centeredUv.x * 0.0;
+  \r
+  //Zoom
+  centeredUv.x /= 1.0;
+  centeredUv.y /= 1.0;
+  \r
+  float gridCrowdedness = 50.0;
+  float vertical_line = step(0.1, mod(centeredUv.x * gridCrowdedness, 5.0));
+  float horizontal_line  = step(0.2, mod(centeredUv.y * gridCrowdedness, 5.0));
+  float grid = vertical_line * horizontal_line;
+  vec2 grid2d = vec2(grid);
+  \r
+  gl_FragColor = vec4(grid2d.x, grid2d.y, grid,1.0);
+  // gl_FragColor = vec4(vec3(centeredUv.y), 1.0);
+}
+\r
+`}
+  language="opengl"
+/>
+
+# 29/07/2021
+
+## What I Worked on
+
+I thought I was going to be doing eCommerce today! Anyway, I didn’t. Instead, I worked on this blog, putting all the info here and the sidebar you are seeing on the right side.
+
+## Code Reusability
+
+A little bit about the sidebar. In one of my past projects “Journeys”, I did create one from scratch, and it was awesome! However, the code was not dependent and on the inside, it was a mess. I was not able to just take the code out and use it in other projects. This side navbar here was created with reusability in mind. The API is now clean and reusable. I can just paste the code anywhere.

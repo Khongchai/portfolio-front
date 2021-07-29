@@ -1,29 +1,31 @@
-
-import * as React from "react"
-import { Link } from "gatsby"
+import * as React from "react";
+import { Link } from "gatsby";
+import { Button } from "@chakra-ui/react";
 
 // styles
 const pageStyles = {
-  color: "#232129",
+  color: "white",
   padding: "96px",
   fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
+  display: "grid",
+  placeItems: "center",
+};
 const headingStyles = {
   marginTop: 0,
   marginBottom: 64,
   maxWidth: 320,
-}
+};
 
 const paragraphStyles = {
   marginBottom: 48,
-}
+};
 const codeStyles = {
   color: "#8A6534",
   padding: 4,
   backgroundColor: "#FFF4DB",
   fontSize: "1.25rem",
   borderRadius: 4,
-}
+};
 
 // markup
 const NotFoundPage = () => {
@@ -46,10 +48,12 @@ const NotFoundPage = () => {
           </>
         ) : null}
         <br />
-        <Link to="/">Go home</Link>.
+        <Button bg="green" _hover={{ background: "green.400" }}>
+          <Link to="/">Go home</Link>.
+        </Button>
       </p>
     </main>
-  )
-}
+  );
+};
 
-export default NotFoundPage
+export default NotFoundPage;

@@ -3,6 +3,7 @@ import "@fontsource/open-sans";
 import "../css/animation.css";
 import "../fonts/stylesheet.css";
 import "../css/styles.css";
+import "../css/markdown.css";
 
 const theme = {
   fonts: {

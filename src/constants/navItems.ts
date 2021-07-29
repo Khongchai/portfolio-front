@@ -16,7 +16,7 @@ export const navItems: Array<NavItems> = [
     href: "/about#resume-section",
   },
   {
-    label: "Contact",
-    href: "#contact",
+    label: "Blog",
+    href: "/blog",
   },
 ];
