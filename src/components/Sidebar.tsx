@@ -71,6 +71,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         <List
           onClick={isOpen ? (e) => e.stopPropagation() : null}
           opacity={isOpen ? 1 : 0}
+          pointerEvents={isOpen ? "unset" : "none"}
           color="black"
           whiteSpace="nowrap"
           transition=".1s"
