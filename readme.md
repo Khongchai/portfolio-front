@@ -4,7 +4,7 @@
 
 Visit: https://khong.xyz
 
-You might have to wait a bit for heroku's dyno to wake up. I'm broke, sorry D:
+You might have to wait a bit for heroku's dyno to wake up. I'm broke and can only afford the free tier, sorry D:
 
 ## Main tech used to built the site
 
