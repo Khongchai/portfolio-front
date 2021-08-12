@@ -1,4 +1,14 @@
-import { Box, Grid, Heading, Stack, Text } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Grid,
+  Heading,
+  Image,
+  Link,
+  Stack,
+  Text,
+} from "@chakra-ui/react";
+import { invertScale } from "framer-motion/types/value/use-inverted-scale";
 import { StaticImage } from "gatsby-plugin-image";
 import React, { useState } from "react";
 import { useGetTechnologiesAssignedToRoleQuery } from "../../generated/graphql";
@@ -140,6 +150,38 @@ const IndexPage = () => {
       <Box css={{ "> *": { marginTop: "2rem" } }}>
         <AboutMeBanner />
         <ResumeDownloadSection />
+        <Button
+          bg="black"
+          border="1px solid white"
+          as={Link}
+          title="webring (วงแหวนเว็บ)"
+          href="https://webring.wonderful.software/#/khong.xyz"
+          width="32px"
+          height="32px"
+          p="2rem"
+          target="_blank"
+          display="block"
+          margin="0 auto"
+          position="relative"
+          _hover={{ filter: "invert(1)" }}
+          transition=".3s"
+        >
+          <Image
+            transition=".3s"
+            _hover={{ filter: "" }}
+            position="absolute"
+            left="0"
+            right="0"
+            bottom="0"
+            top="0"
+            margin="auto"
+            maxWidth="32px"
+            alt="webring (วงแหวนเว็บ)"
+            width="32px"
+            filter="invert(1)"
+            src="https://webring.wonderful.software/webring.black.svg"
+          />
+        </Button>
       </Box>
     </>
   );

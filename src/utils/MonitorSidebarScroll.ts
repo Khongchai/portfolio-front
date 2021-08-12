@@ -9,11 +9,11 @@ export default function monitorScroll(mainElems: HTMLCollectionOf<Element>) {
       if (entry.isIntersecting) {
         const id = entry.target.innerHTML + "-sidebar-item";
         const sidenavItem = document.getElementById(id);
-        sidenavItem.classList.add("sidebar-inview");
+        sidenavItem?.classList.add("sidebar-inview");
       } else {
         const id = entry.target.innerHTML + "-sidebar-item";
         const sidenavItem = document.getElementById(id);
-        sidenavItem.classList.remove("sidebar-inview");
+        sidenavItem?.classList.remove("sidebar-inview");
       }
     });
   }, observerOptions);
