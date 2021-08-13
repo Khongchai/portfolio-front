@@ -155,7 +155,7 @@ const IndexPage = () => {
           border="1px solid white"
           as={Link}
           title="webring (วงแหวนเว็บ)"
-          href="https://webring.wonderful.software/#/khong.xyz"
+          href="https://webring.wonderful.software#khong.xyz"
           width="32px"
           height="32px"
           p="2rem"
