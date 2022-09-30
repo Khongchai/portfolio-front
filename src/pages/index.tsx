@@ -75,7 +75,7 @@ const IndexPage = () => {
               <Text>This website is kind of out of date.</Text>
               <Text>I promise I'll update it as soon as I can :)</Text>
               <Text>
-                For now, you check out my{" "}
+                For now, you can check out my{" "}
                 <Link
                   target="_blank"
                   color="#f99f35"
