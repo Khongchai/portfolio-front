@@ -4,18 +4,18 @@ import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { navItems } from "../../constants/navItems";
 
-interface indexProps {}
+interface indexProps { }
 
 type ContactItem = {
   label: string;
   href: string;
 };
 
-export const Footer: React.FC<indexProps> = ({}) => {
+export const Footer: React.FC<indexProps> = ({ }) => {
   const contactItems: Array<ContactItem> = [
     {
-      label: "World1955@hotmail.com",
-      href: `mailto:world1955@hotmail.com`,
+      label: "postmessage@khong.xyz",
+      href: `mailto:postmessage@khong.xyz`,
     },
     {
       label: "Github",

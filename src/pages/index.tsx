@@ -8,7 +8,6 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { invertScale } from "framer-motion/types/value/use-inverted-scale";
 import { StaticImage } from "gatsby-plugin-image";
 import React, { useState } from "react";
 import { useGetTechnologiesAssignedToRoleQuery } from "../../generated/graphql";
