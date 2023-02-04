@@ -40,14 +40,9 @@ function offLeftCheck(timelineLeft: number): boolean {
 }
 
 function resetRightPosition(timeline: HTMLElement) {
-  const yearElements = document.getElementsByClassName("year-elements");
-  const lastYearElements = yearElements[yearElements.length - 1];
-  setScrollPositionToYearX(lastYearElements as HTMLElement, timeline);
+  setScrollPositionToYearX(timeline, "end");
 }
 
 function resetLeftPosition(timeline: HTMLElement) {
-  const year2018Element = document.getElementById("year-2018-element");
-  if (year2018Element) {
-    setScrollPositionToYearX(year2018Element, timeline);
-  }
+  setScrollPositionToYearX(timeline, "start");
 }

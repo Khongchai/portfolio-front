@@ -138,16 +138,6 @@ function slowDownUntil0(hasDragged: boolean) {
   //prettier-ignore
   const result = initialVelocity * Math.cos(Math.atan(timeDifference * decay));
 
-  // TODO change <<result>> to the difference
-  // if (!stopAnimationAfterThisPercentage) {
-  //   stopAnimationAfterThisPercentage = 0.1;
-  // } else {
-  //   const throttledValueInPercentage = Math.abs(initialVelocity / result);
-  //   if (throttledValueInPercentage < stopAnimationAfterThisPercentage) {
-  //     return;
-  //   }
-  // }
-
   const resultRounded = Math.round(result * 10) / 10;
   firstResult = firstResult ? firstResult : resultRounded;
 

@@ -1,9 +1,11 @@
 export default function setScrollPositionToYearX(
-  yearXElement: HTMLElement,
-  eventsContainer: HTMLElement
+  eventsContainer: HTMLElement,
+  position: "start" | "end",
 ) {
-  const yearXElementPosition = yearXElement.getBoundingClientRect().left;
   eventsContainer.style.transition = "transform .5s";
-  const translateVal = `translateX(-${yearXElementPosition}px)`;
+  const pos = position === "start" ? 0 : eventsContainer.offsetWidth - window.innerWidth;
+  const translateVal = `translateX(-${pos}px)`;
   eventsContainer.style.transform = translateVal;
 }
+
+
