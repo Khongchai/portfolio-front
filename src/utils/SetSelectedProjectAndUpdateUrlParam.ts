@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import { ProjectEntity } from "../../generated/graphql";
 
 export function setSelectedProjectAndUpdateUrlParamAndLocalStorage(
-  setSelectedProject: Dispatch<SetStateAction<ProjectEntity>>,
+  setSelectedProject: Dispatch<SetStateAction<ProjectEntity | null>>,
   project: ProjectEntity
 ) {
   const newParam = `${window.location.pathname}?selection=${project.title}`;

@@ -32,106 +32,106 @@ const ProjectAsTimelineEvent: React.FC<{
   setLastEventRendered,
   isLastProj,
 }) => {
-  useEffect(() => {
-    if (isLastProj) {
-      setLastEventRendered(true);
-    }
-  }, []);
+    useEffect(() => {
+      if (isLastProj) {
+        setLastEventRendered(true);
+      }
+    }, []);
 
-  const projectEndDate = {
-    month: parseInt(project.endDate?.split("-")[1] as any),
-    year: parseInt(project.endDate?.split("-")[0] as any),
-  };
-  const projectBeginDate = {
-    month: parseInt(project.startDate.split("-")[1]),
-    year: parseInt(project.startDate.split("-")[0]),
-  };
-  const projectStartYear = parseInt(project?.startDate.split("-")[0]);
-  const numberOfMonths = 12;
-  const firstColumnPosition = 1;
-  const gridColumnBeginPosition = useMemo(
-    () =>
-      (projectStartYear - firstYearInTimeline) * numberOfMonths +
-      firstColumnPosition +
-      projectBeginDate.month,
-    []
-  );
-  const gridColumnLength = useMemo(
-    () => getGridColumnLength(projectBeginDate, projectEndDate, project.title),
-    []
-  );
-  const gridRow = useMemo(
-    () =>
-      getGridRow(
-        gridColumnBeginPosition,
-        gridColumnBeginPosition + gridColumnLength,
-        gridRowPos,
-        project.title
-      ),
-    []
-  );
+    const projectEndDate = {
+      month: parseInt(project.endDate?.split("-")[1] as any),
+      year: parseInt(project.endDate?.split("-")[0] as any),
+    };
+    const projectBeginDate = {
+      month: parseInt(project.startDate.split("-")[1]),
+      year: parseInt(project.startDate.split("-")[0]),
+    };
+    const projectStartYear = parseInt(project?.startDate.split("-")[0]);
+    const numberOfMonths = 12;
+    const firstColumnPosition = 1;
+    const gridColumnBeginPosition = useMemo(
+      () =>
+        (projectStartYear - firstYearInTimeline) * numberOfMonths +
+        firstColumnPosition +
+        projectBeginDate.month,
+      []
+    );
+    const gridColumnLength = useMemo(
+      () => getGridColumnLength(projectBeginDate, projectEndDate, project.title),
+      []
+    );
+    const gridRow = useMemo(
+      () =>
+        getGridRow(
+          gridColumnBeginPosition,
+          gridColumnBeginPosition + gridColumnLength,
+          gridRowPos,
+          project.title
+        ),
+      []
+    );
 
-  const projectBeginDay = parseInt(project.startDate.split("-")[2]);
-  const extraDayOffsetInPixels = useMemo(
-    () => getExtraDayOffset(projectBeginDay, oneMonthLengthInPixels),
-    []
-  );
+    const projectBeginDay = parseInt(project.startDate.split("-")[2]);
+    const extraDayOffsetInPixels = useMemo(
+      () => getExtraDayOffset(projectBeginDay, oneMonthLengthInPixels),
+      []
+    );
 
-  const projIdAsString = `${project.id}`;
+    const projIdAsString = `${project.id}`;
 
-  return (
-    <>
-      <Box
-        gridRow={`${gridRow} / events-container-bottom`}
-        gridColumn={gridColumnBeginPosition}
-        width="2px"
-        transform={`translateX(${extraDayOffsetInPixels})`}
-        bgColor="#828282"
-        className="project-event-time-indicator"
-        id={`${projIdAsString}-time-indicator`}
-        data-cy="project-as-timeline-event"
-      />
-      <Flex
-        id={projIdAsString}
-        className="project-events"
-        bg="#2C2B2B"
-        onMouseOver={() => {
-          setProjectAndIndicatorFocusColor(projIdAsString);
-          revealTitleIfWidthLessThanTitle(projIdAsString);
-        }}
-        onMouseOut={() => {
-          removeProjectAndIndicatorFocusColor(projIdAsString);
-          resetWidthIfWidthNotOriginal(projIdAsString);
-        }}
-        onClick={(e) => {
-          e.stopPropagation();
-          setSelectedProjectAndUpdateUrlParamAndLocalStorage(
-            setSelectedProject,
-            project
-          );
-        }}
-        zIndex="2"
-        transform={`translateX(${extraDayOffsetInPixels})`}
-        gridColumn={`${gridColumnBeginPosition} / span ${gridColumnLength}`}
-        transition="width .1s"
-        gridRow={gridRow}
-        placeItems={"center"}
-        borderRadius="0 8px 8px 0"
-        overflow="hidden"
-        fontSize="0.9rem"
-        p="0.1em 0.3em 0.1em 1em"
-        cursor="pointer"
-      >
-        <Text
-          pointerEvents="none"
-          className="project-event-title"
-          id={`${projIdAsString}-title`}
+    return (
+      <>
+        <Box
+          gridRow={`${gridRow} / events-container-bottom`}
+          gridColumn={gridColumnBeginPosition}
+          width="2px"
+          transform={`translateX(${extraDayOffsetInPixels})`}
+          bgColor="#828282"
+          className="project-event-time-indicator"
+          id={`${projIdAsString}-time-indicator`}
+          data-cy="project-as-timeline-event"
+        />
+        <Flex
+          id={projIdAsString}
+          className="project-events"
+          bg="#2C2B2B"
+          onMouseOver={() => {
+            setProjectAndIndicatorFocusColor(projIdAsString);
+            revealTitleIfWidthLessThanTitle(projIdAsString);
+          }}
+          onMouseOut={() => {
+            removeProjectAndIndicatorFocusColor(projIdAsString);
+            resetWidthIfWidthNotOriginal(projIdAsString);
+          }}
+          onClick={(e) => {
+            e.stopPropagation();
+            setSelectedProjectAndUpdateUrlParamAndLocalStorage(
+              setSelectedProject,
+              project
+            );
+          }}
+          zIndex="2"
+          transform={`translateX(${extraDayOffsetInPixels})`}
+          gridColumn={`${gridColumnBeginPosition} / span ${gridColumnLength}`}
+          transition="width .1s"
+          gridRow={gridRow}
+          placeItems={"center"}
+          borderRadius="0 8px 8px 0"
+          overflow="hidden"
+          fontSize="0.9rem"
+          p="0.1em 0.3em 0.1em 1em"
+          cursor="pointer"
         >
-          {project.title}
-        </Text>
-      </Flex>
-    </>
-  );
-};
+          <Text
+            pointerEvents="none"
+            className="project-event-title"
+            id={`${projIdAsString}-title`}
+          >
+            {project.title}
+          </Text>
+        </Flex>
+      </>
+    );
+  };
 
 export default ProjectAsTimelineEvent;

@@ -27,7 +27,7 @@ export function getGridColumnLength(
           4. 12 + (-3)
           5. 9 months
       */
-  if (!end.year || !end.month) {
+  if ([end.year, end.month].includes(null)) {
     /*
         If ending date is not defined, project is not finished
         extend to current date
@@ -45,9 +45,10 @@ export function getGridColumnLength(
     );
     return todayAsEndDate;
   }
+
   const numberOfMonths = 12;
-  const yearSubtractionResult = (end.year - start.year) * numberOfMonths;
-  const monthSubtractionResult = end.month - start.month;
+  const yearSubtractionResult = (end.year! - start.year) * numberOfMonths;
+  const monthSubtractionResult = end.month! - start.month;
   const monthLength = yearSubtractionResult + monthSubtractionResult;
 
   /* 
