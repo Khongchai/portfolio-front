@@ -5,9 +5,9 @@ import { useGetHighlightedProjectsQuery } from "../../../generated/graphql";
 import { GridContainer } from "../../elements/GridContainer";
 import ProjectDetails from "../shared/ProjectDetails";
 
-interface ProjectHighlightsSectionProps {}
+interface ProjectHighlightsSectionProps { }
 
-export const ProjectHighlightsSection: React.FC<ProjectHighlightsSectionProps> = ({}) => {
+export const ProjectHighlightsSection: React.FC<ProjectHighlightsSectionProps> = ({ }) => {
   const [{ data, fetching }] = useGetHighlightedProjectsQuery();
   const highlightedProjects = data?.getHighlightedProjects;
 
@@ -25,7 +25,7 @@ export const ProjectHighlightsSection: React.FC<ProjectHighlightsSectionProps> =
               <Heading ml={["1rem", null, null, 0]} size="lg">
                 MY PROJECTS
               </Heading>
-              {highlightedProjects.map((project) => {
+              {highlightedProjects?.map((project) => {
                 return <ProjectDetails key={project.title} project={project} />;
               })}
               <Text to="/projects" textAlign="center" as={Link}>

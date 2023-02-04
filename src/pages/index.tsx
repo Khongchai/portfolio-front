@@ -67,25 +67,9 @@ const IndexPage = () => {
                 letterSpacing={["unset", null, "6px"]}
                 zIndex="6"
               >
-                I'm Khong, a web dev whose <br /> fiery passions are all about{" "}
-                <br /> coding and new innovations
+                I am Khong and I am really, really, really passionate about programming.
               </Heading>
               <Box paddingTop="1rem" />
-              <Text>This website is kind of out of date.</Text>
-              <Text>I promise I'll update it as soon as I can :)</Text>
-              <Text>
-                For now, you can check out my{" "}
-                <Link
-                  target="_blank"
-                  color="#f99f35"
-                  href="https://github.com/khongchai"
-                >
-                  <u>
-                    <b> GitHub</b>
-                  </u>
-                </Link>
-                . Thanks!
-              </Text>
             </Box>
             <Stack
               opacity={[0.8, null, null, 1]}
