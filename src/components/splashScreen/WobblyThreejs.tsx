@@ -137,7 +137,7 @@ export const WobblyThreejs: React.FC<{
 
       //Oscilate between 0 and 1.5
       //prettier-ignore
-      const f = Math.sin(5*elapsedTime)
+      const f = Math.sin(5 * elapsedTime)
       bloomPass.strength = f - Math.floor(f) + 0.5;
 
       composer.render();

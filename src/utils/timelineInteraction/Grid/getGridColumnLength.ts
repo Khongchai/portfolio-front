@@ -7,6 +7,7 @@ interface StartDate {
   month: number;
   year: number;
 }
+
 export function getGridColumnLength(
   start: StartDate,
   end: EndDate,
@@ -27,28 +28,11 @@ export function getGridColumnLength(
           4. 12 + (-3)
           5. 9 months
       */
-  if ([end.year, end.month].includes(null)) {
-    /*
-        If ending date is not defined, project is not finished
-        extend to current date
-       */
-    const now = new Date();
-    const thisMonth = now.getMonth();
-    const thisYear = now.getFullYear();
-    const todayAsEndDate = getGridColumnLength(
-      start,
-      {
-        month: thisMonth,
-        year: thisYear,
-      },
-      title
-    );
-    return todayAsEndDate;
-  }
 
+  const now = new Date();
   const numberOfMonths = 12;
-  const yearSubtractionResult = (end.year! - start.year) * numberOfMonths;
-  const monthSubtractionResult = end.month! - start.month;
+  const yearSubtractionResult = ((end.year ?? now.getFullYear()) - start.year) * numberOfMonths;
+  const monthSubtractionResult = (end.month ?? now.getMonth())! - start.month;
   const monthLength = yearSubtractionResult + monthSubtractionResult;
 
   /* 
