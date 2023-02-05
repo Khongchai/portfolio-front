@@ -83,21 +83,25 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
               spacing="1.5rem"
             >
               <Flex flexDir={["column", null, "row"]}>
-                <Button
-                  width="fit-content"
-                  margin="0 auto"
-                  mr={["auto", null, "1rem"]}
-                  bg="transparent"
-                  border="1px solid white"
-                  as={Link}
-                  textDecor="none !important"
-                  target="_blank"
-                  pointerEvents={project.websiteLink ? "auto" : "none"}
-                  href={project.websiteLink}
-                  mb={["0.75rem", null, "0"]}
-                >
-                  {project.websiteLink ? "VIEW WEBSITE" : "WEB NOT DEPLOYED"}
-                </Button>
+                {
+                  project.websiteLink ?
+                    <Button
+                      width="fit-content"
+                      margin="0 auto"
+                      mr={["auto", null, "1rem"]}
+                      bg="transparent"
+                      border="1px solid white"
+                      as={Link}
+                      textDecor="none !important"
+                      target="_blank"
+                      pointerEvents={project.websiteLink ? "auto" : "none"}
+                      href={project.websiteLink}
+                      mb={["0.75rem", null, "0"]}
+                    >
+                      VIEW WEBSITE
+                    </Button> : <></>
+                }
+
                 <Button
                   width="fit-content"
                   margin="0 auto"
@@ -127,14 +131,18 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
                     />
                   </Link>
                 ) : null}
-                <Link href={project.githubLink} target="_blank">
-                  <Img
-                    src="/logos/github.png"
-                    filter="invert(1)"
-                    alt="github logo"
-                    h="30px"
-                  />
-                </Link>
+                {
+                  project.githubLink ?
+                    <Link href={project.githubLink} target="_blank">
+                      <Img
+                        src="/logos/github.png"
+                        filter="invert(1)"
+                        alt="github logo"
+                        h="30px"
+                      />
+                    </Link>
+                    : <></>
+                }
               </Flex>
             </Stack>
           </Stack>

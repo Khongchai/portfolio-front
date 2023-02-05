@@ -40,7 +40,7 @@ function down(e: MouseEvent | TouchEvent) {
     block?.addEventListener("mousemove", drag);
   } else {
     initialX = (e as TouchEvent).touches[0].clientX;
-    block?.addEventListener("touchmove", drag);
+    block?.addEventListener("touchmove", drag, { passive: false });
   }
   if (block) {
     block.style.transition = "";
