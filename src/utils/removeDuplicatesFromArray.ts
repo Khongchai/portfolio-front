@@ -1,6 +1,6 @@
-export default function removeDuplicatesFromArray(array: any[]): any[] {
-  const filteredArray = [];
-  const hashCheck = [];
+export default function removeDuplicatesFromArray(array: number[]): number[] {
+  const filteredArray: number[] = [];
+  const hashCheck: boolean[] = [];
 
   for (let i = 0, length = array.length; i < length; i++) {
     const indexedItem = hashCheck[array[i]];

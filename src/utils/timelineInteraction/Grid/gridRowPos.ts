@@ -1,7 +1,1 @@
-export interface GridRowPos {
-  first: number;
-  second: number;
-  third: number;
-  fourth: number;
-  fifth: number;
-}
+export type GridRowPos = { begin: number, end: number }[];

@@ -16,21 +16,23 @@ import resetWidthIfWidthNotOriginal from "../../utils/timelineInteraction/resetW
 const ProjectAsTimelineEvent: React.FC<{
   project: ProjectEntity;
   firstYearInTimeline: number;
-  gridRowPos: GridRowPos;
   oneMonthLengthInPixels: string;
   setSelectedProject: React.Dispatch<
     React.SetStateAction<ProjectEntity | null>
   >;
   setLastEventRendered: React.Dispatch<React.SetStateAction<boolean>>;
   isLastProj: boolean;
+  gridRowPos: GridRowPos;
+  setGridRowPos: React.Dispatch<React.SetStateAction<GridRowPos>>;
 }> = ({
+  setGridRowPos,
   firstYearInTimeline,
   oneMonthLengthInPixels,
   project,
-  gridRowPos,
   setSelectedProject,
   setLastEventRendered,
   isLastProj,
+  gridRowPos,
 }) => {
     useEffect(() => {
       if (isLastProj) {
@@ -38,9 +40,12 @@ const ProjectAsTimelineEvent: React.FC<{
       }
     }, []);
 
-    const projectEndDate = {
-      month: parseInt(project.endDate?.split("-")[1] as any),
-      year: parseInt(project.endDate?.split("-")[0] as any),
+    const projectEndDate = project.endDate ? {
+      month: parseInt(project.endDate!.split("-")[1] as any),
+      year: parseInt(project.endDate!.split("-")[0] as any),
+    } : {
+      month: new Date().getMonth(),
+      year: new Date().getFullYear(),
     };
     const projectBeginDate = {
       month: parseInt(project.startDate.split("-")[1]),
@@ -66,7 +71,8 @@ const ProjectAsTimelineEvent: React.FC<{
           gridColumnBeginPosition,
           gridColumnBeginPosition + gridColumnLength,
           gridRowPos,
-          project.title
+          setGridRowPos,
+          project.title,
         ),
       []
     );

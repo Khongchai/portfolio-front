@@ -3,8 +3,10 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import {
   AllProjectsNotPaginatedQuery,
   ProjectEntity,
+  ProjectsQuery,
 } from "../../../generated/graphql";
 import removeDuplicatesFromArray from "../../utils/removeDuplicatesFromArray";
+import { GridRowPos } from "../../utils/timelineInteraction/Grid/gridRowPos";
 import manageBlockMove from "../../utils/timelineInteraction/manageBlockMove";
 import setFocusOnChange from "../../utils/timelineInteraction/setFocusOnChange";
 import setScrollPositionToYearX from "../../utils/timelineInteraction/setScrollPositionToYearX";
@@ -12,7 +14,7 @@ import ProjectAsTimelineEvent from "./ProjectAsTimelineEvent";
 import Years from "./Years";
 
 interface TimelineProps {
-  data: AllProjectsNotPaginatedQuery | undefined;
+  data: ProjectsQuery | undefined;
   setSelectedProject: React.Dispatch<
     React.SetStateAction<ProjectEntity | null>
   >;
@@ -27,16 +29,16 @@ const Timeline: React.FC<TimelineProps> = ({
   setSelectedProject,
   selectedProject,
 }) => {
-  const years = useMemo(() => {
+  const years: number[] | undefined = useMemo(() => {
     if (data) {
-      const allYears = data.allProjectsNotPaginated.map((proj) =>
-        //date format = yyyy-mm-dd
-        {
-          const [yearStart] = proj.startDate.split("-");
-          return parseInt(yearStart);
-        }
+      const allYears = data?.projects.projects.map((proj) =>
+      //date format = yyyy-mm-dd
+      {
+        const [yearStart] = proj.startDate.split("-");
+        return parseInt(yearStart);
+      }
       );
-      const allYearsNoDuplicates = removeDuplicatesFromArray(allYears).sort();
+      const allYearsNoDuplicates: number[] = removeDuplicatesFromArray(allYears).sort();
       //add an extra year at the end and the beginning just for looks
       return [
         allYearsNoDuplicates[0] - 1,
@@ -46,21 +48,13 @@ const Timeline: React.FC<TimelineProps> = ({
     }
   }, []);
 
-  const gridRowPos = {
-    first: 0,
-    second: 0,
-    third: 0,
-    fourth: 0,
-    fifth: 0,
-  };
-
   const [lastEventRendered, setLastEventRendered] = useState<boolean>(false);
   const oneMonthLengthInPixels = "55px";
   const twelveMonths = 12;
-  const gridTemplateColumns = `repeat(${
-    years.length * twelveMonths
-  }, ${oneMonthLengthInPixels})`;
+  const gridTemplateColumns = `repeat(${years.length * twelveMonths
+    }, ${oneMonthLengthInPixels})`;
 
+  const [gridRowPos, setGridRowPos] = useState<GridRowPos>([]);
   const yearElemToSetInitialScrollToRef = useRef<null | HTMLElement>(null);
 
   useEffect(() => {
@@ -84,7 +78,7 @@ const Timeline: React.FC<TimelineProps> = ({
     if (timeline && yearElemToSetInitialScrollToRef.current !== null) {
       setScrollPositionToYearX(
         yearElemToSetInitialScrollToRef.current,
-        timeline
+        "end"
       );
     }
   }, [yearElemToSetInitialScrollToRef.current]);
@@ -118,21 +112,22 @@ const Timeline: React.FC<TimelineProps> = ({
           rowGap={["0.3em", null, "0.7rem", null, "1.3rem"]}
           gridTemplateColumns={gridTemplateColumns}
           //number of row is arbitrary (as long as there is enough)
-          gridTemplateRows="[events-container-top] 1fr 1fr 1fr 1fr [events-container-bottom]"
+          gridTemplateRows={`[events-container-top] ${gridRowPos.map(() => "1fr").join(" ")} [events-container-bottom]`}
         >
-          {data?.allProjectsNotPaginated.map((proj, i) => {
+          {data?.projects?.projects.map((proj, i) => {
             return (
               <ProjectAsTimelineEvent
                 setLastEventRendered={setLastEventRendered}
                 setSelectedProject={setSelectedProject}
                 project={proj}
                 isLastProj={
-                  data.allProjectsNotPaginated.length - 1 === i ? true : false
+                  data?.projects?.projects.length - 1 === i ? true : false
                 }
                 oneMonthLengthInPixels={oneMonthLengthInPixels}
                 firstYearInTimeline={years[0]}
-                gridRowPos={gridRowPos}
                 key={proj.title}
+                gridRowPos={gridRowPos}
+                setGridRowPos={setGridRowPos}
               />
             );
           })}

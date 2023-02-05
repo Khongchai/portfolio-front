@@ -39,6 +39,7 @@ function down(e: MouseEvent | TouchEvent) {
     initialX = (e as MouseEvent).clientX;
     block?.addEventListener("mousemove", drag);
   } else {
+    e.preventDefault();
     initialX = (e as TouchEvent).touches[0].clientX;
     block?.addEventListener("touchmove", drag, { passive: false });
   }
@@ -58,8 +59,9 @@ function down(e: MouseEvent | TouchEvent) {
 }
 
 function drag(e: MouseEvent | TouchEvent) {
-  e.preventDefault();
   if (dragSwitch) {
+    e.stopPropagation();
+    e.preventDefault();
     const currentClientX = getCurrentXFromMouseOrTouch(e as any);
     newTranslateXVal = currentClientX - initialX + currTranslateXVal;
     moveBlock(newTranslateXVal);
@@ -67,9 +69,11 @@ function drag(e: MouseEvent | TouchEvent) {
 }
 
 function up(e: MouseEvent | TouchEvent) {
+
   if (e.type === "mouseup") {
     block?.removeEventListener("mousemove", drag);
   } else {
+    e.preventDefault();
     block?.removeEventListener("touchmove", drag);
   }
 

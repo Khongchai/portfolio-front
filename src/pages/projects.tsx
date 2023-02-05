@@ -18,7 +18,15 @@ import { setAsSelected as setProjectItconAsSelected } from "../utils/setAsSelect
 const index: React.FC = () => {
   const [
     { fetching, data: unpaginatedProjects },
-  ] = useAllProjectsNotPaginatedQuery();
+  ] = useProjectsQuery({
+    variables: {
+      order: "ASC",
+      skip: 0,
+      limit: -1,
+      sortBy: "Date",
+      getAll: true,
+    }
+  });
 
   const [selectedProject, setSelectedProject] = useState<ProjectEntity | null>(
     null
@@ -73,7 +81,7 @@ const index: React.FC = () => {
 
   useSetDefaultSelection(
     setSelectedProject,
-    unpaginatedProjects?.allProjectsNotPaginated
+    unpaginatedProjects
   );
 
   return (

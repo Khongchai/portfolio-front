@@ -32,7 +32,7 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
       <Flex
         display="flex"
         bg={`url('${project.heroImgLink}')`}
-        backgroundPosition="bottom"
+        backgroundPosition="center"
         bgRepeat="no-repeat"
         backgroundSize="cover"
         transition=".3s"
@@ -154,12 +154,15 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
             p="2.5rem"
           >
             {project.imgLink ? (
-              <CloudinaryResponsiveImage
-                imgLink={project.imgLink}
-                projectTitle={project.title}
-                imageActualWidth={`${1440 * 0.9}px`}
-                imageActualHeight={`${1080 * 0.9}px`}
-              />
+              // If the background image is the same as the preview image, then there's no need to show both.
+              project.imgLink === project.heroImgLink ?
+                <></> :
+                <CloudinaryResponsiveImage
+                  imgLink={project.imgLink}
+                  projectTitle={project.title}
+                  imageActualWidth={`${1440 * 0.9}px`}
+                  imageActualHeight={`${1080 * 0.9}px`}
+                />
             ) : (
               <Text
                 display="block"
