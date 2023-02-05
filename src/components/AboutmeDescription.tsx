@@ -60,40 +60,29 @@ const _AboutMeDescriptionSection: React.FC = () => {
       </Grid>
       <Box flex="0.6">
         <StyledText>
-          As an aspiring web developer who loves learning and solving problems.
-          Working as a team or in any collaborative project, I seek to always
-          inspire and motivate myself. Ever since I stepped into the software
-          engineering world, I have been infatuated with the whole software
-          development process. The challenges it poses were exactly what I
-          craved. Every bug lavished, and every line of code relished, I enjoy
-          every single step of software development. I work mostly on the
-          frontend and backend, but my focus is primarily on frontend and webGL
-          animation. My projects in the past range from an interactive binaural
-          music application for Android (Java) to an e-commerce website (in
-          progress) where I sell my own music.
+          I am highly motivated and passionate about software development. I thrive
+          in collaborative settings and am dedicated to motivating myself and my
+          team. In my free time, I enjoy creating interactive and visually impressive
+          front-end projects, as well as experimenting with different UI libraries. By
+          exploring these technologies, I am able to bring a unique perspective and
+          expertise to my everyday front-end and back-end work. I approach
+          software development with dedication and a love for the craft, relishing the
+          challenges it presents.
         </StyledText>
         <br />
         <StyledText>
-          I work mostly on the frontend and backend, but my focus is primarily
-          on frontend and webGL animation.
-        </StyledText>
-        <StyledText>
-          My projects in the past range from an interactive binaural music
-          application for Android (Java) to an e-commerce website (in progress)
-          where I sell my own music. More info here:{" "}
-          <u>
-            <Link to="/projects">projects</Link> page.
-          </u>
+          In addition to my software development skills, as a musician, I have a
+          significant background in music, with over 8 years of experience in various
+          professional and collaborative artistic environments. These diverse
+          experiences have allowed me to develop strong teamwork and
+          communication skills, as well as a creative and adaptable approach to
+          problem-solving.
         </StyledText>
         <br />
         <StyledText>
-          I work mostly on the frontend and backend, but my focus is primarily
-          on frontend and webGL animation.
+          I am very passionate about building software. The satisfaction and joy from seeing a project come to life...there's nothing quite like it. I am fully committed on continuinng this journey for a very very long time.
         </StyledText>
-        <StyledText>
-          Other non-software development related stuff I am learning are Linear
-          Algebra, and animations (three.js + Blender).
-        </StyledText>
+
       </Box>
     </Flex>
   );
