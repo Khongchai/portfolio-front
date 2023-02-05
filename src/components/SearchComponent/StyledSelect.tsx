@@ -4,7 +4,8 @@ import React from "react";
 export const StyledSelect: React.FC<{
   options: string[];
   setFunction: any;
-}> = ({ options, setFunction }) => {
+  defaultValue?: string;
+}> = ({ options, setFunction, defaultValue }) => {
   return (
     <Select
       focusBorderColor="none"
@@ -12,6 +13,7 @@ export const StyledSelect: React.FC<{
       bgColor="#1F1F1F"
       width={"100%"}
       w="fit-content"
+      defaultValue={defaultValue}
       onChange={(e) => {
         setFunction(e.target.value as any);
       }}

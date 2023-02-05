@@ -69,8 +69,8 @@ export const SearchComponent: React.FC<SearchComponentProps> = ({
           css={{ "> *": { marginLeft: "1rem" } }}
         >
           <Text>Sort</Text>
-          <StyledSelect setFunction={setSort} options={["Date", "Title"]} />
-          <StyledSelect setFunction={setOrder} options={["ASC", "DESC"]} />
+          <StyledSelect setFunction={setSort} options={["Date", "Title"]} defaultValue={searchParams.searchParams.sortBy} />
+          <StyledSelect setFunction={setOrder} options={["ASC", "DESC"]} defaultValue={searchParams.searchParams.order} />
         </Flex>
       </Flex>
     </>

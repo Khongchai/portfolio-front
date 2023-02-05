@@ -27,7 +27,8 @@ const index: React.FC = () => {
   const [searchParams, setSearchParams] = useState<ProjectsSearchParam>({
     search: undefined,
     sortBy: "Date",
-    order: "ASC",
+    // Newest projects first.
+    order: "DESC",
   });
 
   const [queryVariables, setQueryVariables] = useState({
