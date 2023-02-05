@@ -16,7 +16,6 @@ export const ResumeDownloadSection: React.FC<ResumeDownloadSectionProps> = ({
       justify={["center", null, null, donotCenter ? null : "center"]}
       p="5rem 0"
     >
-      <Text mr="2rem">RESUME PDF</Text>
       <Button
         bg="black"
         border="1px solid white"

@@ -5,6 +5,9 @@ import { ResumeDownloadSection } from "../ResumeDownloadSection";
 import { BulletPoints } from "./BulletPoints";
 import { Flags } from "./Flags";
 
+/**
+ * @deprecated
+ */
 export const ResumeInfo: React.FC = () => {
   const software = [
     "VS Code",
