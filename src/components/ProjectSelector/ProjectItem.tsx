@@ -18,6 +18,7 @@ export const ProjectItem: React.FC<ProjectItemProps> = ({
   return (
     <Flex
       className="project-items"
+      textAlign="center"
       _hover={{ cursor: "pointer" }}
       align="center"
       id={`project-item-${title}`}

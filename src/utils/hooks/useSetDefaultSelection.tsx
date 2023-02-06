@@ -30,7 +30,7 @@ export default function useSetDefaultSelection(
           setSelectedProject,
           allProjects,
           projectTitleFromUrl,
-          previouslySelectedProjectTitle
+          previouslySelectedProjectTitle!
         );
       }
       //PreviouslySelected
@@ -50,10 +50,10 @@ export default function useSetDefaultSelection(
 }
 
 function setProjectLoadedFromQueryParam(
-  setSelectedProject: React.Dispatch<React.SetStateAction<ProjectEntity>>,
+  setSelectedProject: React.Dispatch<React.SetStateAction<ProjectEntity | null>>,
   allProjects: ProjectEntity[],
   projectTitleFromUrl: string,
-  fallbackProjectTitle: string
+  fallbackProjectTitle: string,
 ) {
   const projectFromUrl = allProjects.filter(
     (project) =>
@@ -77,7 +77,7 @@ function setProjectLoadedFromQueryParam(
 }
 
 function setProjectFromPreviouslySelected(
-  setSelectedProject: React.Dispatch<React.SetStateAction<ProjectEntity>>,
+  setSelectedProject: React.Dispatch<React.SetStateAction<ProjectEntity | null>>,
   allProjects: ProjectEntity[],
   projectTitleFromLocalStorage: string
 ) {
@@ -100,7 +100,7 @@ function setProjectFromPreviouslySelected(
 }
 
 function setSelectedProjectRandomly(
-  setSelectedProject: React.Dispatch<React.SetStateAction<ProjectEntity>>,
+  setSelectedProject: React.Dispatch<React.SetStateAction<ProjectEntity | null>>,
   paginatedProjects: ProjectEntity[]
 ) {
   const length = paginatedProjects.length;

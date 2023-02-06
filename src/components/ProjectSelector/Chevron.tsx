@@ -10,18 +10,18 @@ export const Chevron: React.FC<{
   const transform = direction === "right" ? "rotate(90deg)" : "rotate(-90deg)";
   return (
     <Box
-      height="fit-content"
       onClick={() => {
         onClickFunction();
       }}
-      width="fit-content"
       display={hide ? "none" : "block"}
       transform={transform}
       position="absolute"
       zIndex="9999"
-      left={direction === "left" ? 0 : "100%"}
+      left={direction === "left" ? "-2%" : "100%"}
       transition=".12s"
       cursor="pointer"
+      maxWidth={"30px"}
+      width="100%"
       _hover={{ transform: `${transform} scale(1.3)` }}
     >
       <StaticImage

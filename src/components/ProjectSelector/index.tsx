@@ -1,7 +1,6 @@
 import { Flex, Grid, Text } from "@chakra-ui/react";
 import React, { Dispatch, SetStateAction } from "react";
 import { ProjectEntity } from "../../../generated/graphql";
-import { ProjectsSearchParam } from "../../sharedTypes/ProjectsSearchParam";
 import { setSelectedProjectAndUpdateUrlParamAndLocalStorage } from "../../utils/SetSelectedProjectAndUpdateUrlParam";
 import { Chevron } from "./Chevron";
 import { ProjectItem } from "./ProjectItem";
@@ -28,6 +27,8 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   return (
     <Flex overflow="hidden">
       <Grid
+        pt="1rem"
+        gap="8px"
         className="nice-looking-scroll"
         id="project-selectors-container"
         overflowX={["scroll", null, null, "initial"]}
@@ -56,7 +57,7 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
             {projects.map((project) => (
               <ProjectItem
                 key={project.title}
-                imgLink={project.tinyImgLink}
+                imgLink={project.tinyImgLink ?? ""}
                 title={project.title}
                 onClickFunction={() => {
                   setSelectedProjectAndUpdateUrlParamAndLocalStorage(
