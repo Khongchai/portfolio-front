@@ -22,8 +22,8 @@ const index: React.FC = () => {
     variables: {
       order: "ASC",
       skip: 0,
-      limit: -1,
       sortBy: "Date",
+      limit: -1,
       getAll: true,
     }
   });

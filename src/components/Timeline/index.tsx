@@ -29,23 +29,23 @@ const Timeline: React.FC<TimelineProps> = ({
   setSelectedProject,
   selectedProject,
 }) => {
-  const years: number[] | undefined = useMemo(() => {
-    if (data) {
-      const allYears = data?.projects.projects.map((proj) =>
-      //date format = yyyy-mm-dd
-      {
-        const [yearStart] = proj.startDate.split("-");
-        return parseInt(yearStart);
-      }
-      );
-      const allYearsNoDuplicates: number[] = removeDuplicatesFromArray(allYears).sort();
-      //add an extra year at the end and the beginning just for looks
-      return [
-        allYearsNoDuplicates[0] - 1,
-        ...allYearsNoDuplicates,
-        allYearsNoDuplicates[allYearsNoDuplicates.length - 1] + 1,
-      ];
+  const years: number[] = useMemo(() => {
+    if (!data) return [];
+
+    const allYears = data?.projects.projects.map((proj) =>
+    //date format = yyyy-mm-dd
+    {
+      const [yearStart] = proj.startDate.split("-");
+      return parseInt(yearStart);
     }
+    );
+    const allYearsNoDuplicates: number[] = removeDuplicatesFromArray(allYears).sort();
+    //add an extra year at the end and the beginning just for looks
+    return [
+      allYearsNoDuplicates[0] - 1,
+      ...allYearsNoDuplicates,
+      allYearsNoDuplicates[allYearsNoDuplicates.length - 1] + 1,
+    ];
   }, []);
 
   const [lastEventRendered, setLastEventRendered] = useState<boolean>(false);
@@ -148,7 +148,7 @@ const Timeline: React.FC<TimelineProps> = ({
                 borderLeft="1px solid #828282"
                 zIndex="0"
                 gridColumn={`${12 * i + 1} / span 12`}
-                gridRow="1 / span 4 "
+                gridRow={`1 / span ${gridRowPos.length}`}
                 key={`${year}border`}
                 position="relative"
               />

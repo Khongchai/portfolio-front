@@ -46,11 +46,8 @@ export function getGridRow(
     }
   }
 
-  gridRowPos.push({
-    begin: nextItemBegin,
-    end: nextItemEnd,
-  });
+  // append
+  setRowPos(gridRowPos.length);
 
-  return gridRowPos.length + 1;
-
+  return gridRowPos.length;
 }
