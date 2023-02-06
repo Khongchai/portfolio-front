@@ -81,7 +81,7 @@ const index: React.FC = () => {
 
   useSetDefaultSelection(
     setSelectedProject,
-    unpaginatedProjects
+    unpaginatedProjects?.projects?.projects ?? []
   );
 
   return (

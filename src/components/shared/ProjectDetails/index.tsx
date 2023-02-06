@@ -63,7 +63,7 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
             mb={["1rem", null, null, 0]}
             flex="1"
           >
-            <Heading size="3xl" textTransform="capitalize">
+            <Heading size="3xl" textTransform="capitalize" whiteSpace={"nowrap"}>
               {project.title}
             </Heading>
             <Text

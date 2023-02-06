@@ -14,7 +14,7 @@ import { setSelectedProjectAndUpdateUrlParamAndLocalStorage } from "../../utils/
  * Selection checking hierarchy => URL? set : >> PreviouslySelected? set : >> set(randomProj)
  */
 export default function useSetDefaultSelection(
-  setSelectedProject: React.Dispatch<React.SetStateAction<ProjectEntity>>,
+  setSelectedProject: React.Dispatch<React.SetStateAction<ProjectEntity | null>>,
   allProjects: ProjectEntity[]
 ) {
   useEffect(() => {

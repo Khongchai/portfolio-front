@@ -82,6 +82,7 @@ const Timeline: React.FC<TimelineProps> = ({
       );
     }
   }, [yearElemToSetInitialScrollToRef.current]);
+
   return (
     <Grid
       cursor="grab"
