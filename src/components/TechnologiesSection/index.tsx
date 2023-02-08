@@ -9,7 +9,6 @@ type TechSectionProps = {
   setHoverComponentName: React.Dispatch<
     React.SetStateAction<string | undefined>
   >;
-  forceUpdateFallbackTexts?: boolean;
   uniqueIdentifier?: string;
 };
 
@@ -18,7 +17,6 @@ export const _TechSection: React.FC<TechSectionProps> = ({
   techTitles,
   fetching,
   setHoverComponentName,
-  forceUpdateFallbackTexts,
   uniqueIdentifier,
 }) => {
   return (
@@ -41,11 +39,8 @@ export const _TechSection: React.FC<TechSectionProps> = ({
         placeItems="center"
         data-cy="tech-container"
       >
-        {!fetching && techTitles && techTitles.length > 0 ? (
+        {!fetching && techTitles?.length ? (
           <TechLogos
-            forceUpdate={
-              forceUpdateFallbackTexts ? forceUpdateFallbackTexts : true
-            }
             setHoverComponentName={setHoverComponentName}
             techTitles={techTitles}
             noBorder={true}

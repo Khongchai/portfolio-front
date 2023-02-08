@@ -9,7 +9,7 @@ import { GridContainer } from "../elements/GridContainer";
 import { WhiteStrokedHeader } from "../components/shared/WhiteStrokedHeader";
 import ProjectSelector from "../components/ProjectSelector";
 import { SelectedProjectDetails } from "../components/SelectedProjectDetails";
-import useSetDefaultSelection from "../utils/hooks/useSetDefaultSelection";
+import useAutoSelection from "../utils/hooks/useSetDefaultSelection";
 import Timeline from "../components/Timeline";
 import { SearchComponent } from "../components/SearchComponent";
 import { ProjectsSearchParam } from "../sharedTypes/ProjectsSearchParam";
@@ -59,6 +59,15 @@ const index: React.FC = () => {
     }
   }, [searchParams]);
 
+  // See if the selected project is in the new list, if so select
+  useEffect(() => {
+    if (!paginatedProjects?.projects?.projects || !selectedProject?.id) return;
+
+    if (paginatedProjects?.projects?.projects.map((s) => s.id).includes(selectedProject.id)) {
+      setProjectItconAsSelected(selectedProject.title);
+    }
+  }, [queryVariables, searchParams]);
+
   useEffect(() => {
     if (selectedProject) {
       setProjectItconAsSelected(selectedProject.title);
@@ -79,9 +88,9 @@ const index: React.FC = () => {
     });
   }
 
-  useSetDefaultSelection(
+  useAutoSelection(
     setSelectedProject,
-    unpaginatedProjects?.projects?.projects ?? []
+    unpaginatedProjects?.projects?.projects ?? [],
   );
 
   return (

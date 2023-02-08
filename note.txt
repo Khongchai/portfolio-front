@@ -1,7 +1,2 @@
-
-
-Fix hovercomponent not showing names sometimes
-
-Fix margin bottom for projectDetails.
-
-
+Optimize tech logos render.
+Fix fallback texts retaining through multiple technologies.

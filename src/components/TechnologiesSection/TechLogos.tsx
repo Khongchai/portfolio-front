@@ -1,5 +1,5 @@
 import { Box, Flex, Img, Text } from "@chakra-ui/react";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 type TechLogosProps = {
   setHoverComponentName: React.Dispatch<
@@ -7,8 +7,6 @@ type TechLogosProps = {
   >;
   techTitles: string[];
   desc?: string;
-  //This forces the component to rerun setTextsAsLogos
-  forceUpdate?: boolean;
   noBorder?: boolean;
   noSpace?: boolean;
   uniqueIdentifier?: string;
@@ -17,7 +15,6 @@ export const TechLogos: React.FC<TechLogosProps> = ({
   techTitles,
   desc,
   setHoverComponentName,
-  forceUpdate,
   noBorder,
   noSpace,
   uniqueIdentifier,
@@ -26,17 +23,6 @@ export const TechLogos: React.FC<TechLogosProps> = ({
   if (!techTitles || techTitles.length === 0) {
     return <></>;
   }
-  uniqueIdentifier = uniqueIdentifier ? uniqueIdentifier : "";
-  const [textsAsLogos, setTextsAsLogos] = useState<string[]>([]);
-  const [update, setUpdate] = useState(true);
-  useEffect(() => {
-    if (forceUpdate !== undefined) {
-      if (update !== forceUpdate) {
-        setTextsAsLogos([]);
-      }
-      setUpdate(forceUpdate);
-    }
-  }, [forceUpdate]);
 
   return (
     <Flex
@@ -55,59 +41,80 @@ export const TechLogos: React.FC<TechLogosProps> = ({
         w="100%"
         align="center"
       >
-        {techTitles?.map((title, i) => {
-          const nameOriginal = title;
-          const name = nameOriginal.toLowerCase();
-          const nameNoSpace = name.replace(/[\s\.]+/g, "");
-          let src = `/logos/${nameNoSpace}.png`;
-          let img = (
-            <Box key={nameOriginal + i}>
-              <Img
-                onMouseOver={(e: any) => {
-                  setHoverComponentName(e.target.id);
-                }}
-                onMouseOut={() => {
-                  setHoverComponentName(undefined);
-                }}
-                onClick={(e: any) => {
-                  e.stopPropagation();
-                }}
-                onError={(e: any) => {
-                  /* prevent infinite loop by checking if "svg" is already checked */
-                  if (e.target.src.slice(-3) !== `svg`) {
-                    e.target.src = `/logos/${nameNoSpace}.svg`;
-                  } else {
-                    if (!textsAsLogos.includes(nameOriginal)) {
-                      setTextsAsLogos([...textsAsLogos, nameOriginal]);
-                    }
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }
-                }}
-                _hover={{
-                  transform: "scale(1.3)",
-                }}
-                m="1rem"
-                filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
-                padding={"1px"}
-                h={["27px", null, "29px", "32px", "40px"]}
-                alt={nameOriginal + "logo"}
-                src={src}
-                // Index is to prevent naming conflicts for the hovered names (sometimes the name would show up at another component instead of the one hovered because they have the same id)
-                id={`${nameOriginal}#${i}${uniqueIdentifier}`}
-                transition=".2s"
-                data-cy="tech-logo"
-              />
-            </Box>
-          );
+        {
+          techTitles?.map((title, i) => {
+            const nameOriginal = title;
+            const name = nameOriginal.toLowerCase();
+            const nameNoSpace = name.replace(/[\s\.]+/g, "");
+            const src = `/logos/${nameNoSpace}.png`;
 
-          return img;
-        })}
-        {textsAsLogos.map((text) => (
-          <Text key={text} padding="4px" margin="4px">
-            {text}
-          </Text>
-        ))}
+            return <ImageWithFallback
+              key={`${title + i}`}
+              uniqueIdentifier={uniqueIdentifier}
+              onMouseOver={(e: any) => {
+                setHoverComponentName(e.target.id);
+              }}
+              onMouseOut={() => {
+                setHoverComponentName(undefined);
+              }}
+              onClick={(e: any) => {
+                e.stopPropagation();
+              }}
+              index={i}
+              src={src}
+              title={nameOriginal}
+            />
+          })
+        }
+
       </Flex>
     </Flex>
   );
 };
+
+function ImageWithFallback({
+  onMouseOver,
+  onMouseOut,
+  onClick,
+  uniqueIdentifier,
+  index, src, title,
+}: {
+  onMouseOver: React.MouseEventHandler<HTMLImageElement> | undefined,
+  onMouseOut: React.MouseEventHandler<HTMLImageElement> | undefined,
+  onClick: React.MouseEventHandler<HTMLImageElement> | undefined,
+  uniqueIdentifier: string | undefined,
+  title: string,
+  index: number,
+  src: string,
+}) {
+  const [isError, setIsError] = useState(false);
+  return (
+    <Box>
+      {
+        isError ? <Text padding="8px">{title}</Text> :
+          <Img
+            onMouseOver={onMouseOver}
+            onMouseOut={onMouseOut}
+            onClick={onClick}
+            onError={() => {
+              setIsError(true);
+            }}
+            _hover={{
+              transform: "scale(1.3)",
+            }}
+            m="1rem"
+            filter="drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))"
+            padding={"1px"}
+            h={["27px", null, "29px", "32px", "40px"]}
+            alt={title + " logo"}
+            src={src}
+            // Index is to prevent naming conflicts for the hovered names (sometimes the name would show up at another component instead of the one hovered because they have the same id)
+            id={`${title}#${index}${uniqueIdentifier ?? ""}`}
+            transition=".2s"
+            data-cy="tech-logo"
+          />
+      }
+    </Box>
+  );
+}
+

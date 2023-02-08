@@ -1,5 +1,5 @@
-import { Box, Grid, Stack, Text } from "@chakra-ui/react";
-import React, { useEffect, useRef, useState } from "react";
+import { Grid, Stack } from "@chakra-ui/react";
+import React, { Dispatch, memo, SetStateAction, useEffect, useRef, useState } from "react";
 import { ProjectEntity, TechnologyEntity } from "../../../../generated/graphql";
 import useHoverComponent from "../../../utils/useHoverComponent";
 import { TechSection } from "../../TechnologiesSection";
@@ -11,6 +11,8 @@ interface TechnologiesUsedProps {
   toggleShowThis: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+type TechnologiesAndRoles = { role: string; techs: TechnologyEntity[] | undefined | null };
+
 export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
   project,
   showThis,
@@ -19,13 +21,8 @@ export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
   const [hoveredComponentName, setHoverComponentName] = useState<
     string | undefined
   >(undefined);
-  useHoverComponent(hoveredComponentName);
-  const [forceUpdateTextsFallback, setForceUpdateTextsFallback] = useState(
-    false
-  );
 
-  type TechnologiesAndRoles = { role: string; techs: TechnologyEntity[] };
-  const thisComponent = useRef(null);
+  const thisComponent = useRef<HTMLElement>();
   const allTechnologies: TechnologiesAndRoles[] = [
     {
       role: "Frontend",
@@ -47,11 +44,11 @@ export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
 
   useEffect(() => {
     if (!showThis) {
-      thisComponent.current.style.opacity = "0";
-      thisComponent.current.style.pointerEvents = "none";
+      thisComponent.current!.style.opacity = "0";
+      thisComponent.current!.style.pointerEvents = "none";
     } else {
-      thisComponent.current.style.opacity = "1";
-      thisComponent.current.style.pointerEvents = "unset";
+      thisComponent.current!.style.opacity = "1";
+      thisComponent.current!.style.pointerEvents = "unset";
     }
   }, [showThis]);
 
@@ -74,7 +71,6 @@ export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
       opacity="0"
       onClick={() => {
         toggleShowThis(false);
-        setForceUpdateTextsFallback(!forceUpdateTextsFallback);
       }}
     >
       {hoveredComponentName ? (
@@ -86,10 +82,9 @@ export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
         id="tech"
       >
         {allTechnologies.map((tech) => {
-          if (tech.techs.length > 0) {
+          if (tech.techs?.length) {
             return (
               <TechSection
-                forceUpdateFallbackTexts={forceUpdateTextsFallback}
                 key={tech.role}
                 title={tech.role}
                 techTitles={tech.techs.map((front) => front?.title)}
@@ -105,3 +100,4 @@ export const TechnologiesUsed: React.FC<TechnologiesUsedProps> = ({
     </Grid>
   );
 };
+

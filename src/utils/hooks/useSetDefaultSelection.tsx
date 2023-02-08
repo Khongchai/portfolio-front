@@ -13,12 +13,12 @@ import { setSelectedProjectAndUpdateUrlParamAndLocalStorage } from "../../utils/
  *
  * Selection checking hierarchy => URL? set : >> PreviouslySelected? set : >> set(randomProj)
  */
-export default function useSetDefaultSelection(
+export default function useAutoSelection(
   setSelectedProject: React.Dispatch<React.SetStateAction<ProjectEntity | null>>,
-  allProjects: ProjectEntity[]
+  unpaginatedProjects: ProjectEntity[],
 ) {
   useEffect(() => {
-    if (allProjects?.length > 0) {
+    if (unpaginatedProjects?.length > 0) {
       const params = new URLSearchParams(document.location.search.substring(1));
       const projectTitleFromUrl: string | null = params.get("selection");
       const previouslySelectedProjectTitle:
@@ -28,7 +28,7 @@ export default function useSetDefaultSelection(
       if (projectTitleFromUrl) {
         setProjectLoadedFromQueryParam(
           setSelectedProject,
-          allProjects,
+          unpaginatedProjects,
           projectTitleFromUrl,
           previouslySelectedProjectTitle!
         );
@@ -37,16 +37,16 @@ export default function useSetDefaultSelection(
       else if (previouslySelectedProjectTitle) {
         setProjectFromPreviouslySelected(
           setSelectedProject,
-          allProjects,
+          unpaginatedProjects,
           previouslySelectedProjectTitle
         );
       }
       //Ramdom
       else {
-        setSelectedProjectRandomly(setSelectedProject, allProjects);
+        setSelectedProjectRandomly(setSelectedProject, unpaginatedProjects);
       }
     }
-  }, [allProjects]);
+  }, [unpaginatedProjects]);
 }
 
 function setProjectLoadedFromQueryParam(

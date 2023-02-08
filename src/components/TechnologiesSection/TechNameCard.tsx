@@ -1,9 +1,12 @@
 import { Box } from "@chakra-ui/react";
 import React from "react";
+import useHoverComponent from "../../utils/useHoverComponent";
 
 export const TechNameCard: React.FC<{ hoveredComponentName: string }> = ({
   hoveredComponentName,
 }) => {
+  useHoverComponent(hoveredComponentName);
+
   return (
     <Box
       zIndex="100"
