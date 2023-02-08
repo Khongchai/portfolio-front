@@ -6,13 +6,10 @@ const client = createClient({
   url:
     process.env.NODE_ENV === "development"
       ? "http://localhost:4000/graphql"
-      : process.env.BACKEND_URL,
+      : process.env.GATSBY_BACKEND_URL,
 });
 
-console.log("Key: ", process.env);
-
 export const wrapRootElement = ({ element }) => {
-  console.log(process.env.BACKEND_URL);
   return (
     <Provider value={client}>
       <HelmetProvider>{element}</HelmetProvider>
