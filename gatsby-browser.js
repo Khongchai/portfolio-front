@@ -6,7 +6,7 @@ const client = createClient({
   url:
     process.env.NODE_ENV === "development"
       ? "http://localhost:4000/graphql"
-      : "https://khong-portfolio-backend.herokuapp.com/graphql",
+      : process.env.BACKEND_URL,
 });
 
 export const wrapRootElement = ({ element }) => {
