@@ -15,6 +15,7 @@ export const ResumeDownloadSection: React.FC<ResumeDownloadSectionProps> = ({
       w="100%"
       justify={["center", null, null, donotCenter ? null : "center"]}
       p="5rem 0"
+      id="resume-section"
     >
       <Button
         bg="black"
