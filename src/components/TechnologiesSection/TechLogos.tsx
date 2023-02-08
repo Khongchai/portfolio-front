@@ -88,6 +88,18 @@ function ImageWithFallback({
   src: string,
 }) {
   const [isError, setIsError] = useState(false);
+
+  const onError = (e: any) => {
+    // Try to load again but with svg instead of png
+    const [path, extension] = e.target.src.split(".") as string[];
+    const svg = "svg";
+    if (extension !== svg) {
+      e.target.src = path + "." + svg;
+    } else {
+      // If all else fails, fallback to just a text.
+      setIsError(true);
+    }
+  }
   return (
     <Box>
       {
@@ -96,9 +108,7 @@ function ImageWithFallback({
             onMouseOver={onMouseOver}
             onMouseOut={onMouseOut}
             onClick={onClick}
-            onError={() => {
-              setIsError(true);
-            }}
+            onError={onError}
             _hover={{
               transform: "scale(1.3)",
             }}
