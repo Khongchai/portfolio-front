@@ -15,7 +15,6 @@ You might have to wait a bit for heroku's dyno to wake up. I'm broke and can onl
 - Chakra UI
 - Graphql
 - Urql
-- (extra) => a collection of my own animations (manageBlockMove.ts, Inertia.ts, running-borders in animation.css, followCursorWithDelay in ThreejsGeometries.tsx)
 
 # Back
 
