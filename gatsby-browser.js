@@ -9,6 +9,8 @@ const client = createClient({
       : process.env.BACKEND_URL,
 });
 
+console.log("Key: ", process.env.BACKEND_URL);
+
 export const wrapRootElement = ({ element }) => {
   return (
     <Provider value={client}>
