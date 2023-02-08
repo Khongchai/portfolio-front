@@ -90,6 +90,7 @@ function ImageWithFallback({
   const [isError, setIsError] = useState(false);
 
   const onError = (e: any) => {
+    if (isError) return;
     // Try to load again but with svg instead of png
     const [path, extension] = e.target.src.split(".") as string[];
     const svg = "svg";
