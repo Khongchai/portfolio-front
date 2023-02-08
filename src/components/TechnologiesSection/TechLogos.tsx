@@ -94,7 +94,7 @@ function ImageWithFallback({
     // Try to load again but with svg instead of png
     const [path, extension] = e.target.src.split(".") as string[];
     const svg = "svg";
-    if (extension !== svg) {
+    if (extension == "png") {
       e.target.src = path + "." + svg;
     } else {
       // If all else fails, fallback to just a text.
