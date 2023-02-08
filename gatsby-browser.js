@@ -12,6 +12,7 @@ const client = createClient({
 console.log("Key: ", process.env);
 
 export const wrapRootElement = ({ element }) => {
+  console.log(process.env.BACKEND_URL);
   return (
     <Provider value={client}>
       <HelmetProvider>{element}</HelmetProvider>
