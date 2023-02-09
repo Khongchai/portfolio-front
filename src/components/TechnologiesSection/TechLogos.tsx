@@ -1,5 +1,6 @@
 import { Box, Flex, Img, Text } from "@chakra-ui/react";
 import React, { useEffect, useMemo, useState } from "react";
+import { getPathAndExtension } from "../../utils/getPathAndExtension";
 
 type TechLogosProps = {
   setHoverComponentName: React.Dispatch<
@@ -90,10 +91,9 @@ function ImageWithFallback({
   const [isError, setIsError] = useState(false);
 
   const onError = (e: any) => {
-    console.log(e.target.src);
     if (isError) return;
     // Try to load again but with svg instead of png
-    const [path, extension] = e.target.src.split(".") as string[];
+    const [path, extension] = getPathAndExtension(e.target.src);
     const svg = "svg";
     if (extension == "png") {
       e.target.src = path + "." + svg;
