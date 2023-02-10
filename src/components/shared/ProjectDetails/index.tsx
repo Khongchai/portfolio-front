@@ -58,19 +58,22 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
               "5rem 3rem 2rem 3rem",
               "5rem 3rem",
             ]}
+            alignItems={["center", null, null, "unset"]}
             transition=".3s"
             spacing="3rem"
             mb={["1rem", null, null, 0]}
             flex="1"
           >
-            <Heading size="3xl" textTransform="capitalize" whiteSpace={"nowrap"}>
+            <Heading width="fit-content" size="3xl" textTransform="capitalize" whiteSpace={"nowrap"}>
               {project.title}
             </Heading>
             <Text
+              width="fit-content"
               fontFamily="proxima nova rg"
               textShadow="black 0px 2px 10px"
               fontWeight="normal"
               maxHeight={["250px", null, null, "200px"]}
+              textAlign={["center", null, null, "unset"]}
               minHeight="200px"
               overflowY="auto"
             >

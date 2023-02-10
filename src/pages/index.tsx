@@ -46,7 +46,7 @@ const IndexPage = () => {
             position="relative"
             alignItems="center"
             maxWidth="1000px"
-            width={["auto", null, null, "1000px"]}
+            width="auto"
             margin="0 auto"
           >
             <Box ml="1rem" gridArea="1/1" zIndex="6" position="relative">
