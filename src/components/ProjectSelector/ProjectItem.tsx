@@ -13,7 +13,7 @@ export const ProjectItem: React.FC<ProjectItemProps> = ({
   title,
   onClickFunction,
 }) => {
-  const sideLength = "160px";
+  const sideLength = ["125px", null, "145px", null, "160px"]
 
   return (
     <Flex
@@ -62,7 +62,7 @@ export const ProjectItem: React.FC<ProjectItemProps> = ({
         )}
       </Grid>
 
-      <Heading size="sm" textTransform="capitalize">
+      <Heading fontSize={["0.75rem", "0.85rem", "0.85rem", "0.85rem"]} textTransform="capitalize">
         {title}
       </Heading>
     </Flex>

@@ -62,9 +62,9 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
             transition=".3s"
             spacing="3rem"
             mb={["1rem", null, null, 0]}
-            flex="1"
+            flex={["1", null, null, "0.5"]}
           >
-            <Heading width="fit-content" size="3xl" textTransform="capitalize" whiteSpace={"nowrap"}>
+            <Heading width="fit-content" fontSize={["2xl", "3xl", "4xl", "5xl"]} textTransform="capitalize" whiteSpace={"nowrap"}>
               {project.title}
             </Heading>
             <Text
@@ -74,8 +74,10 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
               fontWeight="normal"
               maxHeight={["250px", null, null, "200px"]}
               textAlign={["center", null, null, "unset"]}
-              minHeight="200px"
+              minHeight={["90px", null, "150px", null, "200px"]}
+              marginTop="1rem !important"
               overflowY="auto"
+              fontSize={["0.75rem", null, "1rem"]}
             >
               {project.description}
             </Text>
@@ -149,37 +151,39 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
               </Flex>
             </Stack>
           </Stack>
-          <Grid
-            placeItems="center"
-            overflow="hidden"
-            ml={[0, null, null, "1rem"]}
-            flex="1"
-            p="2.5rem"
-          >
-            {project.imgLink ? (
-              // If the background image is the same as the preview image, then there's no need to show both.
-              project.imgLink === project.heroImgLink ?
-                <></> :
-                <CloudinaryResponsiveImage
-                  imgLink={project.imgLink}
-                  projectTitle={project.title}
-                  imageActualWidth={`${1440 * 0.9}px`}
-                  imageActualHeight={`${1080 * 0.9}px`}
-                />
-            ) : (
-              <Text
-                display="block"
-                textAlign="center"
-                transform="rotate(20deg)"
-                fontSize="1.5em"
-                p="6rem 0"
-                letterSpacing="1.7"
-                className="fadein"
+          {
+            project.imgLink === project.heroImgLink ? <></> :
+              <Grid
+                placeItems="center"
+                overflow="hidden"
+                ml={[0, null, null, "1rem"]}
+                flex={["1", null, null, "0.5"]}
+                p="2.5rem"
               >
-                Preview Image Not Available
-              </Text>
-            )}
-          </Grid>
+                {project.imgLink ? (
+                  <CloudinaryResponsiveImage
+                    imgLink={project.imgLink}
+                    projectTitle={project.title}
+                    imageActualWidth={`${1440 * 0.9}px`}
+                    imageActualHeight={`${1080 * 0.9}px`}
+                  />
+                ) : (
+                  // Show the preview image not available if all images are null.
+                  !project.heroImgLink ?
+                    <Text
+                      display="block"
+                      textAlign="center"
+                      transform="rotate(20deg)"
+                      fontSize="1.5em"
+                      p="6rem 0"
+                      letterSpacing="1.7"
+                      className="fadein"
+                    >
+                      Preview Image Not Available
+                    </Text> : <></>
+                )}
+              </Grid>
+          }
         </Flex>
       </Flex>
     </>

@@ -99,13 +99,14 @@ const index: React.FC = () => {
         <Stack
           gridColumn={["1/-1", null, null, "content-begin / content-end"]}
           spacing="3rem"
-          m={["3rem 0", null, null, "3rem 3rem"]}
+          marginTop="3rem"
+          marginBottom={["5rem", null, null, "3rem"]}
         >
           <WhiteStrokedHeader textAlign="center">
             MY PROJECTS
           </WhiteStrokedHeader>
           <SearchComponent searchParams={{ searchParams, setSearchParams }} />
-          <Box id="project-items-container" position="relative">
+          <Box id="project-items-container" position="relative" margin={["1.5rem 1rem !important", null, null, "unset"]}>
             {!paginatedProjects || fetching ? (
               <Flex justify="center">
                 <div className="lds-ripple">

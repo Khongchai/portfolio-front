@@ -22,8 +22,6 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   positions,
   noProjectsFromSearch,
 }) => {
-  const squareSide = "200px";
-
   return (
     <Box overflow="visible" position="relative" margin="0 auto" width={["unset", null, null, null, "fit-content"]}>
       <Chevron
@@ -36,19 +34,20 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
       <Flex overflow="hidden">
 
         <Box
-          pt="1rem"
+          padding="3rem 0"
           gap="8px"
           className="nice-looking-scroll"
           id="project-selectors-container"
           overflowX={["scroll", null, null, null, "initial"]}
           overflowY={["hidden", null, null, null, "initial"]}
           position="relative"
-          margin={["1.5rem 3rem", null, null, null, "0 auto"]}
           placeItems="center"
-          pb={["1rem", null, null, 0]}
+          marginLeft="auto"
+          marginRight="auto"
           display={["flex", null, null, null, "grid"]}
-          gridTemplateRows={squareSide + " " + squareSide}
-          gridTemplateColumns={`repeat(4, ${squareSide})`}
+          gridTemplateRows={"200px 200px"}
+
+          gridTemplateColumns={`repeat(4, 200px)`}
         >
           {noProjectsFromSearch ? (
             <Text textAlign="center" gridColumn="1/-1">
