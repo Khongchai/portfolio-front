@@ -1,4 +1,4 @@
-import { Flex, Grid, Text } from "@chakra-ui/react";
+import { Box, Flex, Grid, Text } from "@chakra-ui/react";
 import React, { Dispatch, SetStateAction } from "react";
 import { ProjectEntity } from "../../../generated/graphql";
 import { setSelectedProjectAndUpdateUrlParamAndLocalStorage } from "../../utils/SetSelectedProjectAndUpdateUrlParam";
@@ -25,59 +25,63 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
   const squareSide = "200px";
 
   return (
-    <Flex overflow="hidden">
-      <Grid
-        pt="1rem"
-        gap="8px"
-        className="nice-looking-scroll"
-        id="project-selectors-container"
-        overflowX={["scroll", null, null, "initial"]}
-        overflowY={["hidden", null, null, "initial"]}
-        position="relative"
-        margin="0 auto"
-        placeItems="center"
-        pb={["1rem", null, null, 0]}
-        display={["flex", null, null, "grid"]}
-        gridTemplateRows={squareSide + " " + squareSide}
-        gridTemplateColumns={`repeat(4, ${squareSide})`}
-      >
-        {noProjectsFromSearch ? (
-          <Text textAlign="center" gridColumn="1/-1">
-            No projects found
-          </Text>
-        ) : (
-          <>
-            <Chevron
-              onClickFunction={() => {
-                paginateBackward();
-              }}
-              direction="left"
-              hide={positions.isFirst}
-            />
-            {projects.map((project) => (
-              <ProjectItem
-                key={project.title}
-                imgLink={project.tinyImgLink ?? ""}
-                title={project.title}
-                onClickFunction={() => {
-                  setSelectedProjectAndUpdateUrlParamAndLocalStorage(
-                    setSelectedProject,
-                    project
-                  );
-                }}
-              />
-            ))}
-            <Chevron
-              direction="right"
-              onClickFunction={() => {
-                paginateForward();
-              }}
-              hide={positions.isLast}
-            />
-          </>
-        )}
-      </Grid>
-    </Flex>
+    <Box overflow="visible" position="relative" margin="0 auto" width={["unset", null, null, null, "fit-content"]}>
+      <Chevron
+        onClickFunction={() => {
+          paginateBackward();
+        }}
+        direction="left"
+        hide={positions.isFirst}
+      />
+      <Flex overflow="hidden">
+
+        <Box
+          pt="1rem"
+          gap="8px"
+          className="nice-looking-scroll"
+          id="project-selectors-container"
+          overflowX={["scroll", null, null, null, "initial"]}
+          overflowY={["hidden", null, null, null, "initial"]}
+          position="relative"
+          margin={["1.5rem 3rem", null, null, null, "0 auto"]}
+          placeItems="center"
+          pb={["1rem", null, null, 0]}
+          display={["flex", null, null, null, "grid"]}
+          gridTemplateRows={squareSide + " " + squareSide}
+          gridTemplateColumns={`repeat(4, ${squareSide})`}
+        >
+          {noProjectsFromSearch ? (
+            <Text textAlign="center" gridColumn="1/-1">
+              No projects found
+            </Text>
+          ) : (
+            <>
+
+              {projects.map((project) => (
+                <ProjectItem
+                  key={project.title}
+                  imgLink={project.tinyImgLink ?? ""}
+                  title={project.title}
+                  onClickFunction={() => {
+                    setSelectedProjectAndUpdateUrlParamAndLocalStorage(
+                      setSelectedProject,
+                      project
+                    );
+                  }}
+                />
+              ))}
+            </>
+          )}
+        </Box>
+      </Flex>
+      <Chevron
+        direction="right"
+        onClickFunction={() => {
+          paginateForward();
+        }}
+        hide={positions.isLast}
+      />
+    </Box>
   );
 };
 

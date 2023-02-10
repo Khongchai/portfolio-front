@@ -17,7 +17,8 @@ export const Chevron: React.FC<{
       transform={transform}
       position="absolute"
       zIndex="9999"
-      left={direction === "left" ? "-2%" : "100%"}
+      right={direction === "right" ? "-1.5rem" : "calc(100% + 1.5rem)"}
+      top="50%"
       transition=".12s"
       cursor="pointer"
       maxWidth={"30px"}
