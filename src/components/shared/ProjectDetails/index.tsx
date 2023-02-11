@@ -152,7 +152,7 @@ const ProjectDetails: React.FC<ProjectDetails> = ({ project, noGrayScale }) => {
             </Stack>
           </Stack>
           {
-            project.imgLink === project.heroImgLink ? <></> :
+            (project.imgLink === project.heroImgLink) && (project.imgLink && project.heroImgLink) ? <></> :
               <Grid
                 placeItems="center"
                 overflow="hidden"
