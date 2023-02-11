@@ -29,10 +29,9 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
           paginateBackward();
         }}
         direction="left"
-        hide={positions.isFirst}
+        disabled={positions.isFirst}
       />
       <Flex overflow="hidden">
-
         <Box
           padding="3rem 0"
           gap="8px"
@@ -55,7 +54,6 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
             </Text>
           ) : (
             <>
-
               {projects.map((project) => (
                 <ProjectItem
                   key={project.title}
@@ -78,7 +76,7 @@ const ProjectSelector: React.FC<ProjectSelectorProps> = ({
         onClickFunction={() => {
           paginateForward();
         }}
-        hide={positions.isLast}
+        disabled={positions.isLast}
       />
     </Box>
   );

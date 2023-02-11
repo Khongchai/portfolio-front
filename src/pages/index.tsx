@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Flex,
   Grid,
   Heading,
   Image,
@@ -148,7 +149,7 @@ const IndexPage = () => {
       </Box>
       <Box css={{ "> *": { marginTop: "2rem" } }}>
         <AboutMeBanner />
-        <ResumeDownloadSection />
+        <ResumeDownloadSection withText />
         <Button
           bg="black"
           border="1px solid white"

@@ -4,19 +4,27 @@ import { StaticImage } from "gatsby-plugin-image";
 
 interface ResumeDownloadSectionProps {
   donotCenter?: boolean;
+  withText?: boolean;
 }
 
 export const ResumeDownloadSection: React.FC<ResumeDownloadSectionProps> = ({
   donotCenter,
+  withText
 }) => {
   return (
     <Flex
       align="center"
       w="100%"
       justify={["center", null, null, donotCenter ? null : "center"]}
+      flexDir={["column", null, null, "row"]}
       p="5rem 0"
       id="resume-section"
     >
+      {
+        withText ?
+          <Text fontSize="30px" margin={["0 0 16px 0", null, "0 0 32px 0", "0 84px 0 0"]}>RESUME</Text>
+          : <></>
+      }
       <Button
         bg="black"
         border="1px solid white"

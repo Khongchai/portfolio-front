@@ -1,31 +1,41 @@
 import { ChevronUpIcon } from "@chakra-ui/icons";
-import { Box, Icon, IconButton } from "@chakra-ui/react";
-import { StaticImage } from "gatsby-plugin-image";
+import { Box, BoxProps, IconButton } from "@chakra-ui/react";
 import React from "react";
 
 export const Chevron: React.FC<{
   direction: string;
   onClickFunction: () => void;
-  hide: boolean;
-}> = ({ direction, onClickFunction, hide }) => {
+  disabled: boolean;
+}> = ({ direction, onClickFunction, disabled, }) => {
   const transform = direction === "right" ? "rotate(90deg)" : "rotate(-90deg)";
+  const pixelWidth = 30;
   return (
     <Box
       onClick={() => {
-        onClickFunction();
+        if (!disabled) {
+          onClickFunction();
+        }
       }}
-      display={hide ? "none" : "block"}
-      transform={transform}
       position="absolute"
       zIndex="9999"
-      right={direction === "right" ? ["50%", null, null, "-4.5rem"] : ["50%", null, null, "calc(100% + 0.5rem)"]}
+      right={direction === "right" ? ["35%", null, null, `calc(-${pixelWidth}px - 1.25rem)`] : "unset"}
+      left={direction === "left" ? ["35%", null, null, `calc(-${pixelWidth}px - 1.25rem)`] : "unset"}
       top={["calc(100% + 1rem)", null, null, "50%"]}
       transition=".12s"
       cursor="pointer"
-      maxWidth={"30px"}
-      width="100%"
+      width="fit-content"
+      transformOrigin="center"
+      transform={transform}
     >
-      <IconButton aria-label='Pagination Chevron' background="black" _hover={{ background: "linear-gradient(to right, #b891ff, #e45f6b, #f99f35)" }} icon={<ChevronUpIcon width="2rem" height="2rem" />} />
+      <IconButton
+        pointerEvents={disabled ? "none" : "all"}
+        aria-label='Pagination Chevron'
+        background="black"
+        _hover={{ background: "linear-gradient(to right, #b891ff, #e45f6b, #f99f35)" }}
+        icon={<ChevronUpIcon
+          color={disabled ? "grey" : "white"} width={pixelWidth} height="2rem"
+          _hover={{ color: "black" }}
+        />} />
     </Box>
   );
 };
