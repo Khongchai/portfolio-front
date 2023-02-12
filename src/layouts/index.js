@@ -4,7 +4,7 @@ import { Navbar } from "../components/Navbar";
 import SEO from "../components/seo";
 import { SplashScreen } from "../components/splashScreen/index";
 import { getCookieValue } from "../utils/cookie/getCookie";
-import { Analytics } from "@vercel/analytics/react";
+import { inject } from "@vercel/analytics";
 
 export default function Layout({ children }) {
   const [visitAlready, setVisitAlready] = useState(false);
@@ -12,9 +12,12 @@ export default function Layout({ children }) {
     const cookieValue = getCookieValue("visitAlready");
     setVisitAlready(cookieValue === "true" ? true : false);
   }, [visitAlready]);
+
+  useEffect(() => {
+    inject();
+  }, []);
   return (
     <>
-      <Analytics />
       {visitAlready ? null : <SplashScreen zIndex="9999999" />}
       <SEO />
       <Navbar />
